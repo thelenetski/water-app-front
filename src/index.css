@@ -1,3 +1,21 @@
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+/* poppins-bold - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+}
+
 :root {
   font-family: Poppins, sans-serif;
   line-height: 1.5;
