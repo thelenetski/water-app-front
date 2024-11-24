@@ -41,20 +41,20 @@ const UserPanel = () => {
         <span className={css.greetingsName}>, {userInfo.name || "User"}!</span>
       </p>
       <UserBar onClick={toggleIsShow} isShow={isShow} />
-      {/* {isShow && (
+      {isShow && (
         <UserBarPopover
           openSettingModal={openSettingModal}
           openLogOutModal={openLogOutModal}
         />
         // буде ще компонент
-      )} */}
-      {/* <ModalWindow
+      )}
+      <ModalWindow
         onCloseModal={closeSettingModal}
         modalIsOpen={isSettingModalOpen}
-      >  */}
-      {/* <UserSettingsModal onCloseModal={closeSettingModal} />
-      </ModalWindow>{" "}
-      модалка */}
+      >
+        <UserSettingsModal onCloseModal={closeSettingModal} />
+      </ModalWindow>
+
       <LogOutModal isOpen={isLogOutModalOpen} closeModal={closeLogOutModal} />
     </div>
   );
