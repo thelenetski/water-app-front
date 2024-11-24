@@ -1,0 +1,36 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+@media screen and (min-width: 768px) {
+    .homePage {
+        gap: 40px; 
+    }
+
+    .header {
+        justify-content: flex-start;
+        padding: 20px 60px; 
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .homePage {
+        flex-direction: row; 
+        gap: 0; 
+    }
+
+    .header {
+        position: absolute; 
+        top: 20px;
+        left: 20px;
+    }
+}

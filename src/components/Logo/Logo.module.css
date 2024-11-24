@@ -1,0 +1,33 @@
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.logoImage {
+    width: 100px;
+    height: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .logoWrapper {
+        justify-content: flex-start; 
+        margin-left: 20px;
+        margin-bottom: 24px;
+    }
+
+    .logoImage {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .logoWrapper {
+        margin-bottom: 0; 
+    }
+
+    .logoImage {
+        width: 180px; 
+    }
+}

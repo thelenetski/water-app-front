@@ -1,0 +1,76 @@
+.welcomeSection {
+    text-align: center;
+    padding: 20px;
+}
+
+.welcomeSubtitle {
+    font-size: 16px;
+    color: #7a7a7a;
+}
+
+.welcomeTitle {
+    font-size: 24px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.welcomeButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tryTrackerButton {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signInButton {
+    background-color: white;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .welcomeSection {
+        text-align: left;
+        padding: 40px 60px; 
+    }
+
+    .welcomeSubtitle {
+        font-size: 18px; 
+    }
+
+    .welcomeTitle {
+        font-size: 36px; 
+        margin: 20px 0;
+    }
+
+    .welcomeButtons {
+        justify-content: flex-start; 
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .welcomeSection {
+        max-width: 50%; 
+        padding: 60px;
+    }
+
+    .welcomeTitle {
+        font-size: 48px; 
+    }
+
+    .welcomeButtons {
+        margin-top: 30px;
+    }
+}
