@@ -1,21 +1,31 @@
 import React from 'react';
 import styles from './AdvantagesSection.module.css';
 
+const SimpleList = ({ items }) => {
+    return (
+        <ul className={styles.advantagesList}>
+            {items.map((item, index) => (
+                <li
+                    key={index}
+                    className={`${styles.advantagesItem} ${
+                        item === "Habit drive" ? styles.withDot : ""
+                    }`}
+                >
+                    {item}
+                </li>
+            ))}
+        </ul>
+    );
+};
+
 const AdvantagesSection = () => {
+    const advantages = ["Habit drive", "View statistics", "Personal rate setting"];
+
     return (
         <section className={styles.advantagesSection}>
-            <img
-                src="/assets/background.jpg"
-                alt="Background"
-                className={styles.advantagesBackground}
-            />
             <div className={styles.advantagesContent}>
                 <p className={styles.advantagesCaption}>Our happy customers</p>
-                <ul className={styles.advantagesList}>
-                    <li className={styles.advantagesItem}>Habit drive</li>
-                    <li className={styles.advantagesItem}>View statistics</li>
-                    <li className={styles.advantagesItem}>Personal rate setting</li>
-                </ul>
+                <SimpleList items={advantages} />
             </div>
         </section>
     );

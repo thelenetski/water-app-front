@@ -5,29 +5,20 @@
     margin-bottom: 16px;
 }
 
-.logoImage {
-    width: 100px;
-    height: auto;
+.logoText {
+    font-size: 18px; 
+    font-weight: 700; 
+    color: #323F47; 
+    letter-spacing: -0.01em;
+    text-transform: uppercase; 
 }
 
 @media screen and (min-width: 768px) {
     .logoWrapper {
-        justify-content: flex-start; 
-        margin-left: 20px;
-        margin-bottom: 24px;
+        margin-bottom: 32px;
     }
 
-    .logoImage {
-        width: 150px;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .logoWrapper {
-        margin-bottom: 0; 
-    }
-
-    .logoImage {
-        width: 180px; 
+    .logoText {
+        font-size: 24px; 
     }
 }

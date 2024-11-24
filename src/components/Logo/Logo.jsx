@@ -4,7 +4,7 @@ import styles from './Logo.module.css';
 const Logo = () => {
     return (
         <div className={styles.logoWrapper}>
-            <img src="/logo.svg" alt="Aquatrack Logo" className={styles.logoImage} />
+            <span className={styles.logoText}>AQUATRACK</span>
         </div>
     );
 };
