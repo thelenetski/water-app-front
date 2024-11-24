@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
 import "./App.css";
 
 function App() {
