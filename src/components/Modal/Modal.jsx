@@ -1,66 +1,50 @@
 import { createPortal } from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../../redux/modal/slice';
-import { selectIsOpenModal } from '../../redux/modal/selectors';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import css from './Modal.module.css';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import css from './Modal.module.css'; 
 
-const ModalWindow = () => {
-  const dispatch = useDispatch();
-  const isOpen = useSelector(selectIsOpenModal);
-  const [isBackdropActive, setBackdropActive] = useState(false);
-
-  const onClose = () => dispatch(closeModal());
-
+const Modal = ({ isOpen, onClose, children }) => {
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
     if (isOpen) {
-      setBackdropActive(true);
-    } else {
-      setBackdropActive(false);
+      window.addEventListener('keydown', handleKeyDown);
     }
-  }, [isOpen]);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) {
+    return null;
+  }
 
   return createPortal(
     <div
-      className={`${css.backdrop} ${isBackdropActive ? css.active : ''}`} 
-      onClick={onClose}
+      className={`${css.backdrop} ${isOpen ? css.active : ''}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
     >
-      <Modal
-        open={isOpen}
-        onClose={onClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Notification
-          </Typography>
-          <Button onClick={onClose} variant="contained" color="error">
-            Close
-          </Button>
-        </Box>
-      </Modal>
+      <div className={css.modalContent}>
+        {children}
+      </div>
     </div>,
-    document.getElementById('modal-root')
+    document.getElementById('modal-root') 
   );
 };
 
-const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '70%',
-  maxWidth: 400,
-  bgcolor: 'background.paper',
-  border: '1px solid #777',
-  borderRadius: '8px',
-  boxShadow: 24,
-  p: 4,
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired, 
+  onClose: PropTypes.func.isRequired, 
+  children: PropTypes.node, 
 };
 
-export default ModalWindow;
+export default Modal;

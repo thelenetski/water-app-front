@@ -20,7 +20,7 @@
     opacity: 1;
   }
   
-  .modal-content {
+  .modalContent {
     position: relative;
     display: flex;
     flex-direction: column;
