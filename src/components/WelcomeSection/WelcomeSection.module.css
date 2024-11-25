@@ -1,0 +1,130 @@
+.welcomeSection {
+    text-align: start;
+    padding: 24px 16px;
+    background-color:#F0EFF4;
+    border-radius: 30px;
+    width: 100%;
+}
+
+.welcomeSubtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: 0.06em;
+    color: #2F2F2F;
+}
+
+.welcomeTitle {
+    font-size: 38px;
+    margin: 10px 0;
+    font-weight: 700;
+    color: #323F47;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+}
+
+.welcomeButtons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 32px 0 43px;
+}
+
+.tryTrackerButton {
+    background-color: #9be1a0;
+    color: #323F47;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    padding: 14px 19px;
+}
+
+.tryTrackerButton:hover {
+    background-color: #87d28d;
+}
+
+.signInButton {
+    background-color: transparent;
+    color: #323F47;
+    border: 1px solid #323F47;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    padding: 14px 28px;
+}
+
+.signInButton:hover {
+    color: #87d28d;
+    border: 1px solid #87d28d;
+}
+
+@media screen and (min-width: 768px) {
+    .welcomeSection {
+        padding: 32px 32px; 
+    }
+
+    .welcomeSubtitle {
+        margin-bottom: 16px;
+        margin-left: 32px;
+        font-size: 16px;
+        line-height: 150%;
+    }
+
+    .welcomeTitle {
+        margin-left: 32px;
+        margin-bottom: 32px;
+        font-size: 64px;
+        line-height: 109%;
+
+    }
+
+    .welcomeButtons {
+        margin-left: 32px;
+        margin-bottom: 18px;
+        gap: 16px;
+        justify-content: flex-start; 
+    }
+
+    .tryTrackerButton {
+        font-size: 16px;
+        line-height: 150%;
+        padding: 18px 40px;
+    }
+    
+    .signInButton {
+        font-size: 16px;
+        line-height: 150%;
+        padding: 8px 40px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .welcomeSection {
+        max-width: 100%; 
+        padding: 32px;
+    }
+
+    .welcomeTitle {
+        margin-top: 0;
+        margin-right: 61px;
+        font-size: 80px;
+        line-height: 95%;
+    }
+
+    .welcomeButtons {
+        margin-bottom: 156px;
+    }
+    
+    .signInButton {
+        padding: 18px 40px;
+    }
+}
