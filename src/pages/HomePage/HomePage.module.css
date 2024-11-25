@@ -14,7 +14,7 @@
 @media screen and (min-width: 1440px) {
     .homePage {
         flex-direction: row; 
-        gap: 0; 
+        row-gap: 32px; 
     }
 
 }

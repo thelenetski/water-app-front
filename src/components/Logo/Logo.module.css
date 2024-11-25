@@ -1,8 +1,8 @@
 .logoWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 74px;
 }
 
 .logoText {
@@ -20,5 +20,11 @@
 
     .logoText {
         font-size: 24px; 
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .logoWrapper {
+        margin-bottom: 132px;
     }
 }
