@@ -1,18 +1,20 @@
-import { WaterForm } from '../WaterForm/WaterForm';
-import css from './WaterModal.module.css';
+import { WaterForm } from "../WaterForm/WaterForm";
+import css from "./WaterModal.module.css";
+import { modalTypes } from "../../redux/modal/slice/";
 
-export const WaterModal = ({
-  title,
-  subtitle,
-  onClose,
-}) => {
+
+export const WaterModal = ({ type, data }) => {
+
   return (
     <div className={css.waterModalWrapper}>
-      <h2 className={css.waterModalTitle}>{title}</h2>
-      <WaterForm
-              subtitle={subtitle}
-              onClose={onClose}      
-      />
+      {type !== null && (
+        <h2 className={css.waterModalTitle}>
+          {(type === modalTypes.addWater && "Add water") ||
+            (type === modalTypes.editWater &&
+              "Edit the entered amount of water")}
+        </h2>
+      )}
+      <WaterForm type={type} data={data} />
     </div>
   );
 };
