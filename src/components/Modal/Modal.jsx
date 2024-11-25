@@ -1,34 +1,66 @@
-import { useState, useCallback } from "react";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import ModalBackdrop from "./Modal.jsx";
-import { ANIMATION } from "../../constants.js";
-import { ModalContext } from "../../context/ModalContext.js"; 
+import { createPortal } from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../redux/modal/slice';
+import { selectIsOpenModal } from '../../redux/modal/selectors';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { useEffect, useState } from 'react';
+import css from './Modal.module.css';
 
-const modalRoot = document.querySelector("#modal-root");
+const ModalWindow = () => {
+  const dispatch = useDispatch();
+  const isOpen = useSelector(selectIsOpenModal);
+  const [isBackdropActive, setBackdropActive] = useState(false);
 
-export const ModalProvider = ({ children }) => {
-  const [modal, setModal] = useState(null);
+  const onClose = () => dispatch(closeModal());
 
-  const handleSetModal = useCallback((modal = null) => {
-    const id = setTimeout(() => {
-      setModal(modal);
-      clearTimeout(id);
-    }, ANIMATION.DURATION);
-  }, []);
+  useEffect(() => {
+    if (isOpen) {
+      setBackdropActive(true);
+    } else {
+      setBackdropActive(false);
+    }
+  }, [isOpen]);
 
-  return (
-    <ModalContext.Provider value={handleSetModal}>
-      {children}
-      {modal &&
-        createPortal(
-          <ModalBackdrop onClose={handleSetModal}>{modal}</ModalBackdrop>,
-          modalRoot
-        )}
-    </ModalContext.Provider>
+  return createPortal(
+    <div
+      className={`${css.backdrop} ${isBackdropActive ? css.active : ''}`} 
+      onClick={onClose}
+    >
+      <Modal
+        open={isOpen}
+        onClose={onClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Notification
+          </Typography>
+          <Button onClick={onClose} variant="contained" color="error">
+            Close
+          </Button>
+        </Box>
+      </Modal>
+    </div>,
+    document.getElementById('modal-root')
   );
 };
 
-ModalProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '70%',
+  maxWidth: 400,
+  bgcolor: 'background.paper',
+  border: '1px solid #777',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: 4,
 };
+
+export default ModalWindow;

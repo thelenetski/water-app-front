@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import PropTypes from 'prop-types';
-//import Loader from "../Loader/Loader.jsx";
+import Loader from "../Loader/Loader.jsx";  
 import css from "./SharedLayout.module.css";
 
 const SharedLayout = ({ children }) => {
