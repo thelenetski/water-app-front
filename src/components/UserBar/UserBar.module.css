@@ -1,3 +1,8 @@
+.userBarContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 .button {
   display: flex;
   justify-content: center;
@@ -12,14 +17,13 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.01em;
-  background-color: var(--main);
+  background-color: #323f47;
   color: var(--main-white);
   width: fit-content;
 }
-
-/* .button:hover {
-  background-color: #4e4e4e;
-} */
+.name {
+  color: #ffffff;
+}
 .avatar {
   height: 38px;
   width: 38px;
@@ -27,11 +31,12 @@
   object-fit: cover;
 }
 
-.arrow-up {
-  rotate: 180deg;
-}
-
 @media screen and (min-width: 768px) {
+  .userBarContainer {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
   .button {
     font-size: 16px;
     line-height: 150%;
