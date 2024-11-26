@@ -49,9 +49,6 @@ const modalSlice = createSlice({
       state.type = null;
       state.content = null;
     },
-    userModal(state) {
-      state.isUserLogoModalOpen = true;
-    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -79,6 +76,5 @@ export const {
   openAddWater,
   openConfirmDelete,
   closeModal,
-  userModal,
 } = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

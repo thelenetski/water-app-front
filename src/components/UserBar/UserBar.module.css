@@ -1,8 +1,3 @@
-.userBarContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
 .button {
   display: flex;
   justify-content: center;
@@ -23,6 +18,7 @@
 }
 .name {
   color: #ffffff;
+  margin-right: 8px;
 }
 .avatar {
   height: 38px;
@@ -36,6 +32,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    width: 157px;
   }
   .button {
     font-size: 16px;
@@ -48,4 +45,31 @@
     width: 44px;
     height: 44px;
   }
+}
+
+.popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.userBarContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 137px;
+}
+
+.popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 1111;
 }
