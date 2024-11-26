@@ -1,0 +1,291 @@
+.container {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.main {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 30px;
+  width: 343px;
+  height: 415px;
+  background-color: #9be1a0;
+  padding: 24px 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 111%;
+  letter-spacing: -0.01em;
+
+  align-self: flex-start;
+}
+
+.picture {
+  display: block;
+}
+
+.dailyNorma {
+  position: absolute;
+  top: 122px;
+  left: 10px;
+  border-radius: 15px;
+  padding: 12px;
+  max-width: 102px;
+  max-height: 54px;
+  background-color: #ffffff;
+}
+
+.p1 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 6px;
+  color: #2f2f2f;
+}
+
+.p2 {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.progressBar {
+  position: absolute;
+  border-radius: 15px;
+  padding: 12px;
+  width: 198px;
+  height: 70px;
+  background-color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100px;
+}
+
+.pToday {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 20px;
+}
+
+.barMain {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  width: 174px;
+}
+
+.barBg {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #f0eff4;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.barProgress {
+  position: absolute;
+
+  border-radius: 9px 0 0 9px;
+  width: 174px;
+  height: 6px;
+  background-color: #9be1a0;
+  left: 0%;
+}
+
+.barCircle {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 1px solid #9be1a0;
+  border-radius: 50%;
+  background-color: white;
+  left: 20%;
+  transform: translateX(-50%);
+}
+
+.barPercent {
+  position: absolute;
+  top: -15px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 100%;
+  color: #9be1a0;
+}
+
+.hiddenCircle {
+  display: none;
+}
+
+.staticPercent {
+  width: 184px;
+  position: absolute;
+  top: 12px;
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.percent_50 {
+  transform: translateX(30%);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding: 14px 20px;
+  width: 140px;
+  height: 46px;
+  background-color: #323f47;
+  color: white;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  text-align: center;
+
+  position: absolute;
+  right: 16px;
+  bottom: 32px;
+}
+
+.button:hover,
+.button:focus {
+  color: #9be1a0;
+  stroke: #9be1a0;
+}
+
+.buttonSvg {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+
+  .main {
+    padding: 32px;
+    width: 704px;
+    height: 578px;
+  }
+
+  .h2 {
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+  }
+
+  .dailyNorma {
+    width: 129px;
+    height: 78px;
+    left: 32px;
+  }
+
+  .p1 {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .p2 {
+    font-size: 12px;
+    line-height: 187%;
+  }
+
+  .progressBar {
+    width: 255px;
+    height: 66px;
+    padding: 20px;
+
+    bottom: 150px;
+  }
+
+  .pToday {
+    font-size: 15px;
+    line-height: 149%;
+  }
+
+  .barMain {
+    width: 255px;
+  }
+
+  .barBg {
+    height: 8px;
+  }
+
+  .barProgress {
+    width: 255px;
+    height: 8px;
+  }
+
+  .barPercent {
+    font-size: 12px;
+    top: -17px;
+    transform: translateX(-40%);
+  }
+
+  .staticPercent {
+    width: 255px;
+    font-size: 12px;
+    line-height: 187%;
+  }
+
+  .button {
+    padding: 18px 30px;
+    width: 178px;
+    height: 60px;
+
+    font-size: 16px;
+    line-height: 150%;
+
+    right: 32px;
+    bottom: 64px;
+  }
+
+  .buttonSvg {
+    stroke-width: 2px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  .main {
+    width: 672px;
+    height: 736px;
+  }
+
+  .dailyNorma {
+    left: 64px;
+  }
+
+  .progressBar {
+    bottom: 200px;
+  }
+}
