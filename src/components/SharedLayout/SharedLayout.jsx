@@ -1,18 +1,20 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import Loader from "../Loader/Loader.jsx";  
-import css from "./SharedLayout.module.css";
+import Loader from '../Loader/Loader';
+import { Outlet } from 'react-router-dom';
 
 const SharedLayout = ({ children }) => {
   return (
-    <div className={css.container}>
-      <Suspense fallback={<Loader />}>{children}</Suspense>
-    </div>
+      <main>
+        <Suspense fallback={<Loader />}>
+          {children || <Outlet />} 
+        </Suspense>
+      </main>
   );
 };
 
 SharedLayout.propTypes = {
-    children: PropTypes.node.isRequired, 
+  children: PropTypes.node,
 };
 
 export default SharedLayout;
