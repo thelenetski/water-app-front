@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import css from "./SignInForm.module.css";
 import * as Yup from "yup";
 import { signIn } from "../../redux/auth/operations";
@@ -15,22 +14,22 @@ const INITIAL_VALUES = { userEmail: "", userPassword: "" };
 
 const SignInForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleSubmit = async (values, actions) => {
-    try {
-      await dispatch(
-        signIn({
-          email: values.userEmail,
-          password: values.userPassword,
-        })
-      ).unwrap();
-      toast.success("Login successful!");
-      actions.resetForm();
-      navigate("/tracker");
-    } catch (error) {
-      toast.error(error.message);
-    }
+  const handleSubmit = (values, actions) => {
+    dispatch(
+      signIn({
+        email: values.userEmail,
+        password: values.userPassword,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("Login successful!");
+        actions.resetForm();
+      })
+      .catch((error) => {
+        toast.error("Login failed: " + error.message);
+      });
   };
 
   return (
