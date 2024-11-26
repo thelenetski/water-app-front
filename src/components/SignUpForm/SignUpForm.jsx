@@ -88,7 +88,6 @@ const SignUpForm = () => {
               component="span"
             />
           </label>
-
           <label>
             <span>Repeat Password</span>
             <Field
