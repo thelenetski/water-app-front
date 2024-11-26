@@ -3,6 +3,7 @@
   width: 672px;
   height: 736px;
   background: #f0eff4;
+  padding: 169px 118px;
 }
 
 .form {
@@ -11,7 +12,7 @@
   gap: 20px;
   width: 436px;
   height: 398px;
-  margin: 169px 118px;
+  margin: 0 auto;
 }
 
 .button {
@@ -27,12 +28,11 @@
   text-align: center;
   color: #323f47;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 16px;
   box-shadow: none;
   border: none;
   outline: none;
   box-sizing: border-box;
-  margin-bottom: 16px;
 }
 .title {
   font-family: "Poppins", sans-serif;
@@ -90,6 +90,5 @@
   flex-direction: column;
   display: block;
   margin-bottom: 8px;
-  display: block;
   text-align: left;
 }
