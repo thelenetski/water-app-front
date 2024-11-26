@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { signUp } from '../../redux/auth/operations';
-
 const validationParams = Yup.object().shape({
   email: Yup.string()
     .email("Enter a valid email!")
