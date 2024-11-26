@@ -1,8 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import WaterMainInfo from "./components/WaterMainInfo/WaterMainInfo";
 
 function App() {
-  return <h1>AquaTrack</h1>;
+  return (
+    <>
+      <WaterMainInfo />
+    </>
+  );
 }
 
 export default App;
