@@ -1,0 +1,95 @@
+.formContainer {
+  border-radius: 30px;
+  width: 672px;
+  height: 736px;
+  background: #f0eff4;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 436px;
+  height: 398px;
+  margin: 169px 118px;
+}
+
+.button {
+  border-radius: 30px;
+  padding: 18px 0;
+  width: 436px;
+  height: 60px;
+  background: #9be1a0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #323f47;
+  display: block;
+  margin: 0 auto;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.05556;
+  letter-spacing: -0.01em;
+  color: #323f47;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.field {
+  margin-bottom: 20px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  padding: 16px 16px 16px;
+  width: 436px;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.field::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.signuptext {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(47, 47, 47, 0.5);
+}
+
+.signuplink {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #2f2f2f;
+}
+.inputLabel {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+  display: flex;
+  flex-direction: column;
+  display: block;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+}
