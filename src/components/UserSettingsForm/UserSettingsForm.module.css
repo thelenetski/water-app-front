@@ -22,6 +22,15 @@ body {
   margin: auto;
 }
 
+.avatarImg {
+  object-fit: cover;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
 .blockWrapper {
   display: flex;
   flex-direction: column;
@@ -184,6 +193,11 @@ input::placeholder {
   body {
     font-size: 16px;
     color: #2f2f2f;
+  }
+
+  .avatarImg {
+    width: 100px;
+    height: 100px;
   }
 
   .inputLabel {
