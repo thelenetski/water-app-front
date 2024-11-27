@@ -13,6 +13,10 @@
   margin-bottom: 20px;
 }
 
+.simplebar-scrollbar {
+  background-color: red;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 28px;
