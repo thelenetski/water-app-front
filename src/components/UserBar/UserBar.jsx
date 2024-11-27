@@ -4,7 +4,7 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/user/selectors";
 import UserBarPopover from "../UserBarPopover/UserBarPopover";
-import defaultAvatar from "../UserBar/user-avatar.png";
+import defaultAvatar from "../../img/default-avatar.webp";
 
 const UserBar = () => {
   const [isShow, setIsShow] = useState(false);
