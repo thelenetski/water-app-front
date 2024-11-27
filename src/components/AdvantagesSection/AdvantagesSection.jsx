@@ -7,7 +7,9 @@ const AdvantagesSection = () => {
     return (
         <section className={styles.advantagesSection}>
             <div className={styles.advantagesContent}>
-                <p className={styles.advantagesCaption}>Our happy customers</p>
+                <button className={styles.advantagesCaption}>
+                    Our <span className={styles.advantagesCaptionSpan}>happy</span> customers
+                </button>
                 <AdvantagesList items={advantages} />
             </div>
         </section>
