@@ -1,34 +1,27 @@
-import { useDispatch } from "react-redux";
-import { openAddWater, openEditWater } from "./redux/modal/slice";
-import ModalWindow from "./components/Modal/Modal.jsx";
-import { Routes, Route } from "react-router-dom";
-import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
-import HomePage from "./pages/HomePage/HomePage.jsx";
+import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
+import { lazy } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { Route, Routes } from 'react-router-dom';
+import Modal from 'react-modal';
+import ModalWindow from './components/Modal/Modal.jsx';
 
-const App = () => {
-  const dispatch = useDispatch();
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 
-  const handleOpenAddWater = () => {
-    dispatch(openAddWater({ amount: 0 })); 
-  };
+Modal.setAppElement('#root');
 
-  const handleOpenEditWater = () => {
-    dispatch(openEditWater({ id: 1, amount: 500 })); 
-  };
-
+function App() {
   return (
-    <div>
-      <button onClick={handleOpenAddWater}></button>
-      <button onClick={handleOpenEditWater}></button>
-      <ModalWindow />
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <SharedLayout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </SharedLayout>
 
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-        </Route>
-      </Routes>
-    </div>
+      <ModalWindow />
+    </>
   );
-};
+}
 
 export default App;
