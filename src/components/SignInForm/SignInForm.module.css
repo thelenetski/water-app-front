@@ -34,6 +34,16 @@
   outline: none;
   box-sizing: border-box;
 }
+
+.button:hover,
+.button:focus {
+  background: #87d28d;
+}
+
+.button:disabled {
+  background: #e6e6e6;
+  cursor: not-allowed;
+}
 .title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -45,6 +55,14 @@
   text-align: left;
 }
 
+.error {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: #ef5050;
+}
 .field {
   margin-bottom: 20px;
   border: 1px solid rgba(47, 47, 47, 0.2);
@@ -53,8 +71,11 @@
   width: 436px;
   height: 56px;
   box-sizing: border-box;
+  position: relative;
 }
-
+.fieldError {
+  border-color: #ef5050;
+}
 .field::placeholder {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -64,6 +85,14 @@
   color: rgba(47, 47, 47, 0.6);
 }
 
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
 .signuptext {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -91,4 +120,8 @@
   display: block;
   margin-bottom: 8px;
   text-align: left;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+@media (max-width: 767px) {
 }
