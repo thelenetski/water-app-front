@@ -1,0 +1,72 @@
+.popover {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /* width: 105px; */
+  padding: 16px;
+  height: 72px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  top: 100%;
+  margin-top: 5px;
+  z-index: 1111;
+  box-sizing: border-box;
+}
+.iconSettings {
+  margin-right: 4px;
+  fill: rgba(50, 63, 71, 0.4);
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 129%;
+  background-color: inherit;
+  color: rgba(50, 63, 71, 0.4);
+}
+
+.settings:hover {
+  cursor: pointer;
+  color: #323f47;
+}
+
+.iconLogOut {
+  margin-right: 4px;
+  fill: rgba(50, 63, 71, 0.4);
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 129%;
+  color: rgba(50, 63, 71, 0.4);
+  background-color: inherit;
+}
+
+.logOut:hover {
+  cursor: pointer;
+  color: #323f47;
+}
+
+@media screen and (min-width: 768px) {
+  .popover {
+    /* width: 125px; */
+    height: 82px;
+  }
+  .settings {
+    font-size: 15px;
+    line-height: 149%;
+  }
+  .logOut {
+    font-size: 15px;
+    line-height: 149%;
+  }
+}
