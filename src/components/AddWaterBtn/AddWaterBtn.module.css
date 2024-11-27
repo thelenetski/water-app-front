@@ -1,0 +1,72 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.wrapper.waterMain {
+  border-radius: 30px;
+  padding: 14px 20px;
+  background-color: #323f47;
+}
+
+.wrapper.waterMain:hover .plusIcon.waterMain {
+  fill: #9be1a0;
+}
+
+.wrapper.waterMain:hover .text.waterMain {
+  color: #9be1a0;
+}
+
+.wrapper.daily:hover .plusIcon.daily {
+  background-color: #323f47;
+  fill: #ffffff;
+}
+
+.plusIcon {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+.plusIcon.waterMain {
+  fill: #ffffff;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plusIcon.daily {
+  box-sizing: content-box;
+  padding: 8px;
+  border-radius: 30px;
+  background-color: #9be1a0;
+  fill: #323f47;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text.waterMain {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.3;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  .text.waterMain {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.text.daily {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #323f47;
+}

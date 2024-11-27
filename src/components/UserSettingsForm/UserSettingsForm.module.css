@@ -1,0 +1,225 @@
+body {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fileWrapper {
+  margin: auto;
+}
+
+.avatarImg {
+  object-fit: cover;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.blockWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.allInputsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.inputLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #323f47;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+input {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 14px 16px;
+}
+
+input::placeholder {
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke: #2f2f2f;
+}
+
+.accentIcon {
+  fill: #9be1a0;
+  width: 24px;
+  height: 24px;
+}
+
+.accentText {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  color: #9be1a0;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.frame {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 16px;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.errorMessage {
+  color: red;
+}
+
+.saveButton {
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 116px;
+  height: 46px;
+  background-color: #9be1a0;
+  color: #323f47;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.checkmarkWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* Customize the label (the container) */
+.radioWrapper {
+  position: relative;
+  padding-left: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radioWrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid #9be1a0;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radioWrapper input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioWrapper .checkmark:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #9be1a0;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+    color: #2f2f2f;
+  }
+
+  .avatarImg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .inputLabel {
+    font-size: 18px;
+  }
+
+  .listWrapper {
+    flex-direction: row;
+    gap: 28px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .allInputsWrapper {
+    max-width: 400px;
+    max-height: 530px;
+    column-gap: 40px;
+    row-gap: 24px;
+  }
+
+  input {
+    box-sizing: border-box;
+    width: 400px;
+  }
+}

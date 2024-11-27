@@ -1,26 +1,47 @@
-import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
-import { lazy } from 'react';
-import { Toaster } from 'react-hot-toast';
-import { Route, Routes } from 'react-router-dom';
-import Modal from 'react-modal';
-import ModalWindow from './components/Modal/Modal.jsx';
+import { lazy, Suspense } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-
-Modal.setAppElement('#root');
+const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
+// const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
+// const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
+// const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 
 function App() {
   return (
-    <>
-      <Toaster position="top-center" reverseOrder={false} />
-      <SharedLayout>
+    <div>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          {/* <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                component={<SignUpPage />}
+                redirectTo="/tracker"
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                component={<SignInPage />}
+                redirectTo="/tracker"
+              />
+            }
+          />
+          <Route
+            path="/tracker"
+            element={
+              <PrivateRoute component={<TrackerPage />} redirectTo="/signin" />
+            }
+          /> */}
         </Routes>
-      </SharedLayout>
-
-      <ModalWindow />
-    </>
+      </Suspense>
+    </div>
   );
 }
 

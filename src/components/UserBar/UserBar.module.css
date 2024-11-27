@@ -1,0 +1,75 @@
+.userBarContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  margin-top: 20px;
+  padding: 8px;
+  border: 0;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  background-color: #323f47;
+  flex-shrink: 0;
+  min-width: 137px;
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* .popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 8px;
+  transition: width 0.2s ease-in-out;
+} */
+.name {
+  color: #ffffff;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+.avatar {
+  height: 38px;
+  width: 38px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .userBarContainer {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+  .button {
+    font-size: 16px;
+    line-height: 150%;
+    height: 56px;
+    margin-top: 0;
+    min-width: 157px;
+    max-width: 180px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+  .name {
+    font-size: 16px;
+  }
+}
