@@ -20,11 +20,13 @@
   font-family: Poppins, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --main-color:#9BE1A0;
+  --font-color:#323F47;
+  --border-color: #2F2F2F;
+  --background-color:#F0EFF4;
+  --second-background-color:#FFFFFF;
+  --mobile-font-size:14px;
+  --border-radius: 30px
 }
 
 /* Reset styles */
@@ -36,6 +38,10 @@ h5,
 h6,
 p {
   margin: 0;
+  font-size: var(--mobile-font-size);
+  color: var(--font-color);
+  text-transform: capitalize;
+
 }
 
 p:last-child {
@@ -54,12 +60,15 @@ a {
 }
 
 button {
-  font-family: inherit;
-  color: currentColor;
+  font-size: var(--mobile-font-size);
+  color: var(--font-color);
+  background-color: var(--main-color);
+  border-radius: var(--border-radius);
+  text-transform: capitalize;
+  font-weight: 700;
   cursor: pointer;
   border: none;
-  padding: 0;
-  background-color: transparent;
+  padding: 14px 19px;
 }
 
 img {
@@ -74,4 +83,27 @@ address {
 
 input {
   font-family: inherit;
+  border-radius: var(--border-radius);
+
+}
+
+div{
+  border-radius: var(--border-radius);
+
+}
+
+/* media for tablets */
+
+@media screen and (min-width: 768px) {
+  
+}
+
+/* media for desktop */
+
+@media screen and (min-width: 1440px) {
+  .homePage {
+      flex-direction: row; 
+      row-gap: 32px; 
+  }
+
 }
