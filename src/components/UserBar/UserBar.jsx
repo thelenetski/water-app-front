@@ -8,17 +8,14 @@ import defaultAvatar from "../UserBar/user-avatar.png";
 
 const UserBar = () => {
   const [isShow, setIsShow] = useState(false);
+  const [userBarWidth, setUserBarWidth] = useState(0);
   const userInfo = useSelector(selectUser) || {};
   const avatar = userInfo.avatar || defaultAvatar;
 
-  const popoverRef = useRef(null);
   const buttonRef = useRef(null);
 
   const handleOutsideClick = (e) => {
     if (buttonRef.current && buttonRef.current.contains(e.target)) {
-      return;
-    }
-    if (popoverRef.current && popoverRef.current.contains(e.target)) {
       return;
     }
     setIsShow(false);
@@ -27,6 +24,9 @@ const UserBar = () => {
   useEffect(() => {
     if (isShow) {
       document.addEventListener("mousedown", handleOutsideClick);
+      if (buttonRef.current) {
+        setUserBarWidth(buttonRef.current.offsetWidth);
+      }
     } else {
       document.removeEventListener("mousedown", handleOutsideClick);
     }
@@ -39,6 +39,15 @@ const UserBar = () => {
     setIsShow((prev) => !prev);
   };
 
+  const getDisplayName = () => {
+    if (userInfo?.name) {
+      return userInfo.name;
+    } else if (userInfo?.email) {
+      return userInfo.email.split("@")[0];
+    }
+    return "User";
+  };
+
   return (
     <div className={css.userBarContainer}>
       <button
@@ -47,7 +56,7 @@ const UserBar = () => {
         className={css.button}
         ref={buttonRef}
       >
-        <p className={css.name}>{userInfo?.name || "User"}</p>
+        <p className={css.name}>{getDisplayName()}</p>
         <img src={avatar} alt="User Avatar" className={css.avatar} />
         {isShow ? (
           <FaChevronUp style={{ color: "#ffffff" }} />
@@ -56,11 +65,7 @@ const UserBar = () => {
         )}
       </button>
 
-      {isShow && (
-        <div ref={popoverRef} className={css.popover}>
-          <UserBarPopover />
-        </div>
-      )}
+      {isShow && <UserBarPopover userBarWidth={userBarWidth} />}
     </div>
   );
 };

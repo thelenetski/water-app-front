@@ -1,14 +1,21 @@
 .popover {
   position: absolute;
   left: 0;
-  width: 97px;
-  padding: 14px 20px;
-  background-color: var(--main-white);
+  width: 100%;
+  /* width: 105px; */
+  padding: 16px;
+  height: 72px;
+  background-color: #ffffff;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   border-radius: 15px;
+  top: 100%;
+  margin-top: 5px;
+  z-index: 1111;
+  box-sizing: border-box;
 }
 .iconSettings {
   margin-right: 4px;
+  fill: rgba(50, 63, 71, 0.4);
 }
 
 .settings {
@@ -18,13 +25,13 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 129%;
-  fill: var(--main);
   background-color: inherit;
-  color: var(--main);
+  color: rgba(50, 63, 71, 0.4);
 }
 
 .settings:hover {
   cursor: pointer;
+  color: #323f47;
 }
 
 .iconLogOut {
@@ -46,15 +53,13 @@
 
 .logOut:hover {
   cursor: pointer;
+  color: #323f47;
 }
 
 @media screen and (min-width: 768px) {
   .popover {
-    /* top: 64px; */
-    /* top: 100%;
-    right: 0;
-    left: auto; */
-    width: 117px;
+    /* width: 125px; */
+    height: 82px;
   }
   .settings {
     font-size: 15px;
