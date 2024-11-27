@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Layout } from "./components/Layout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 // const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
@@ -12,7 +13,7 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 function App() {
   return (
     <div>
-      <Suspense fallback={null}>
+      <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           {/* <Route
@@ -40,7 +41,7 @@ function App() {
             }
           /> */}
         </Routes>
-      </Suspense>
+      </Layout>
     </div>
   );
 }
