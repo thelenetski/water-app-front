@@ -1,6 +1,8 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import css from './SignUpForm.module.css';
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { clsx } from "clsx";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { signUp } from '../../redux/auth/operations';
@@ -25,6 +27,7 @@ const initialValues = {
   email: '',
   password: '',
   repeatPassword: '',
+  showPassword: false,
 }
 
 const SignUpForm = () => {
@@ -54,13 +57,16 @@ const SignUpForm = () => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationParams}>
+            {({ isValid, isSubmitting, errors, touched }) => (
         <Form className={css.form}>
           <h2 className={css.title}>Sign Up</h2>
 
           <label>
-            <span>Email</span>
+            <span className={css.inputLabel}>Email</span>
             <Field
-              className={css.field}
+             className={clsx(css.field, {
+                  [css.fieldError]: errors.email && touched.email,
+                })}
               type="email"
               name="email"
               placeholder="Enter your email"
@@ -74,14 +80,34 @@ const SignUpForm = () => {
           </label>
 
           <label>
-            <span>Password</span>
+            <span className={css.inputLabel}>Password</span>
+            <div className={css.passwordWrapper}>
             <Field
-              className={css.field}
-              type="password"
+              className={clsx(css.field, {
+                  [css.fieldError]: errors.password && touched.password,
+                })}
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
               aria-label="Password"
             />
+            <button
+                  type="button"
+                  className={css.iconButton}
+                  onClick={() =>
+                    setFieldValue("showPassword", !values.showPassword) 
+                  }
+                  aria-label="Toggle password visibility"
+                >
+                   <svg className={css.icon}>
+                    <use
+                      xlinkHref={`/icons/sprite.svg#icon-${
+                        showPassword ? "eye" : "eye-off"
+                      }`}
+                    />
+                  </svg>
+                </button>
+             </div>
             <ErrorMessage
               className={css.error}
               name="password"
@@ -89,14 +115,34 @@ const SignUpForm = () => {
             />
           </label>
           <label>
-            <span>Repeat Password</span>
+            <span className={css.inputLabel}>Repeat Password</span>
+            <div className={css.passwordWrapper}>
             <Field
-              className={css.field}
-              type="password"
+              className={clsx(css.field, {
+                  [css.fieldError]: errors.repeatPassword && touched.repeatPassword,
+                })}
+             type={values.showPassword ? "text" : "password"}
               name="repeatPassword"
               placeholder="Repeat your password"
               aria-label="Repeat Password"
             />
+            <button
+                  type="button"
+                  className={css.iconButton}
+                  onClick={() =>
+                    setFieldValue("showPassword", !values.showPassword) 
+                  }
+                  aria-label="Toggle password visibility"
+                >
+                   <svg className={css.icon}>
+                    <use
+                      xlinkHref={`/icons/sprite.svg#icon-${
+                        showPassword ? "eye" : "eye-off"
+                      }`}
+                    />
+                  </svg>
+                </button>
+             </div>
             <ErrorMessage
               className={css.error}
               name="repeatPassword"
@@ -106,15 +152,19 @@ const SignUpForm = () => {
 
           <button
             className={css.button}
-            type="submit">
+            type="submit"
+            disabled={!isValid || isSubmitting}
+            >
             Sign Up
           </button>
-        </Form>
-      </Formik>
-      <div className={css.signInLink}>
+     <p className={css.signuptext}>
         <span>Already have an account? </span>
-        <Link to="/signin">Sign In</Link>
-      </div>
+        <Link to="/signin" className={css.signinlink}>Sign In</Link>
+       </p>
+      </Form>
+      )}
+      </Formik>
+      
     </div>
   );
 }
