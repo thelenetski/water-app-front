@@ -1,0 +1,30 @@
+.signInPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 0 16px;
+}
+
+.formWrapper {
+  flex: 1;
+}
+
+.advantagesWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .advantagesWrapper {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .advantagesWrapper {
+    display: flex;
+  }
+}
