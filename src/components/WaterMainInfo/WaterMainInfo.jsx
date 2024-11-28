@@ -12,18 +12,22 @@ export default function WaterMainInfo() {
   const user = useSelector(selectUser);
 
   const [percentValue, setPercentValue] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisiblePercent, setIsVisiblePercent] = useState(true);
+  const [isVisibleCircle, setIsVisibleCircle] = useState(true);
 
-  const dailyNorm = user.dailyNorm;
+  const dailyNorm = 1500; //user.dailyNorm;
   const dailyNormLiter = dailyNorm / 1000;
   const dailyArray = useSelector(selectWatersDaily);
-  const drankPerDay = dailyArray.map(); //Дописать цикл
+  const drankPerDay = 1500; //dailyArray.map(); //Дописать цикл
 
   useEffect(() => {
     setPercentValue(Math.round((drankPerDay * 100) / dailyNorm));
 
+    if (drankPerDay > dailyNorm) {
+      setIsVisiblePercent(true);
+    }
     if (percentValue === 0 || percentValue > 95) {
-      setIsVisible(false);
+      setIsVisibleCircle(false);
     }
   }, [drankPerDay, dailyNorm, percentValue]);
 
@@ -32,33 +36,33 @@ export default function WaterMainInfo() {
   }
 
   return (
-    <div className={css.container}>
+    <div className={clsx(css.container, "container")}>
       <div className={css.main}>
         <h2 className={css.h2}>AQUATRACK</h2>
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_pc_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_pc_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_pc_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_pc_x2.webp 2x
             "
           />
           <source
             media="(min-width:768px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_tablet_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_tablet_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_tablet_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_tablet_x2.webp 2x
             "
           />
           <source
             media="(max-width:767px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_mobile_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_mobile_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_mobile_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_mobile_x2.webp 2x
             "
           />
           <img
-            src="/WaterMainInfo_photos/transparent_bottle_mobile_x1.png"
+            src="/WaterMainInfo_photos/transparent_bottle_mobile_x1.webp"
             alt="bottle photo"
           />
         </picture>
@@ -76,11 +80,17 @@ export default function WaterMainInfo() {
               ></div>
             </div>
             <div
-              className={clsx(css.barCircle, isVisible && css.hiddenCircle)}
+              className={clsx(
+                css.barCircle,
+                isVisibleCircle && css.hiddenCircle
+              )}
               style={{ left: `${percentValue}%` }}
             ></div>
             <div
-              className={clsx(css.barPercent, isVisible && css.hiddenCircle)}
+              className={clsx(
+                css.barPercent,
+                isVisiblePercent && css.hiddenCircle
+              )}
               style={{
                 left: `${percentValue}%`,
               }}
@@ -95,28 +105,9 @@ export default function WaterMainInfo() {
           </div>
         </div>
         <button className={css.button} type="button" onClick={handleOnClick}>
-          <svg
+          <svg>
             className={css.buttonSvg}
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 3.33337V12.6667"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3.3335 8H12.6668"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <use href="/sprite.svg#icon-x"></use>
           </svg>
           Add water
         </button>
