@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import css from "./UserBarPopover.module.css";
-// import UserSettingsModal from "./UserSettingsModal/UserSettingsModal";
+import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 // import LogOutModal from "./LogOutModal/LogOutModal";
 
 const UserBarPopover = ({ userBarWidth }) => {
