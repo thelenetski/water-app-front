@@ -1,11 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { FiUpload } from "react-icons/fi";
+import { BsExclamationLg } from "react-icons/bs";
+import toast from "react-hot-toast";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { BsExclamationLg } from "react-icons/bs";
-import { FiUpload } from "react-icons/fi";
-import avatar from "../../img/default-avatar.webp";
+
+import { selectUser } from "../../redux/auth/selectors";
+import { patchUser } from "../../redux/user/operations";
 
 import css from "./UserSettingsForm.module.css";
+import avatar from "../../img/default-avatar.webp";
 
 const validationParams = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!"),
@@ -26,31 +32,52 @@ const validationParams = Yup.object().shape({
 });
 
 const UserSettingsForm = () => {
-  const [preview, setPreview] = useState(null);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const [preview, setPreview] = useState(user.avatarUrl || null);
+  const [gender, setGender] = useState("moman");
   const [weight, setWeight] = useState(0);
   const [hoursOfSport, setHoursOfSport] = useState(0);
   const [recommendedDailyNorma, setRecommendedDailyNorma] = useState(null);
+  // const { values, setFieldValue } = useFormikContext();
 
   const initialValues = {
-    name: "",
-    gender: "",
-    email: "",
-    photo: "",
-    weight: "",
-    hoursOfSport: "",
-    dailyNorma: "",
+    name: user.name || "",
+    gender: user.gender || "woman",
+    email: user.email || "",
+    photo: user.avatarUrl || "",
+    weight: user.weight || "",
+    hoursOfSport: user.sportParticipation || "",
+    dailyNorma: user.dailyNorm / 1000 || "",
   };
 
+  // useEffect(() => {
+  //   //dispatch(getUserCurrent());
+  // }, []);
+
   useEffect(() => {
-    let norma;
-    if (female === "woman") {
-      norma = weight * 0.03 + hoursOfSport * 0.4;
-      setRecommendedDailyNorma(norma.toFixed(1));
-    } else {
-      norma = weight * 0.04 + hoursOfSport * 0.6;
-      setRecommendedDailyNorma(norma.toFixed(1));
+    let norma = 1.8;
+    if (weight) {
+      if (gender === "woman") {
+        norma = weight * 0.03 + hoursOfSport * 0.4;
+      } else {
+        norma = weight * 0.04 + hoursOfSport * 0.6;
+      }
     }
-  }, [weight, hoursOfSport]);
+    setRecommendedDailyNorma(norma.toFixed(1));
+  }, [weight, hoursOfSport, gender]);
+
+  // useEffect(() => {
+  //   if (values.weight) {
+  //     norma =
+  //       values.gender === "woman"
+  //         ? values.weight * 0.03 + values.hoursOfSport * 0.4
+  //         : values.weight * 0.04 + values.hoursOfSport * 0.6;
+  //   } else {
+  //     norma = "1.8";
+  //   }
+  //   setFieldValue("dailyNorma", norma.toFixed(1));
+  // }, [values.weight, values.hoursOfSport, values.gender]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -60,7 +87,19 @@ const UserSettingsForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    //dispatch(saveUserDetailes(values));
+    dispatch(
+      patchUser({
+        ...user,
+        values,
+      })
+        .unwrap()
+        .then(() => {
+          toast.success("Saved info successfully");
+        })
+        .catch((error) => {
+          toast.error("Something went wrong: " + error.message);
+        })
+    );
   };
 
   return (
@@ -100,13 +139,24 @@ const UserSettingsForm = () => {
                   type="radio"
                   name="gender"
                   value="woman"
-                  checked={true}
+                  checked={gender === "woman"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
                 />
                 <span className={css.checkmark}></span>
                 <span>Woman</span>
               </label>
               <label className={css.radioWrapper}>
-                <Field type="radio" name="gender" value="man" />
+                <Field
+                  type="radio"
+                  name="gender"
+                  value="man"
+                  checked={gender === "man"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                />
                 <span className={css.checkmark}></span>
                 <span>Man</span>
               </label>
@@ -200,9 +250,7 @@ const UserSettingsForm = () => {
             <div className={css.blockWrapper}>
               <p>
                 The required amount of water in liters per day: <br />
-                <span className={css.accentText}>
-                  {recommendedDailyNorma ? `${recommendedDailyNorma}L` : "1.8L"}
-                </span>
+                <span className={css.accentText}>{recommendedDailyNorma}L</span>
               </p>
               <label className={css.inputWrapper}>
                 <span className={css.inputLabel}>
