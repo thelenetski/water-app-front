@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "/*---------LINK WATER-----------*/";
+axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
 
 export const getWaterMonthly = createAsyncThunk(
   "water/getWaterMonthly",
