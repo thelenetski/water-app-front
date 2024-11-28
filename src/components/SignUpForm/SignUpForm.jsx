@@ -3,9 +3,11 @@ import css from './SignUpForm.module.css';
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { clsx } from "clsx";
+import Logo from "../Logo/Logo";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { signUp } from '../../redux/auth/operations';
+
 const validationParams = Yup.object().shape({
   email: Yup.string()
     .email("Enter a valid email!")
@@ -59,6 +61,9 @@ const SignUpForm = () => {
         validationSchema={validationParams}>
             {({ isValid, isSubmitting, errors, touched }) => (
         <Form className={css.form}>
+          <div className={css.logoWrapper}>
+              <Logo />
+               </div>
           <h2 className={css.title}>Sign Up</h2>
 
           <label>
