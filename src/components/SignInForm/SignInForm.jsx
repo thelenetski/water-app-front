@@ -36,7 +36,7 @@ const SignInForm = () => {
         actions.resetForm();
       })
       .catch((error) => {
-        toast.error("Login failed: " + error);
+        toast.error("Login failed: " + error.message);
       });
   };
 

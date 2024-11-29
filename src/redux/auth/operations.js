@@ -26,7 +26,10 @@ export const signUp = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -44,7 +47,10 @@ export const signIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -59,7 +65,10 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    if (error.response) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+    return thunkAPI.rejectWithValue(error.message || "Unknown error");
   }
 });
 
@@ -80,7 +89,10 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get("api/users/auth/refresh");
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   },
   {
