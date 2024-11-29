@@ -18,42 +18,38 @@ export default function WaterMainInfo() {
   const dailyWaterArray = useSelector(selectWatersDaily);
 
   const [percentValue, setPercentValue] = useState(0);
-  const [percentValueCircle, setPercentValueCircle] = useState(0);
 
   const [isVisiblePercent, setIsVisiblePercent] = useState(false);
-  const [isVisibleCircle, setIsVisibleCircle] = useState(false);
 
-  const dailyNorm = 1500; // user.dailyNorm || 500; нет поля dailyNorm в слайсе
+  const [drankPerDay, setDrankPerDay] = useState(0);
+
+  const dailyNorm = user !== null ? user.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
 
-  let sumDrankWater = 0;
-
-  dailyWaterArray.forEach((drink) => {
-    sumDrankWater += drink.amount;
-  });
-  const drankPerDay = 0; // sumDrankWater;
+  const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
+    return previousValue + glass.amount;
+  }, 0);
 
   useEffect(() => {
+    setDrankPerDay(amountDrankWater);
     setPercentValue(Math.round((drankPerDay * 100) / dailyNorm));
-    setPercentValueCircle(Math.round((drankPerDay * 100) / dailyNorm));
 
     if (drankPerDay > dailyNorm) {
       setIsVisiblePercent(false);
-      setPercentValueCircle(100);
+
       setPercentValue(100);
     }
-    if (percentValue === 0 || percentValue > 95) {
-      setIsVisibleCircle(false);
+
+    if (percentValue === 0 || percentValue >= 100) {
+      setIsVisiblePercent(true);
+    } else {
+      setIsVisiblePercent(false);
     }
-    if (percentValue === 0) {
-      setIsVisibleCircle(false);
-    }
-  }, [drankPerDay, dailyNorm, percentValue]);
+  }, [dailyNorm, drankPerDay, percentValue, amountDrankWater]);
 
   function handleOnClick() {
     dispatch(openAddWater());
   }
-  console.log(isVisiblePercent);
 
   return (
     <div className={clsx(css.container, "container")}>
@@ -100,11 +96,8 @@ export default function WaterMainInfo() {
               ></div>
             </div>
             <div
-              className={clsx(
-                css.barCircle,
-                isVisibleCircle && css.hiddenCircle
-              )}
-              style={{ left: `${percentValueCircle}%` }}
+              className={clsx(css.barCircle)}
+              style={{ left: `${percentValue}%` }}
             ></div>
             <div
               className={clsx(
