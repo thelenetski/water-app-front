@@ -12,7 +12,6 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
-// const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 
 function App() {
   const dispatch = useDispatch();
