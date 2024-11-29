@@ -1,14 +1,12 @@
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../../redux/modal/slice'; 
-import { selectIsOpenModal, selectTypeModal } from '../../redux/modal/selectors'; 
-import styles from './Modal.module.css'; 
+import { closeModal } from '../../redux/modal/slice';
+import { selectIsOpenModal } from '../../redux/modal/selectors';
+import styles from './ModalWindow.module.css';
 
 const ModalWindow = ({ children }) => {
   const dispatch = useDispatch();
-  
   const isOpen = useSelector(selectIsOpenModal);
-  const modalType = useSelector(selectTypeModal);
 
   const closeModalHandler = () => {
     dispatch(closeModal());
@@ -33,24 +31,14 @@ const ModalWindow = ({ children }) => {
       isOpen={isOpen}
       onRequestClose={closeModalHandler}
       style={customStyles}
-      contentLabel="Example Modal"
-      className={styles.modalOverlay}
+      ariaHideApp={false}
       overlayClassName={styles.modalOverlay}
     >
       <div className={styles.modalContent}>
-        <button className={styles.btnClose} onClick={closeModalHandler}>&times;</button>
-        
-        <div className={styles.modalHeader}>
-          <h2>{modalType}</h2>
-        </div>
-        
-        <div>{children}</div>
-        
-        <div className={styles.modalFooter}>
-          <button className={styles.successButton} onClick={closeModalHandler}>
-            Close
-          </button>
-        </div>
+        <button className={styles.btnClose} onClick={closeModalHandler}>
+          &times;
+        </button>
+        {children}
       </div>
     </Modal>
   );

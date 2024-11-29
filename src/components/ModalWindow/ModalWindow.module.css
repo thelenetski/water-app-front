@@ -36,68 +36,15 @@
   color: #9be1a0;
 }
 
-.modalFooter {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.successButton,
-.declineButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.successButton {
-  background-color: #9be1a0;
-  color: #323f47;
-}
-
-.declineButton {
-  background-color: #f0eff4;
-  color: #323f47;
-}
-
-.successButton:hover {
-  background-color: #7cb88c;
-}
-
-.declineButton:hover {
-  background-color: #e0d8d0;
-}
-
 @media screen and (max-width: 374px) {
   .modalContent {
     width: 90%;
-  }
-
-  .modalFooter {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .successButton,
-  .declineButton {
-    width: 100%;
-    margin: 5px 0;
   }
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .modalContent {
     width: 80%;
-  }
-
-  .modalFooter {
-    flex-direction: row;
-  }
-
-  .successButton,
-  .declineButton {
-    width: 48%;
   }
 }
 

@@ -1,8 +1,7 @@
 import { lazy, Suspense } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 // const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));

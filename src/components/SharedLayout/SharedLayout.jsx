@@ -1,16 +1,14 @@
 import Loader from '../Loader/Loader';
 import { Suspense } from 'react';
-import { Outlet } from 'react-router';
+import { Toaster } from 'react-hot-toast';
 
 const SharedLayout = ({ children }) => {
   return (
     <main>
       <div className="container">
         <div className="pageContentWrapper">
-          <Suspense fallback={<Loader />}>
-            {children}
-            <Outlet />
-          </Suspense>
+        <Toaster position="top-center" />
+      <Suspense fallback={<Loader />}>{children}</Suspense>
         </div>
       </div>
     </main>
