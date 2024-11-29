@@ -22,8 +22,14 @@ const watersSlice = createSlice({
   initialState: {
     monthly: [],
     daily: [],
+    activeDay: null,
     loading: false,
     error: null,
+  },
+  reducers: {
+    addActiveDay(state, action) {
+      state.activeDay = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -78,5 +84,7 @@ const watersSlice = createSlice({
       });
   },
 });
+
+export const { addActiveDay } = watersSlice.actions;
 
 export const watersReducer = watersSlice.reducer;
