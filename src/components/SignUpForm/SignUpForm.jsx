@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import Logo from "../Logo/Logo";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 
@@ -32,6 +32,8 @@ const initialValues = {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.auth.loading);
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -105,7 +107,6 @@ const SignUpForm = () => {
                 >
                   <svg className={css.icon}>
                     <use href={`${sprite}#icon-${values.showPassword ? "eye" : "eye-off"}`} />
-
                   </svg>
                 </button>
               </div>
@@ -137,9 +138,8 @@ const SignUpForm = () => {
                   }
                   aria-label="Toggle password visibility"
                 >
-                           <svg className={css.icon}>
+                  <svg className={css.icon}>
                     <use href={`${sprite}#icon-${values.showPassword ? "eye" : "eye-off"}`} />
-
                   </svg>
                 </button>
               </div>
@@ -149,6 +149,8 @@ const SignUpForm = () => {
                 component="span"
               />
             </label>
+
+            {loading && <div className={css.loader}>Loading...</div>}
 
             <button
               className={css.button}

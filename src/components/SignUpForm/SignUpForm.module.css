@@ -101,13 +101,13 @@
    position: relative;
   display: flex;
   align-items: center; 
+  
 }
 
 .iconButton{
 position: absolute;
   right: 8px;
-  top: 50%; 
-  transform: translateY(-50%); 
+  margin-bottom: 17px;
   background: none; 
   border: none; 
   cursor: pointer; 
