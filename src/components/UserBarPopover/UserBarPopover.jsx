@@ -7,28 +7,20 @@ import {
   openEditUser,
   openConfirmLogOutUser,
 } from "../../redux/modal/slice";
-import {
-  selectTypeModal,
-  selectIsOpenModal,
-} from "../../redux/modal/selectors";
+import { selectTypeModal } from "../../redux/modal/selectors";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
-
+import ModalWindow from "../ModalWindow/ModalWindow";
 const UserBarPopover = ({ userBarWidth }) => {
   const dispatch = useDispatch();
-  const isOpen = useSelector(selectIsOpenModal);
   const type = useSelector(selectTypeModal);
 
   const openSettingsModal = () => {
-    dispatch(openEditUser(null));
+    dispatch(openEditUser());
   };
 
   const openLogOutModal = () => {
-    dispatch(openConfirmLogOutUser(null));
-  };
-
-  const closeModal = () => {
-    dispatch(closeModal());
+    dispatch(openConfirmLogOutUser());
   };
 
   return (
@@ -46,13 +38,10 @@ const UserBarPopover = ({ userBarWidth }) => {
         <IoLogOutOutline className={css.iconLogOut} />
         Log out
       </button>
-
-      {isOpen && type === modalTypes.editUser && (
-        <UserSettingsModal onClose={closeModal} />
-      )}
-      {isOpen && type === modalTypes.confirmLogOutUser && (
-        <LogOutModal onClose={closeModal} />
-      )}
+      <ModalWindow>
+        {type === modalTypes.editUser && <UserSettingsModal />}
+        {type === modalTypes.confirmLogOutUser && <LogOutModal />}
+      </ModalWindow>
     </div>
   );
 };
