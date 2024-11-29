@@ -6,8 +6,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Layout } from "./components/Layout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
-// const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
-// const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
+const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
 // const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route
+           <Route
             path="/signup"
             element={
               <RestrictedRoute
@@ -39,7 +39,7 @@ function App() {
             element={
               <PrivateRoute component={<TrackerPage />} redirectTo="/signin" />
             }
-          /> */}
+          />
         </Routes>
       </Layout>
     </div>
