@@ -1,3 +1,165 @@
-.formWaterWrapper {
-    letter-spacing: -0.2px;
+.secWaterTitle {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.16px;
+    line-height: 1.25;
+    color: #323F47;
+    
 }
+
+.amountWaterTitle {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: -0.14px;
+    line-height: 1.28;
+    margin-bottom: 8px;
+    color:#2F2F2F;
+
+}
+
+.counterWaterWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.counterButton {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+}
+
+.counterValue {
+    padding: 11px 20px;
+    border-radius: 30px;
+    background-color: #323F47;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.timeLabel {
+    display: block;
+    margin-bottom: 8px;
+    color: #2F2F2F;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.014px;
+}
+
+.errorMessage {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #EF5050;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  outline: none;
+
+  color: #2F2F2F;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.014px;
+}
+
+.input:hover,
+.input:focus {
+    border-color: #87D28D;
+}
+
+.input:focus {
+    border-color: #87D28D;
+    transform: scale(1.01);
+}
+
+.valueLabel {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.16px;
+    color: #323F47;
+}
+
+.submitButton {
+    padding: 14px 40px;
+    border: none;
+    background-color: #9BE1A0;
+    border-radius: 30px;
+    color: #323F47;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.14px;
+    cursor: pointer;
+}
+
+.submitButton:hover,
+.submitButton:focus {
+    color: #87D28D;
+}
+
+@media screen and (min-width: 768px) {
+  
+  .secWaterTitle {
+    font-size: 18px;
+    letter-spacing: -0.18px;
+    line-height: 1.33; 
+  }
+
+  .amountWaterTitle {
+    letter-spacing: -0.16px;
+    line-height: 1.5;
+  }
+
+  .counterButton {
+    width: 43px;
+    height: 43px;
+  }
+
+  .counterValue {
+    height: 43px;
+    font-size: 15px;
+    line-height: 1.49;
+  }
+
+  .timeLabel {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
+  }
+
+  .input {
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  }
+
+  .valueLabel {
+   font-size: 18px;
+   line-height: 1.33;
+   letter-spacing: -0.18px;
+  }
+
+  .submitButton {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
+}
+
