@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { useEffect } from "react";
 import css from "./WaterForm.module.css";
 import { modalTypes } from "../../redux/modal/slice/";
 
@@ -14,15 +15,30 @@ const schema = yup.object({
     .number()
     .required("Value is required")
     .min(10, "Minimum value is 10ml")
-    .max(2000, "Maximum value is 2000ml")
-    .typeError("Value must be a number"),
+    .max(5000, "Maximum value is 5000ml")
+    .typeError("Value must be a number/ value in ml"),
 });
 
 export const WaterForm = ({ type, data, onSubmit }) => {
   const initialValues = {
     date: data?.date || new Date().toTimeString().slice(0, 5), // Поточний час
     value: data?.value || 50, // Значення за замовчуванням
-  };
+  }; 
+  
+  useEffect(() => {
+    if (type === modalTypes.editWater) {
+      const valueToCheck = data?.value || 50; // Очікуване значення
+      console.log(`Initial value in span (Edit mode): ${valueToCheck} ml`);
+
+      // Додаткова перевірка через assert
+      console.assert(
+        valueToCheck >= 10 && valueToCheck <= 5000,
+        `Invalid value: ${valueToCheck}. Expected between 10 and 5000 ml.`
+      );
+    }
+  }, [type, data]);
+
+
 
   return (
     <Formik
@@ -34,15 +50,15 @@ export const WaterForm = ({ type, data, onSubmit }) => {
         <Form className={css.formWaterWrapper}>
           {/* Заголовок залежно від типу модалки */}
           {type !== null && (
-            <p>
+            <p className={css.secWaterTitle}>
               {(type === modalTypes.addWater && "Choose a value:") ||
                 (type === modalTypes.editWater && "Correct entered data:")}
             </p>
           )}
 
           <div className={css.counterWrapper}>
-            <span>Amount of water:</span>
-            <div className={css.counter}>
+            <span className={css.amountWaterTitle}>Amount of water:</span>
+            <div className={css.counterWaterWrapper}>
               <button
                 type="button"
                 onClick={() =>
@@ -56,7 +72,7 @@ export const WaterForm = ({ type, data, onSubmit }) => {
               <button
                 type="button"
                 onClick={() =>
-                  setFieldValue("value", Math.min(values.value + 10, 2000))
+                  setFieldValue("value", Math.min(values.value + 10, 5000))
                 }
                 className={css.counterButton}
               >
@@ -100,3 +116,5 @@ export const WaterForm = ({ type, data, onSubmit }) => {
     </Formik>
   );
 };
+
+export default WaterForm;
