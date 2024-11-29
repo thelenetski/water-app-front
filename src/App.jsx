@@ -3,10 +3,10 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { Layout } from "./components/Layout.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import { refreshUser } from "./redux/auth/operations.js";
+import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
@@ -24,7 +24,7 @@ function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Layout>
+    <SharedLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -46,7 +46,7 @@ function App() {
           }
         />
       </Routes>
-    </Layout>
+    </SharedLayout>
   );
 }
 
