@@ -7,16 +7,12 @@ import {
   openEditUser,
   openConfirmLogOutUser,
 } from "../../redux/modal/slice";
-import {
-  selectTypeModal,
-  selectIsOpenModal,
-} from "../../redux/modal/selectors";
+import { selectTypeModal } from "../../redux/modal/selectors";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
 import ModalWindow from "../ModalWindow/ModalWindow";
 const UserBarPopover = ({ userBarWidth }) => {
   const dispatch = useDispatch();
-  const isOpen = useSelector(selectIsOpenModal);
   const type = useSelector(selectTypeModal);
 
   const openSettingsModal = () => {
@@ -25,10 +21,6 @@ const UserBarPopover = ({ userBarWidth }) => {
 
   const openLogOutModal = () => {
     dispatch(openConfirmLogOutUser());
-  };
-
-  const closeModal = () => {
-    dispatch(closeModal());
   };
 
   return (
