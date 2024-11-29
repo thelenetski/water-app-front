@@ -147,8 +147,9 @@
 }
 
 .button {
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 30px;
   padding: 14px 20px;
@@ -170,13 +171,16 @@
 }
 
 .button:hover,
-.button:focus {
+.button:focus,
+.button:hover .buttonSvg {
   color: #9be1a0;
   stroke: #9be1a0;
 }
 
 .buttonSvg {
-  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  stroke: white;
 }
 
 @media screen and (min-width: 768px) {
@@ -265,7 +269,6 @@
   }
 
   .buttonSvg {
-    stroke-width: 2px;
     width: 24px;
     height: 24px;
   }
