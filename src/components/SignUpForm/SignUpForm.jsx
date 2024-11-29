@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import Logo from "../Logo/Logo";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
+import { selectAuthLoading } from "../../redux/auth/selectors";
 
 const validationParams = Yup.object().shape({
   email: Yup.string()
@@ -32,6 +33,7 @@ const initialValues = {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectAuthLoading); 
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -105,7 +107,6 @@ const SignUpForm = () => {
                 >
                   <svg className={css.icon}>
                     <use href={`${sprite}#icon-${values.showPassword ? "eye" : "eye-off"}`} />
-
                   </svg>
                 </button>
               </div>
@@ -137,9 +138,8 @@ const SignUpForm = () => {
                   }
                   aria-label="Toggle password visibility"
                 >
-                           <svg className={css.icon}>
+                  <svg className={css.icon}>
                     <use href={`${sprite}#icon-${values.showPassword ? "eye" : "eye-off"}`} />
-
                   </svg>
                 </button>
               </div>
@@ -155,7 +155,7 @@ const SignUpForm = () => {
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              Sign Up
+              {loading ? "Loading..." : "Sign up"}
             </button>
             <p className={css.signuptext}>
               <span>Already have an account? </span>
