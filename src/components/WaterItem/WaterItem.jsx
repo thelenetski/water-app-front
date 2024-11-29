@@ -1,15 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import css from "./WaterItem.module.css";
 import sprite from "../../../public/sprite.svg";
-import { BaseModal } from "../BaseModal/BaseModal";
 import { WaterModal } from "../WaterModal/WaterModal";
 import { DeleteModal } from "../DeleteModal/DeleteModal";
 import { ModalWindow } from "../globalModal/globalModal";
-import { addWater, deleteWater, patchWater } from "../../redux/waters/operations";
-import { closeModal, openConfirmDelete} from "../../redux/modal/slice";
+import {
+  modalTypes,
+  openConfirmDelete,
+  openEditWater,
+} from "../../redux/modal/slice";
+import { selectTypeModal } from "../../redux/modal/selectors";
 
 export function WaterItem({ item }) {
   const dispatch = useDispatch();
+
+  const type = useSelector(selectTypeModal);
 
   const water =
     item.waterValue >= 999
@@ -26,30 +31,33 @@ export function WaterItem({ item }) {
         <p className={css.time}>{item.localTime}</p>
       </div>
       <div className={css.btnBox}>
-        <button className={css.button} type="button" onClick={()=>{dispatch(patchWater)}}>
+        <button
+          className={css.button}
+          type="button"
+          onClick={() => {
+            dispatch(openEditWater(item));
+          }}
+        >
           <svg className={css.btnIcon}>
             <use href={sprite + "#icon-edit"}></use>
           </svg>
         </button>
-        <button className={css.button} type="button" onClick={()=>{dispatch(deleteWater)}}>
+        <button
+          className={css.button}
+          type="button"
+          onClick={() => {
+            dispatch(openConfirmDelete(item));
+          }}
+        >
           <svg className={css.btnIcon}>
             <use href={sprite + "#icon-trash"}></use>
           </svg>
         </button>
       </div>
 
-      <div>
-        <BaseModal isOpen={dispatch(addWater)} onClose={dispatch(closeModal)}>
-          <WaterModal mode={"edit"} onClose={()=>{dispatch(closeModal)}} water={item} />
-        </BaseModal>
-      </div>
-
-      <ModalWindow
-        isOpen={dispatch(openConfirmDelete)}
-        title={"Delete"}
-        onRequestClose={dispatch(closeModal)}
-      >
-        <DeleteModal onRequestClose={dispatch(openConfirmDelete)} water={item} />
+      <ModalWindow>
+        {type === modalTypes.editWater && <WaterModal water={item} />}
+        {type === modalTypes.confirmDelete && <DeleteModal water={item} />}
       </ModalWindow>
     </div>
   );
