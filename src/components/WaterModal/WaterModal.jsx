@@ -1,6 +1,6 @@
 import { WaterForm } from "../WaterForm/WaterForm";
 import css from "./WaterModal.module.css";
-import { modalTypes } from "../../redux/modal/slice/";
+import { modalTypes } from "../../redux/modal/slice";
 
 
 export const WaterModal = ({ type, data }) => {
@@ -18,3 +18,5 @@ export const WaterModal = ({ type, data }) => {
     </div>
   );
 };
+
+export default WaterModal;

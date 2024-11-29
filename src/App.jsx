@@ -1,20 +1,22 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Layout } from "./components/Layout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
-// const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
-// const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
+const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
 // const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 
 function App() {
   return (
     <div>
-      <Suspense fallback={null}>
+      <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route
+          <Route
             path="/signup"
             element={
               <RestrictedRoute
@@ -32,14 +34,14 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/tracker"
             element={
               <PrivateRoute component={<TrackerPage />} redirectTo="/signin" />
             }
           /> */}
         </Routes>
-      </Suspense>
+      </Layout>
     </div>
   );
 }

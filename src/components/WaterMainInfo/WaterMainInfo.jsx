@@ -1,64 +1,88 @@
 import { useDispatch, useSelector } from "react-redux";
 import css from "./WaterMainInfo.module.css";
 import { selectWatersDaily } from "../../redux/waters/selectors";
-import { openAddWater } from "../../redux/modal/slice";
+import { modalTypes, openAddWater } from "../../redux/modal/slice";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
+import { selectTypeModal } from "../../redux/modal/selectors";
+import { WaterModal } from "../WaterModal/WaterModal";
 
 export default function WaterMainInfo() {
   const dispatch = useDispatch();
 
+  const type = useSelector(selectTypeModal);
+
   const user = useSelector(selectUser);
 
-  const [percentValue, setPercentValue] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const dailyWaterArray = useSelector(selectWatersDaily);
 
-  const dailyNorm = user.dailyNorm;
+  const [percentValue, setPercentValue] = useState(0);
+  const [percentValueCircle, setPercentValueCircle] = useState(0);
+
+  const [isVisiblePercent, setIsVisiblePercent] = useState(false);
+  const [isVisibleCircle, setIsVisibleCircle] = useState(false);
+
+  const dailyNorm = 1500; // user.dailyNorm || 500; нет поля dailyNorm в слайсе
   const dailyNormLiter = dailyNorm / 1000;
-  const dailyArray = useSelector(selectWatersDaily);
-  const drankPerDay = dailyArray.map(); //Дописать цикл
+
+  let sumDrankWater = 0;
+
+  dailyWaterArray.forEach((drink) => {
+    sumDrankWater += drink.amount;
+  });
+  const drankPerDay = 0; // sumDrankWater;
 
   useEffect(() => {
     setPercentValue(Math.round((drankPerDay * 100) / dailyNorm));
+    setPercentValueCircle(Math.round((drankPerDay * 100) / dailyNorm));
 
+    if (drankPerDay > dailyNorm) {
+      setIsVisiblePercent(false);
+      setPercentValueCircle(100);
+      setPercentValue(100);
+    }
     if (percentValue === 0 || percentValue > 95) {
-      setIsVisible(false);
+      setIsVisibleCircle(false);
+    }
+    if (percentValue === 0) {
+      setIsVisibleCircle(false);
     }
   }, [drankPerDay, dailyNorm, percentValue]);
 
   function handleOnClick() {
-    dispatch(openAddWater);
+    dispatch(openAddWater());
   }
+  console.log(isVisiblePercent);
 
   return (
-    <div className={css.container}>
+    <div className={clsx(css.container, "container")}>
       <div className={css.main}>
         <h2 className={css.h2}>AQUATRACK</h2>
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_pc_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_pc_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_pc_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_pc_x2.webp 2x
             "
           />
           <source
             media="(min-width:768px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_tablet_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_tablet_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_tablet_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_tablet_x2.webp 2x
             "
           />
           <source
             media="(max-width:767px)"
             srcSet="
-              /WaterMainInfo_photos/transparent_bottle_mobile_x1.png 1x,
-              /WaterMainInfo_photos/transparent_bottle_mobile_x2.png 2x
+              /WaterMainInfo_photos/transparent_bottle_mobile_x1.webp 1x,
+              /WaterMainInfo_photos/transparent_bottle_mobile_x2.webp 2x
             "
           />
           <img
-            src="/WaterMainInfo_photos/transparent_bottle_mobile_x1.png"
+            src="/WaterMainInfo_photos/transparent_bottle_mobile_x1.webp"
             alt="bottle photo"
           />
         </picture>
@@ -76,11 +100,17 @@ export default function WaterMainInfo() {
               ></div>
             </div>
             <div
-              className={clsx(css.barCircle, isVisible && css.hiddenCircle)}
-              style={{ left: `${percentValue}%` }}
+              className={clsx(
+                css.barCircle,
+                isVisibleCircle && css.hiddenCircle
+              )}
+              style={{ left: `${percentValueCircle}%` }}
             ></div>
             <div
-              className={clsx(css.barPercent, isVisible && css.hiddenCircle)}
+              className={clsx(
+                css.barPercent,
+                isVisiblePercent && css.hiddenCircle
+              )}
               style={{
                 left: `${percentValue}%`,
               }}
@@ -95,32 +125,15 @@ export default function WaterMainInfo() {
           </div>
         </div>
         <button className={css.button} type="button" onClick={handleOnClick}>
-          <svg
-            className={css.buttonSvg}
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 3.33337V12.6667"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3.3335 8H12.6668"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg className={css.buttonSvg}>
+            <use href="/sprite.svg#icon-plus"></use>
           </svg>
           Add water
         </button>
       </div>
+      {/* <ModalWindow>
+        {type === modalTypes.addWater && <WaterModal />}
+      </ModalWindow> */}
     </div>
   );
 }

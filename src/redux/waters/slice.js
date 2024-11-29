@@ -22,8 +22,14 @@ const watersSlice = createSlice({
   initialState: {
     monthly: [],
     daily: [],
+    activeDay: null,
     loading: false,
     error: null,
+  },
+  reducers: {
+    addActiveDay(state, action) {
+      state.activeDay = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -45,28 +51,28 @@ const watersSlice = createSlice({
       .addCase(addWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items.push(action.payload);
+        state.daily.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(deleteWater.pending, handlePending)
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const index = state.items.findIndex(
-          (contact) => contact.id === action.payload.id
+        const index = state.daily.findIndex(
+          (water) => water.id === action.payload.id
         );
-        state.items.splice(index, 1);
+        state.daily.splice(index, 1);
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(patchWater.pending, handlePending)
       .addCase(patchWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = state.items.map((contact) => {
-          if (contact.id === action.payload.id) {
-            return (contact = action.payload);
+        state.daily = state.daily.map((water) => {
+          if (water.id === action.payload.id) {
+            return (water = action.payload);
           }
-          return contact;
+          return water;
         });
       })
       .addCase(patchWater.rejected, handleRejected)
@@ -78,5 +84,7 @@ const watersSlice = createSlice({
       });
   },
 });
+
+export const { addActiveDay } = watersSlice.actions;
 
 export const watersReducer = watersSlice.reducer;

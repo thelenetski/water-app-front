@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "/*---------LINK WATER-----------*/";
+axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
 
 export const getWaterMonthly = createAsyncThunk(
   "water/getWaterMonthly",
@@ -9,8 +9,11 @@ export const getWaterMonthly = createAsyncThunk(
     try {
       const response = await axios.get("/water/monthly");
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -21,8 +24,11 @@ export const getWaterDaily = createAsyncThunk(
     try {
       const response = await axios.get("/water/daily");
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -33,8 +39,11 @@ export const addWater = createAsyncThunk(
     try {
       const response = await axios.post("/water", water);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -45,8 +54,11 @@ export const deleteWater = createAsyncThunk(
     try {
       const response = await axios.delete(`/water/${waterId}`);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -57,8 +69,11 @@ export const patchWater = createAsyncThunk(
     try {
       const response = await axios.patch(`/water/${water.id}`, water);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );

@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import css from "./UserBarPopover.module.css";
-// import UserSettingsModal from "./UserSettingsModal/UserSettingsModal";
-// import LogOutModal from "./LogOutModal/LogOutModal";
-
+import {
+  modalTypes,
+  openEditUser,
+  openConfirmLogOutUser,
+} from "../../redux/modal/slice";
+import { selectTypeModal } from "../../redux/modal/selectors";
+import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
+import LogOutModal from "../LogOutModal/LogOutModal";
+import ModalWindow from "../ModalWindow/ModalWindow";
 const UserBarPopover = ({ userBarWidth }) => {
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const type = useSelector(selectTypeModal);
 
-  const openSettingsModal = () => setIsSettingsModalOpen(true);
-  const closeSettingsModal = () => setIsSettingsModalOpen(false);
+  const openSettingsModal = () => {
+    dispatch(openEditUser());
+  };
 
-  const openLogOutModal = () => setIsLogOutModalOpen(true);
-  const closeLogOutModal = () => setIsLogOutModalOpen(false);
+  const openLogOutModal = () => {
+    dispatch(openConfirmLogOutUser());
+  };
 
   return (
     <div className={css.popover} style={{ width: `${userBarWidth}px` }}>
@@ -24,15 +33,15 @@ const UserBarPopover = ({ userBarWidth }) => {
         <IoSettingsOutline className={css.iconSettings} />
         Settings
       </button>
+
       <button type="button" className={css.logOut} onClick={openLogOutModal}>
         <IoLogOutOutline className={css.iconLogOut} />
         Log out
       </button>
-
-      {isSettingsModalOpen && (
-        <UserSettingsModal onClose={closeSettingsModal} />
-      )}
-      {isLogOutModalOpen && <LogOutModal onClose={closeLogOutModal} />}
+      <ModalWindow>
+        {type === modalTypes.editUser && <UserSettingsModal />}
+        {type === modalTypes.confirmLogOutUser && <LogOutModal />}
+      </ModalWindow>
     </div>
   );
 };

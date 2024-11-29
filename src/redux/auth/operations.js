@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "/*-------------------------*/";
+axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
@@ -21,12 +21,15 @@ export const signUp = createAsyncThunk(
   "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("/users/signup", credentials);
+      const res = await axios.post("api/users/auth/signup", credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -39,12 +42,15 @@ export const signIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post("/users/signin", credentials);
+      const res = await axios.post("api/users/auth/signin", credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -55,11 +61,14 @@ export const signIn = createAsyncThunk(
  */
 export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("/users/logout");
+    await axios.post("api/users/auth/logout");
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    if (error.response) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+    return thunkAPI.rejectWithValue(error.message || "Unknown error");
   }
 });
 
@@ -77,10 +86,13 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get("/users/current");
+      const res = await axios.get("api/users/auth/refresh");
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   },
   {
