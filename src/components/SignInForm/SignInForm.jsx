@@ -1,12 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import css from "./SignInForm.module.css";
 import { clsx } from "clsx";
 import * as Yup from "yup";
 import { signIn } from "../../redux/auth/operations";
+import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
 
 const UserValidationSchema = Yup.object().shape({
@@ -18,6 +19,7 @@ const INITIAL_VALUES = { userEmail: "", userPassword: "" };
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectAuthLoading);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -107,7 +109,7 @@ const SignInForm = () => {
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              Sign in
+              {loading ? "Loading..." : "Sign in"}
             </button>
             <p className={css.signuptext}>
               Don’t have an account?{" "}
