@@ -9,8 +9,11 @@ export const getAllUsers = createAsyncThunk(
     try {
       const response = await axios.get("/users");
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -21,8 +24,11 @@ export const getUserCurrent = createAsyncThunk(
     try {
       const response = await axios.get(`/users/current/${userId}`);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
@@ -33,8 +39,11 @@ export const patchUser = createAsyncThunk(
     try {
       const response = await axios.patch(`/users/current/${user.id}`, user);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
     }
   }
 );
