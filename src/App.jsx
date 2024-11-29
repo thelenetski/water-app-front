@@ -16,7 +16,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-           <Route
+          <Route
             path="/signup"
             element={
               <RestrictedRoute
@@ -34,12 +34,12 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/tracker"
             element={
               <PrivateRoute component={<TrackerPage />} redirectTo="/signin" />
             }
-          />
+          /> */}
         </Routes>
       </Layout>
     </div>
