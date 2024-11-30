@@ -12,30 +12,32 @@ const ModalWindow = ({ children }) => {
     dispatch(closeModal());
   };
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      padding: "20px",
-      borderRadius: "15px",
-      backgroundColor: "white",
-      boxShadow: "0 4px 50px rgba(0, 0, 0, 0.1)",
-      maxWidth: "400px",
-      width: "100%",
-    },
-  };
+  // const customStyles = {
+  //   content: {
+  //     top: "50%",
+  //     left: "50%",
+  //     transform: "translate(-50%, -50%)",
+  //     padding: "40px",
+  //     borderRadius: "15px",
+  //     backgroundColor: "#ffffff",
+  //     boxShadow: "0 4px 50px rgba(0, 0, 0, 0.1)",
+  //     width: "fit-content",
+  //     height: "fit-content",
+  //   },
+  // };
 
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={closeModalHandler}
-      style={customStyles}
+      className={styles.modalWrapper}
       ariaHideApp={false}
       overlayClassName={styles.modalOverlay}
     >
       <button className={styles.btnClose} onClick={closeModalHandler}>
-        &times;
+        <svg>
+          <use href="/sprite.svg#icon-x"></use>
+        </svg>
       </button>
       <div className={styles.modalContent}>{children}</div>
     </Modal>

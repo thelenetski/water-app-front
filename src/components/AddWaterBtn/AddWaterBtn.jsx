@@ -1,19 +1,11 @@
-import { useState } from "react";
 import css from "./AddWaterBtn.module.css";
 import { FaPlus } from "react-icons/fa6";
 import clsx from "clsx";
-import { WaterModal } from "../WaterModal/WaterModal";
+import { useDispatch } from "react-redux";
+import { openAddWater } from "../../redux/modal/slice";
 
 const AddWaterBtn = ({ section }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const onCloseModal = () => {
-    setIsOpen(false);
-  };
+  const dispatch = useDispatch();
 
   const classes = (mainClass) =>
     clsx(mainClass, {
@@ -21,23 +13,16 @@ const AddWaterBtn = ({ section }) => {
       [css.daily]: section === "daily",
     });
 
-
   return (
-    <>
-      <button
-        onClick={openModal}
-        type="button"
-        className={classes(css.wrapper)}
-      >
-        <FaPlus className={classes(css.plusIcon)} />
-        <p className={classes(css.text)}>Add water</p>
-      </button>
+    <button
+      onClick={() => dispatch(openAddWater())}
+      type="button"
+      className={classes(css.wrapper)}
+    >
+      <FaPlus className={classes(css.plusIcon)} />
+      <p className={classes(css.text)}>Add water</p>
+    </button>
+  );
+};
 
-      <BaseModal isOpen={isOpen} onClose={onCloseModal}>
-        <WaterModal type={"add"} onClose={onCloseModal} />
-      </BaseModal>
-    </>
-  )
-}
-
-export default AddWaterBtn
+export default AddWaterBtn;

@@ -12,6 +12,7 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
 const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
             <PrivateRoute component={<TrackerPage />} redirectTo="/signin" />
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </SharedLayout>
   );

@@ -4,7 +4,7 @@ import { logOut } from "../../redux/auth/operations";
 import { closeModal } from "../../redux/modal/slice";
 import toast from "react-hot-toast";
 
-export const LogOutModal = () => {
+const LogOutModal = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -39,3 +39,5 @@ export const LogOutModal = () => {
     </div>
   );
 };
+
+export default LogOutModal;

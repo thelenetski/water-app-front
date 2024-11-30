@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import css from "./UserBarPopover.module.css";
@@ -11,7 +10,9 @@ import { selectTypeModal } from "../../redux/modal/selectors";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
 import ModalWindow from "../ModalWindow/ModalWindow";
-const UserBarPopover = ({ userBarWidth }) => {
+import { forwardRef } from "react";
+
+const UserBarPopover = forwardRef(({ userBarWidth }, ref) => {
   const dispatch = useDispatch();
   const type = useSelector(selectTypeModal);
 
@@ -24,7 +25,11 @@ const UserBarPopover = ({ userBarWidth }) => {
   };
 
   return (
-    <div className={css.popover} style={{ width: `${userBarWidth}px` }}>
+    <div
+      ref={ref}
+      className={css.popover}
+      style={{ width: `${userBarWidth}px` }}
+    >
       <button
         type="button"
         className={css.settings}
@@ -44,6 +49,6 @@ const UserBarPopover = ({ userBarWidth }) => {
       </ModalWindow>
     </div>
   );
-};
+});
 
 export default UserBarPopover;
