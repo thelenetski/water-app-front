@@ -171,7 +171,6 @@
 }
 
 .button:hover,
-.button:focus,
 .button:hover .buttonSvg {
   color: #9be1a0;
   stroke: #9be1a0;
