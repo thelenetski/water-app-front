@@ -3,7 +3,7 @@ import css from './LogOutModal.module.css'
 import { logOut } from '../../redux/auth/operations'
 import { closeModal } from '../../redux/modal/slice'
 
-export const LogOutModal = () => {
+const LogOutModal = () => {
     const dispatch = useDispatch()
 
     const handleLogout = () => {
@@ -20,3 +20,5 @@ export const LogOutModal = () => {
         </div>
     )
 }
+
+export default LogOutModal;
