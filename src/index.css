@@ -191,11 +191,6 @@ input.error{
   color: var(--error);
 }
 
-div {
-  border-radius: var(--border-radius);
-
-}
-
 /* media for tablets */
 
 @media screen and (min-width: 768px) {}
