@@ -1,8 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addWater, patchWater } from "../../redux/waters/operations";
+import { closeModal } from "../../redux/modal/slice";
+import { toast } from "react-hot-toast";
+import { modalTypes } from "../../redux/modal/slice";
+import { selectTypeModal } from "../../redux/modal/selectors";
+import { selectLoading } from "../../redux/waters/selectors";
+import Loader  from "../Loader/Loader"
 import css from "./WaterForm.module.css";
-import { modalTypes } from "../../redux/modal/slice/";
 
 
 // Валідаційна схема
@@ -19,42 +25,60 @@ const schema = yup.object({
     .typeError("Value must be a number/ value in ml"),
 });
 
-export const WaterForm = ({ type, data, onSubmit }) => {
-  const initialValues = {
-    date: data?.date || new Date().toTimeString().slice(0, 5), // Поточний час
-    value: data?.value || 50, // Значення за замовчуванням
-  }; 
-  
-  useEffect(() => {
-    if (type === modalTypes.editWater) {
-      const valueToCheck = data?.value || 50; // Очікуване значення
-      console.log(`Initial value in span (Edit mode): ${valueToCheck} ml`);
+const WaterForm = ({ data }) => {
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const type = useSelector(selectTypeModal);
 
-      // Додаткова перевірка через assert
-      console.assert(
-        valueToCheck >= 10 && valueToCheck <= 5000,
-        `Invalid value: ${valueToCheck}. Expected between 10 and 5000 ml.`
-      );
+  const handleSubmit = (values) => {
+    if (
+      type === modalTypes.editWater &&
+      data?.value === values.value &&
+      data?.date === values.date
+    ) {
+      toast.info("No changes detected.");
+      return;
     }
-  }, [type, data]);
 
+    const action =
+      type === modalTypes.addWater
+        ? addWater(values)
+        : patchWater({ id: data.id, ...values });
 
+    dispatch(action)
+      .unwrap()
+      .then(() => {
+        if (type === modalTypes.addWater) {
+          toast.success("Water record added successfully!");
+        } else if (type === modalTypes.editWater) {
+          toast.success("Water record updated successfully!");
+        }
+        dispatch(closeModal());
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        toast.error(`Error: ${error.message}`);
+      });
+  };
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        date: data?.date || new Date().toTimeString().slice(0, 5),
+        value: data?.value || 50,
+      }}
       validationSchema={schema}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       {({ values, setFieldValue }) => (
         <Form className={css.formWaterWrapper}>
-          {/* Заголовок залежно від типу модалки */}
-          {type !== null && (
-            <p className={css.secWaterTitle}>
-              {(type === modalTypes.addWater && "Choose a value:") ||
-                (type === modalTypes.editWater && "Correct entered data:")}
-            </p>
-          )}
+          <p className={css.secWaterTitle}>
+            {type === modalTypes.addWater
+              ? "Choose a value:"
+              : "Correct entered data:"}
+          </p>
 
           <div className={css.counterWrapper}>
             <span className={css.amountWaterTitle}>Amount of water:</span>
@@ -65,8 +89,11 @@ export const WaterForm = ({ type, data, onSubmit }) => {
                   setFieldValue("value", Math.max(values.value - 10, 10))
                 }
                 className={css.counterButton}
+                disabled={values.value <= 10}
               >
-                -
+                <svg className={css.changeValueIcon}>
+                  <use href="/sprite.svg#icon-minus"></use>
+                </svg>
               </button>
               <span className={css.counterValue}>{values.value} ml</span>
               <button
@@ -75,8 +102,11 @@ export const WaterForm = ({ type, data, onSubmit }) => {
                   setFieldValue("value", Math.min(values.value + 10, 5000))
                 }
                 className={css.counterButton}
+                disabled={values.value >= 5000}
               >
-                +
+                <svg className={css.changeValueIcon}>
+                  <use href="/sprite.svg#icon-plus"></use>
+                </svg>
               </button>
             </div>
           </div>
@@ -108,7 +138,7 @@ export const WaterForm = ({ type, data, onSubmit }) => {
             />
           </div>
 
-          <button className={css.submitButton} type="submit">
+          <button className={css.submitButton} type="submit" disabled={loading}>
             Save
           </button>
         </Form>
