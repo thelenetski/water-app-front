@@ -19,6 +19,7 @@
 }
 
 .settings {
+  all: unset;
   display: flex;
   align-items: center;
   border: 0;
@@ -40,6 +41,7 @@
 }
 
 .logOut {
+  all: unset;
   display: flex;
   align-items: center;
   margin-top: 8px;
