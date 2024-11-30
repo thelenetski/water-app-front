@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
 import { selectTypeModal } from "../../redux/modal/selectors";
 import { WaterModal } from "../WaterModal/WaterModal";
+import ModalWindow from "../ModalWindow/ModalWindow";
 
 export default function WaterMainInfo() {
   const dispatch = useDispatch();
