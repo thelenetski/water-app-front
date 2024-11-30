@@ -124,9 +124,9 @@ export default function WaterMainInfo() {
           Add water
         </button>
       </div>
-      {/* <ModalWindow>
+      <ModalWindow>
         {type === modalTypes.addWater && <WaterModal />}
-      </ModalWindow> */}
+      </ModalWindow>
     </div>
   );
 }
