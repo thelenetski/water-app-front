@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { selectWatersMonthly } from '../../redux/waters/selectors';
+import { selectWatersDaily } from '../../redux/waters/selectors';
 import { WaterItem } from '../WaterItem/WaterItem';
 import css from './WaterList.module.css';
 
 export function WaterList () {
-  const waterItems = useSelector(selectWatersMonthly);
+  const waterItems = useSelector(selectWatersDaily);
 
   return (
     <>
