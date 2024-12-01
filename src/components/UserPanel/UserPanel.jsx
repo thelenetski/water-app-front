@@ -13,7 +13,7 @@ const UserPanel = () => {
         <span className={css.greetingsName}>
           ,{" "}
           {userInfo !== null
-            ? userInfo.data.name || userInfo.data.email
+            ? userInfo.data.name || userInfo.data.email.split("@")[0]
             : "User"}
           !
         </span>
