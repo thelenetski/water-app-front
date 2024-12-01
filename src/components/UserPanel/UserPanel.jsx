@@ -4,7 +4,7 @@ import { selectUser } from "../../redux/user/selectors";
 import { useSelector } from "react-redux";
 
 const UserPanel = () => {
-  const userInfo = useSelector(selectUser) || {};
+  const userInfo = useSelector(selectUser);
 
   return (
     <div className={css.userPanelContainer}>
@@ -12,13 +12,13 @@ const UserPanel = () => {
         Hello
         <span className={css.greetingsName}>
           ,{" "}
-          {userInfo.data !== null
+          {userInfo !== null
             ? userInfo.data.name || userInfo.data.email
             : "User"}
           !
         </span>
       </p>
-      <UserBar name={userInfo.data !== null ? userInfo.data.name : "User"} />
+      <UserBar name={userInfo !== null ? userInfo.data.name : "User"} />
     </div>
   );
 };
