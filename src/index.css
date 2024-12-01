@@ -36,6 +36,8 @@
   --custom-transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --dis-active-color: #bcbcbc;
   --error: #ef5050;
+  --not-completed-days-background-color: #323F4733;
+  --percentage-color: #2F2F2F99;
 }
 
 /* Reset styles */
