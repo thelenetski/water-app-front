@@ -10,7 +10,7 @@ const UserBar = () => {
   const [isShow, setIsShow] = useState(false);
   const [userBarWidth, setUserBarWidth] = useState(0);
   const userInfo = useSelector(selectUser) || {};
-  const avatar = userInfo.avatar || defaultAvatar;
+  const avatar = userInfo.avatarUrl || defaultAvatar;
 
   const buttonRef = useRef(null);
   const popoverRef = useRef(null);
