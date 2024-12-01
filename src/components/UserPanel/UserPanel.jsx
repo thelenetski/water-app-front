@@ -11,10 +11,14 @@ const UserPanel = () => {
       <p className={css.greetings}>
         Hello
         <span className={css.greetingsName}>
-          , {userInfo.name || userInfo.data.email || "User"}!
+          ,{" "}
+          {userInfo.data !== null
+            ? userInfo.data.name || userInfo.data.email
+            : "User"}
+          !
         </span>
       </p>
-      <UserBar name={userInfo.name || "User"} />
+      <UserBar name={userInfo.data !== null ? userInfo.data.name : "User"} />
     </div>
   );
 };
