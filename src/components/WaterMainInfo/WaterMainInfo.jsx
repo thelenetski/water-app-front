@@ -21,7 +21,7 @@ export default function WaterMainInfo() {
   const dailyNormLiter = dailyNorm / 1000;
 
   console.log(dailyWaterArray);
-
+  //victor change
   const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
     return previousValue + (glass.data?.amount || 0);
   }, 0);
