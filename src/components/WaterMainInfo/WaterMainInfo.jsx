@@ -17,7 +17,7 @@ export default function WaterMainInfo() {
 
   const [drankPerDay, setDrankPerDay] = useState(0);
 
-  const dailyNorm = user !== null ? user.dailyNorm : 1500;
+  const dailyNorm = user !== null ? user.data.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
 
   const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
