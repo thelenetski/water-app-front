@@ -44,7 +44,7 @@ const UserBar = () => {
   };
 
   const getDisplayName = () => {
-    if (userInfo?.name) {
+    if (userInfo?.name?.trim()) {
       return userInfo.name;
     } else if (userInfo?.email) {
       return userInfo.email.split("@")[0];
