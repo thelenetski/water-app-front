@@ -1,18 +1,12 @@
 import { useSelector } from "react-redux";
 import css from "./WaterMainInfo.module.css";
 import { selectWatersDaily } from "../../redux/waters/selectors";
-import { modalTypes } from "../../redux/modal/slice";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
-import { selectTypeModal } from "../../redux/modal/selectors";
-import { WaterModal } from "../WaterModal/WaterModal";
-import ModalWindow from "../ModalWindow/ModalWindow";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 
 export default function WaterMainInfo() {
-  const type = useSelector(selectTypeModal);
-
   const user = useSelector(selectUser);
 
   const dailyWaterArray = useSelector(selectWatersDaily);
@@ -113,19 +107,10 @@ export default function WaterMainInfo() {
             </div>
           </div>
         </div>
-        {/* <button className={css.button} type="button" onClick={handleOnClick}>
-          <svg className={css.buttonSvg}>
-            <use href="/sprite.svg#icon-plus"></use>
-          </svg>
-          Add water
-        </button> */}
         <div className={css.buttonWaterMain}>
           <AddWaterBtn section="waterMain" />
         </div>
       </div>
-      <ModalWindow>
-        {type === modalTypes.addWater && <WaterModal />}
-      </ModalWindow>
     </>
   );
 }

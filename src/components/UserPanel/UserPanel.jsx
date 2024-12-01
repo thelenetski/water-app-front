@@ -1,7 +1,7 @@
 import UserBar from "../UserBar/UserBar.jsx";
 import css from "../UserPanel/UserPanel.module.css";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/user/selectors.js";
+import { selectUser } from "../../redux/user/selectors";
 
 const UserPanel = () => {
   const userInfo = useSelector(selectUser) || {};

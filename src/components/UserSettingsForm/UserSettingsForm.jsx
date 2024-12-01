@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { selectUser } from "../../redux/auth/selectors";
+import { selectUser } from "../../redux/user/selectors";
 import { patchUser } from "../../redux/user/operations";
 
 import css from "./UserSettingsForm.module.css";

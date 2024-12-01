@@ -5,6 +5,7 @@ axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
+  // console.log(token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -34,17 +35,13 @@ export const signUp = createAsyncThunk(
   }
 );
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
 export const signIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("api/auth/signin", credentials);
       // After successful login, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+      setAuthHeader(res.data.data.accessToken);
       return res.data;
     } catch (error) {
       if (error.response) {
@@ -83,10 +80,16 @@ export const refreshUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue("No token available");
+    }
+
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get("api/auth/refresh");
+      const res = await axios.post("api/auth/refresh");
+      setAuthHeader(res.data.data.accessToken);
+      console.log(res.data);
       return res.data;
     } catch (error) {
       if (error.response) {

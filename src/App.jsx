@@ -4,9 +4,11 @@ import { Route, Routes } from "react-router-dom";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsRefreshing } from "./redux/auth/selectors.js";
-import { refreshUser } from "./redux/auth/operations.js";
+import { selectAuthToken, selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
+import { getUserCurrent } from "./redux/user/operations.js";
+import { refreshUser } from "./redux/auth/operations.js";
+import { selectUser } from "./redux/user/selectors.js";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
@@ -16,11 +18,16 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const token = useSelector(selectAuthToken);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(refreshUser());
+    // dispatch(getUserCurrent());
   }, [dispatch]);
+
+  // console.log(token);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>

@@ -20,9 +20,9 @@ export const getAllUsers = createAsyncThunk(
 
 export const getUserCurrent = createAsyncThunk(
   "users/current",
-  async (userId, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`/users/current/${userId}`);
+      const response = await axios.get(`api/users/current`);
       return response.data;
     } catch (error) {
       if (error.response) {
