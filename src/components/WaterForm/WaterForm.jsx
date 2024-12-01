@@ -7,9 +7,8 @@ import { toast } from "react-hot-toast";
 import { modalTypes } from "../../redux/modal/slice";
 import { selectTypeModal } from "../../redux/modal/selectors";
 import { selectLoading } from "../../redux/waters/selectors";
-import Loader  from "../Loader/Loader"
+import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
-
 
 // Валідаційна схема
 const schema = yup.object({
@@ -42,7 +41,12 @@ const WaterForm = ({ data }) => {
 
     const action =
       type === modalTypes.addWater
-        ? addWater(values)
+        ? addWater({
+            amount: values.value,
+            date: new Date(
+              `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+            ).toISOString(),
+          })
         : patchWater({ id: data.id, ...values });
 
     dispatch(action)
@@ -56,6 +60,7 @@ const WaterForm = ({ data }) => {
         dispatch(closeModal());
       })
       .catch((error) => {
+        console.log(values);
         console.error("Error:", error);
         toast.error(`Error: ${error.message}`);
       });

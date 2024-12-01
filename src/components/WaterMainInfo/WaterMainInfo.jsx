@@ -20,8 +20,10 @@ export default function WaterMainInfo() {
   const dailyNorm = user !== null ? user.data.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
 
+  console.log(dailyWaterArray);
+
   const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
-    return previousValue + glass.amount;
+    return previousValue + (glass.data?.amount || 0);
   }, 0);
 
   useEffect(() => {
