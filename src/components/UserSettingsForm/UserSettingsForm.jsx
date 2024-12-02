@@ -35,49 +35,35 @@ const UserSettingsForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [preview, setPreview] = useState(user.avatarUrl || null);
-  const [gender, setGender] = useState("moman");
+  const [gender, setGender] = useState("woman");
   const [weight, setWeight] = useState(0);
   const [hoursOfSport, setHoursOfSport] = useState(0);
   const [recommendedDailyNorma, setRecommendedDailyNorma] = useState(null);
-  // const { values, setFieldValue } = useFormikContext();
 
   const initialValues = {
-    name: user.name || "",
-    gender: user.gender || "woman",
-    email: user.email || "",
-    photo: user.avatarUrl || "",
-    weight: user.weight || "",
-    hoursOfSport: user.sportParticipation || "",
-    dailyNorma: user.dailyNorm / 1000 || "",
+    name: user.data.name || "",
+    gender: user.data.gender || "woman",
+    email: user.data.email || "",
+    photo: user.data.avatarUrl || "",
+    weight: user.data.weight || "",
+    hoursOfSport: user.data.sportParticipation || "",
+    dailyNorma: user.data.dailyNorm / 1000 || "",
   };
 
-  // useEffect(() => {
-  //   //dispatch(getUserCurrent());
-  // }, []);
-
   useEffect(() => {
-    let norma = 1.8;
+    setRecommendedDailyNorma(1.8);
     if (weight) {
       if (gender === "woman") {
-        norma = weight * 0.03 + hoursOfSport * 0.4;
+        setRecommendedDailyNorma(
+          (weight * 0.03 + hoursOfSport * 0.4).toFixed(1)
+        );
       } else {
-        norma = weight * 0.04 + hoursOfSport * 0.6;
+        setRecommendedDailyNorma(
+          (weight * 0.04 + hoursOfSport * 0.6).toFixed(1)
+        );
       }
     }
-    setRecommendedDailyNorma(norma.toFixed(1));
   }, [weight, hoursOfSport, gender]);
-
-  // useEffect(() => {
-  //   if (values.weight) {
-  //     norma =
-  //       values.gender === "woman"
-  //         ? values.weight * 0.03 + values.hoursOfSport * 0.4
-  //         : values.weight * 0.04 + values.hoursOfSport * 0.6;
-  //   } else {
-  //     norma = "1.8";
-  //   }
-  //   setFieldValue("dailyNorma", norma.toFixed(1));
-  // }, [values.weight, values.hoursOfSport, values.gender]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -86,11 +72,17 @@ const UserSettingsForm = () => {
     }
   };
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values) => {
     dispatch(
       patchUser({
-        ...user,
-        values,
+        ...user.data,
+        name: values.name,
+        gender: values.gender,
+        email: values.email,
+        avatarUrl: values.photo,
+        weight: values.weight,
+        sportParticipation: values.hoursOfSport,
+        dailyNorm: values.dailyNorma,
       })
         .unwrap()
         .then(() => {
