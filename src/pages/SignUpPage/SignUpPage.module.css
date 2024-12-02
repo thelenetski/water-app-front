@@ -4,6 +4,7 @@
   align-items: flex-start;
   gap: 32px;
   padding: 32px;
+
 }
 
 .formWrapper {
@@ -19,12 +20,28 @@
 }
 
 @media (max-width: 1024px) {
+  .signUpPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+
+}
   .advantagesWrapper {
     display: none;
   }
 }
 
 @media (min-width: 1025px) {
+.signUpPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px;
+
+}
   .advantagesWrapper {
     display: flex;
   }
