@@ -20,6 +20,8 @@
   -webkit-tap-highlight-color: transparent; /*Прибирає синій фон з елементів при натисканні на мобілці*/
 }
 
+body { margin: 0; }
+
 :root {
   font-family: Poppins, sans-serif;
   line-height: 1.5;
