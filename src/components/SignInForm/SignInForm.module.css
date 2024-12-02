@@ -5,6 +5,7 @@
   background: #f0eff4;
   padding: 169px 118px;
   position: relative;
+  margin: 32px;
 }
 
 .form {
@@ -69,14 +70,14 @@
   line-height: 1.28571;
   letter-spacing: -0.01em;
   color: #ef5050;
+  margin-top: 10px;
 }
 .field {
   margin-bottom: 20px;
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
   padding: 16px 16px 16px;
-  width: 436px;
-  height: 56px;
+  width: 100%;
   box-sizing: border-box;
   position: relative;
 }
@@ -92,22 +93,34 @@
   color: rgba(47, 47, 47, 0.6);
 }
 
-.icon {
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.iconButton {
   position: absolute;
-  top: 50%;
-  right: 18px;
-  transform: translateY(-50%);
+  right: 8px;
+  margin-bottom: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icon {
   width: 20px;
   height: 20px;
+  fill: none;
+  stroke: currentColor;
 }
 .signuptext {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  text-align: center;
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: rgba(47, 47, 47, 0.5);
+  text-align: center;
 }
 
 .signuplink {
@@ -129,7 +142,60 @@
   margin-bottom: 8px;
   text-align: left;
 }
+
 @media (min-width: 768px) and (max-width: 1024px) {
+  .formContainer {
+    width: 704px;
+    height: 960px;
+    padding: 227px 134px;
+  }
+
+  .form {
+    width: 311px;
+    height: 348px;
+  }
+  .button {
+    padding: 18px 0;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
 }
 @media (max-width: 767px) {
+  .formContainer {
+    width: 343px;
+    height: 780px;
+    padding: 216px 16px;
+  }
+  .form {
+    width: 311px;
+    height: 348px;
+    gap: 16px;
+  }
+  .logoWrapper {
+    position: absolute;
+    top: 24px;
+    left: 16px;
+  }
+  .button {
+    padding: 16px 131px;
+    width: 311px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.01em;
+  }
+  .title {
+    font-size: 32px;
+    line-height: 1;
+  }
+  .signuptext {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
+  .inputLabel {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
 }

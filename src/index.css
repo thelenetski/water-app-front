@@ -20,6 +20,10 @@
   -webkit-tap-highlight-color: transparent; /*Прибирає синій фон з елементів при натисканні на мобілці*/
 }
 
+body {
+  margin: 0;
+}
+
 :root {
   font-family: Poppins, sans-serif;
   line-height: 1.5;
@@ -65,6 +69,20 @@ ul {
 a {
   color: currentColor;
   text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+/* mainContainer */
+
+.pageContentWrapper {
+  padding: 40px 20px;
+  margin: 8px;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
 }
 
 /* button */
@@ -197,6 +215,10 @@ input.error {
 /* media for tablets */
 
 @media screen and (min-width: 768px) {
+  .pageContentWrapper {
+    padding: 40px;
+  }
+
 }
 
 /* media for desktop */

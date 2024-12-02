@@ -47,7 +47,6 @@ body {
 
 .inputLabel {
   font-weight: 700;
-  font-size: 16px;
   line-height: 1.25;
   color: #323f47;
 }
@@ -56,12 +55,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-input {
-  border: 1px solid rgba(47, 47, 47, 0.15);
-  border-radius: 15px;
-  padding: 14px 16px;
 }
 
 input::placeholder {
@@ -79,6 +72,16 @@ input::placeholder {
   width: 18px;
   height: 18px;
   stroke: #2f2f2f;
+}
+
+.fileUpload {
+  text-decoration: underline transparent;
+  transition: all 250ms linear;
+  cursor: pointer;
+}
+.fileUpload:hover,
+.fileUpload:focus {
+  text-decoration: underline var(--font-color);
 }
 
 .accentIcon {
@@ -109,21 +112,19 @@ input::placeholder {
 }
 
 .errorMessage {
-  color: red;
+  color: var(--error);
+}
+.errorMessage::before {
+  border: var(--error) 1px solid;
 }
 
 .saveButton {
-  border-radius: 30px;
   padding: 14px 40px;
   width: 116px;
   height: 46px;
-  background-color: #9be1a0;
-  color: #323f47;
-  font-weight: 700;
   font-size: 14px;
   line-height: 1.28571;
   letter-spacing: -0.01em;
-  text-align: center;
 }
 
 .checkmarkWrapper {

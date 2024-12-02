@@ -5,7 +5,7 @@ import { selectTypeModal } from "../../redux/modal/selectors";
 import { useSelector } from "react-redux";
 
 
-export const WaterModal = ({ data }) => {
+export const WaterModal = () => {
   const type = useSelector(selectTypeModal);
 
   return (
@@ -17,7 +17,7 @@ export const WaterModal = ({ data }) => {
               "Edit the entered amount of water")}
         </h2>
       )}
-      <WaterForm data={data} />
+      <WaterForm />
     </div>
   );
 };

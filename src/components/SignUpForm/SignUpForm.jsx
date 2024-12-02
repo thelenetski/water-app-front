@@ -3,12 +3,12 @@ import css from "./SignUpForm.module.css";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { clsx } from "clsx";
-import Logo from "../Logo/Logo";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
+import Logo from "../Logo/Logo";
 import { getUserCurrent } from "../../redux/user/operations";
 
 const validationParams = Yup.object().shape({
@@ -30,6 +30,7 @@ const initialValues = {
   password: "",
   repeatPassword: "",
   showPassword: false,
+  showRepeatPassword: false,
 };
 
 const SignUpForm = () => {
@@ -52,6 +53,7 @@ const SignUpForm = () => {
       })
       .catch((error) => {
         toast.error("Registration failed: " + error.message);
+        actions.setSubmitting(false);
       });
   };
 
@@ -71,11 +73,11 @@ const SignUpForm = () => {
           touched,
         }) => (
           <Form className={css.form}>
-            <div className={css.logoWrapper}>
-              <Logo />
-            </div>
             <h2 className={css.title}>Sign Up</h2>
-
+<div className={css.logoWrapper}>
+  <Logo/>
+  </div>
+        
             <label>
               <span className={css.inputLabel}>Email</span>
               <Field
@@ -138,7 +140,7 @@ const SignUpForm = () => {
                     [css.fieldError]:
                       errors.repeatPassword && touched.repeatPassword,
                   })}
-                  type={values.showPassword ? "text" : "password"}
+                  type={values.showRepeatPassword ? "text" : "password"}
                   name="repeatPassword"
                   placeholder="Repeat your password"
                   aria-label="Repeat Password"
@@ -147,16 +149,12 @@ const SignUpForm = () => {
                   type="button"
                   className={css.iconButton}
                   onClick={() =>
-                    setFieldValue("showPassword", !values.showPassword)
+                    setFieldValue("showRepeatPassword", !values.showRepeatPassword)
                   }
-                  aria-label="Toggle password visibility"
+                  aria-label="Toggle repeat password visibility"
                 >
                   <svg className={css.icon}>
-                    <use
-                      href={`${sprite}#icon-${
-                        values.showPassword ? "eye" : "eye-off"
-                      }`}
-                    />
+                    <use href={`${sprite}#icon-${values.showRepeatPassword ? "eye" : "eye-off"}`} />
                   </svg>
                 </button>
               </div>
@@ -188,3 +186,4 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
