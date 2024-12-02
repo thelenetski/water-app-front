@@ -16,22 +16,30 @@
   src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
 }
 
+* {
+  -webkit-tap-highlight-color: transparent; /*Прибирає синій фон з елементів при натисканні на мобілці*/
+}
+
+body {
+  margin: 0;
+}
+
 :root {
   font-family: Poppins, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --main-color: #9BE1A0;
-  --hover-green-color: #87D28D;
-  --font-color: #323F47;
-  --font-color-transparent: rgba(50, 63, 71, 0.30);
+  --main-color: #9be1a0;
+  --hover-green-color: #87d28d;
+  --font-color: #323f47;
+  --font-color-transparent: rgba(50, 63, 71, 0.3);
   --border-color: #2f2f2f;
-  --background-color: #F0EFF4;
-  --second-background-color: #FFFFFF;
+  --background-color: #f0eff4;
+  --second-background-color: #ffffff;
   --mobile-font-size: 14px;
   --border-radius: 30px;
   --custom-transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --dis-active-color: #BCBCBC;
-  --error: #EF5050;
+  --dis-active-color: #bcbcbc;
+  --error: #ef5050;
 }
 
 /* Reset styles */
@@ -46,7 +54,6 @@ p {
   font-size: var(--mobile-font-size);
   color: var(--font-color);
   text-transform: capitalize;
-
 }
 
 p:last-child {
@@ -95,7 +102,8 @@ button {
 
 button.green {
   background-color: var(--main-color);
-  transition: background-color var(--custom-transition), color var(--custom-transition)
+  transition: background-color var(--custom-transition),
+    color var(--custom-transition);
 }
 
 button.green:hover,
@@ -106,7 +114,6 @@ button.green:focus {
 button.green:active {
   background-color: transparent;
   color: var(--dis-active-color);
-
 }
 
 /* button.transparent */
@@ -114,7 +121,8 @@ button.green:active {
 button.transparent {
   background-color: transparent;
   border: var(--border-color) 1px solid;
-  transition: border-color var(--custom-transition), color var(--custom-transition)
+  transition: border-color var(--custom-transition),
+    color var(--custom-transition);
 }
 
 button.transparent:hover,
@@ -133,7 +141,7 @@ button.transparent:active {
 button.addWater {
   background-color: var(--font-color);
   color: var(--second-background-color);
-  transition: color var(--custom-transition)
+  transition: color var(--custom-transition);
 }
 
 button.addWater:hover,
@@ -146,7 +154,7 @@ button.addWater:focus {
 button.cancel {
   background-color: var(--background-color);
   color: var(--font-color-transparent);
-  transition: color var(--custom-transition),
+  transition: color var(--custom-transition);
 }
 
 button.cancel:hover,
@@ -159,7 +167,7 @@ button.cancel:focus {
 button.logOut {
   background-color: transparent;
   color: var(--font-color-transparent);
-  transition: color var(--custom-transition),
+  transition: color var(--custom-transition);
 }
 
 button.logOut:hover,
@@ -197,17 +205,11 @@ input:hover {
 
 input:focus {
   border: 1px solid rgba(47, 47, 47, 0.4);
-
 }
 
 input.error {
   border: var(--error) 1px solid;
   color: var(--error);
-}
-
-div {
-  border-radius: var(--border-radius);
-
 }
 
 /* media for tablets */
@@ -222,5 +224,4 @@ div {
 /* media for desktop */
 
 @media screen and (min-width: 1440px) {
-
 }

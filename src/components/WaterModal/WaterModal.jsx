@@ -1,9 +1,12 @@
-import { WaterForm } from "../WaterForm/WaterForm";
+import  WaterForm  from "../WaterForm/WaterForm";
 import css from "./WaterModal.module.css";
-import { modalTypes } from "../../redux/modal/slice/";
+import { modalTypes } from "../../redux/modal/slice";
+import { selectTypeModal } from "../../redux/modal/selectors";
+import { useSelector } from "react-redux";
 
 
-export const WaterModal = ({ type, data }) => {
+export const WaterModal = () => {
+  const type = useSelector(selectTypeModal);
 
   return (
     <div className={css.waterModalWrapper}>
@@ -14,7 +17,9 @@ export const WaterModal = ({ type, data }) => {
               "Edit the entered amount of water")}
         </h2>
       )}
-      <WaterForm type={type} data={data} />
+      <WaterForm />
     </div>
   );
 };
+
+export default WaterModal;
