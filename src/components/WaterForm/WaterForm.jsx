@@ -11,7 +11,6 @@ import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
 import { selectContentModal } from "../../redux/modal/selectors";
 
-
 // Валідаційна схема
 const schema = yup.object({
   date: yup
@@ -21,9 +20,9 @@ const schema = yup.object({
   amount: yup
     .number()
     .required("Value is required")
-    .min(10, "Minimum value is 10ml")
+    .min(50, "Minimum value is 50ml")
     .max(5000, "Maximum value is 5000ml")
-    .typeError("Value must be a number/ value in ml"),
+    .typeError("Value must be a number"),
 });
 
 const WaterForm = () => {
@@ -32,57 +31,47 @@ const WaterForm = () => {
   const type = useSelector(selectTypeModal);
   const contentWaterModal = useSelector(selectContentModal);
 
-  const time = new Date(contentWaterModal?.createdAt).toLocaleTimeString(
-    "ua-UA",
-    {
-      hour: "2-digit",
-      minute: "2-digit",
-    }
-  ); // Поточна датаa
+ const handleSubmit = (values) => {
+    const currentDate = new Date();
+    const currentDateString = currentDate.toISOString().split("T")[0];  
+    const localTime = `${currentDateString}T${values.date}:00`; // Формуємо повний локальний час
 
-  const handleSubmit = (values) => {
-    const isoDate = new Date(
-      `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
-    ).toISOString();
+    // Конвертуємо в ISO, враховуючи локальний час
+    const isoDate = new Date(localTime).toISOString();
+   const action =
+     type === modalTypes.addWater
+       ? addWater({ date: isoDate, amount: values.amount })
+       : patchWater({
+           id: contentWaterModal?._id,
+           date: isoDate,
+           amount: values.amount,
+         });
 
-    const action =
-      type === modalTypes.addWater
-        ? addWater({
-            date: new Date(
-              `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
-            ).toISOString(),
-            amount: values.amount,
-          })
-        : patchWater({
-            id: contentWaterModal?._id,
-            date: isoDate,
-            amount: values.amount,
-          });
-
-    dispatch(action)
-      .unwrap()
-      .then(() => {
-        if (type === modalTypes.addWater) {
-          toast.success("Water record added successfully!");
-        } else if (type === modalTypes.editWater) {
-          toast.success("Water record updated successfully!");
-        }
-        dispatch(closeModal());
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        toast.error(`Error: ${error.message}`);
-      });
-  };
+   dispatch(action)
+     .unwrap()
+     .then(() => {
+       toast.success(
+         type === modalTypes.addWater
+           ? "Water record added successfully!"
+           : "Water record updated successfully!"
+       );
+       dispatch(closeModal());
+     })
+     .catch((error) => {
+       console.error("Error:", error);
+       toast.error(`Error: ${error.message}`);
+     });
+ };
 
   return loading ? (
     <Loader />
   ) : (
     <Formik
       initialValues={{
-        date: contentWaterModal?.date
-          ? time // ISO 8601 -> гг:хвхв
-          : new Date().toTimeString().slice(0, 5), // Поточний час
+        date: new Date().toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
         amount: contentWaterModal?.amount || 50,
       }}
       validationSchema={schema}
@@ -102,10 +91,10 @@ const WaterForm = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setFieldValue("amount", Math.max(values.amount - 10, 10))
+                  setFieldValue("amount", Math.max(values.amount - 50, 50))
                 }
                 className={css.counterButton}
-                disabled={values.amount <= 10}
+                disabled={values.amount <= 50}
               >
                 <svg className={css.changeValueIcon}>
                   <use href="/sprite.svg#icon-minus"></use>
@@ -115,7 +104,7 @@ const WaterForm = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setFieldValue("amount", Math.min(values.amount + 10, 5000))
+                  setFieldValue("amount", Math.min(values.amount + 50, 5000))
                 }
                 className={css.counterButton}
                 disabled={values.amount >= 5000}
@@ -138,7 +127,7 @@ const WaterForm = () => {
             </label>
             <Field className={css.input} type="time" id="date" name="date" />
 
-            <label className={css.valueLabel} htmlFor="value">
+            <label className={css.valueLabel} htmlFor="amount">
               Enter the value of the water used:
               <ErrorMessage
                 name="amount"
@@ -151,6 +140,8 @@ const WaterForm = () => {
               type="number"
               id="amount"
               name="amount"
+              min={50}
+              max={5000}
             />
           </div>
 

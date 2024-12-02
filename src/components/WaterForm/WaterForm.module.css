@@ -126,7 +126,7 @@
 
 .submitButton:hover,
 .submitButton:focus {
-  color: #87d28d;
+  background-color: #87d28d;
 }
 
 @media screen and (min-width: 768px) {
@@ -147,9 +147,9 @@
   }
 
   .counterValue {
-    height: 43px;
     font-size: 15px;
     line-height: 1.49;
+
   }
 
   .timeLabel {
