@@ -12,6 +12,7 @@ import { patchUser } from "../../redux/user/operations";
 
 import css from "./UserSettingsForm.module.css";
 import avatar from "../../img/default-avatar.webp";
+import clsx from "clsx";
 
 const validationParams = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!"),
@@ -117,7 +118,7 @@ const UserSettingsForm = () => {
                 hidden
                 onChange={handleFileChange}
               />
-              <span>Upload a photo</span>
+              <span className={css.fileUpload}>Upload a photo</span>
             </div>
           </label>
         </div>
@@ -258,7 +259,7 @@ const UserSettingsForm = () => {
             </div>
           </div>
         </div>
-        <button className={css.saveButton} type="submit">
+        <button className={clsx("green", css.saveButton)} type="submit">
           Save
         </button>
       </Form>
