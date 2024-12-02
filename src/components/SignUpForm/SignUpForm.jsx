@@ -4,11 +4,12 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
+import { getUserCurrent } from "../../redux/user/operations";
 
 const validationParams = Yup.object().shape({
   email: Yup.string()
@@ -34,7 +35,7 @@ const initialValues = {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const loading = useSelector(selectAuthLoading); 
+  const loading = useSelector(selectAuthLoading);
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -47,6 +48,7 @@ const SignUpForm = () => {
       .unwrap()
       .then(() => {
         toast.success("You have successfully registered!");
+        dispatch(getUserCurrent());
         actions.resetForm();
       })
       .catch((error) => {
@@ -62,7 +64,14 @@ const SignUpForm = () => {
         onSubmit={handleSubmit}
         validationSchema={validationParams}
       >
-        {({ values, setFieldValue, isValid, isSubmitting, errors, touched }) => (
+        {({
+          values,
+          setFieldValue,
+          isValid,
+          isSubmitting,
+          errors,
+          touched,
+        }) => (
           <Form className={css.form}>
             <h2 className={css.title}>Sign Up</h2>
 <div className={css.logoWrapper}>
@@ -108,7 +117,11 @@ const SignUpForm = () => {
                   aria-label="Toggle password visibility"
                 >
                   <svg className={css.icon}>
-                    <use href={`${sprite}#icon-${values.showPassword ? "eye" : "eye-off"}`} />
+                    <use
+                      href={`${sprite}#icon-${
+                        values.showPassword ? "eye" : "eye-off"
+                      }`}
+                    />
                   </svg>
                 </button>
               </div>
