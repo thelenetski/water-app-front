@@ -67,7 +67,10 @@ export const patchWater = createAsyncThunk(
   "water/patchWater",
   async (water, thunkAPI) => {
     try {
-      const response = await axios.patch(`api/water/${water.id}`, water);
+      const response = await axios.patch(`api/water/${water.id}`, {
+        amount: water.amount,
+        date: water.date,
+      });
       return response.data;
     } catch (error) {
       if (error.response) {

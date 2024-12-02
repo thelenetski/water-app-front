@@ -11,8 +11,6 @@ const DeleteModal = () => {
   const loading = useSelector(selectLoading);
   const contentModal = useSelector(selectContentModal);
 
-  console.log(contentModal);
-
   const handleDelete = () => {
     dispatch(deleteWater(contentModal?._id))
       .unwrap()
