@@ -71,6 +71,20 @@ a {
   text-decoration: none;
 }
 
+body {
+  margin: 0;
+}
+
+/* mainContainer */
+
+.pageContentWrapper {
+  padding: 40px 20px;
+  margin: 8px;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+}
+
 /* button */
 
 button {
@@ -201,6 +215,10 @@ input.error {
 /* media for tablets */
 
 @media screen and (min-width: 768px) {
+  .pageContentWrapper {
+    padding: 40px;
+  }
+
 }
 
 /* media for desktop */
