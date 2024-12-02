@@ -34,9 +34,11 @@ const SignInForm = () => {
       .then(() => {
         toast.success("Login successful!");
         actions.resetForm();
+        actions.setSubmitting(false);
       })
       .catch((error) => {
         toast.error("Login failed: " + error.message);
+        actions.setSubmitting(false);
       });
   };
 
@@ -91,7 +93,7 @@ const SignInForm = () => {
                 >
                   <svg className={css.icon}>
                     <use
-                      xlinkHref={`/icons/sprite.svg#icon-${
+                      xlinkHref={`/sprite.svg#icon-${
                         showPassword ? "eye" : "eye-off"
                       }`}
                     />
