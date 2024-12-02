@@ -5,11 +5,11 @@ import { useEffect } from "react";
 import { getWaterDaily } from "../../redux/waters/operations";
 
 const TrackerPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getWaterDaily());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getWaterDaily());
+  // }, [dispatch]);
 
   return (
     <>

@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
-import { selectWatersDaily } from '../../redux/waters/selectors';
-import { WaterItem } from '../WaterItem/WaterItem';
-import css from './WaterList.module.css';
+import { useSelector } from "react-redux";
+import { selectWatersDaily } from "../../redux/waters/selectors";
+import { WaterItem } from "../WaterItem/WaterItem";
+import css from "./WaterList.module.css";
 
-export function WaterList () {
+const WaterList = () => {
   const waterItems = useSelector(selectWatersDaily);
 
   return (
@@ -13,7 +13,7 @@ export function WaterList () {
       ) : (
         <ul className={css.wrapper}>
           {waterItems.map((item) => (
-            <li key={item._id} className={css.item}>
+            <li key={item?._id} className={css.item}>
               <WaterItem item={item} />
             </li>
           ))}
@@ -22,3 +22,5 @@ export function WaterList () {
     </>
   );
 };
+
+export default WaterList;

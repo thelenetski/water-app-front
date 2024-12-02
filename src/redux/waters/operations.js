@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
-
 export const getWaterMonthly = createAsyncThunk(
   "water/getWaterMonthly",
   async (_, thunkAPI) => {
@@ -20,9 +18,11 @@ export const getWaterMonthly = createAsyncThunk(
 
 export const getWaterDaily = createAsyncThunk(
   "water/getWaterDaily",
-  async (_, thunkAPI) => {
+  async ({ day, month, year }, thunkAPI) => {
     try {
-      const response = await axios.get("api/water/day");
+      const response = await axios.get("api/water/day", {
+        params: { day, month, year },
+      });
       return response.data;
     } catch (error) {
       if (error.response) {

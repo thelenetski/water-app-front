@@ -17,12 +17,18 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const today = new Date();
+
 const watersSlice = createSlice({
   name: "water",
   initialState: {
     monthly: [],
     daily: [],
-    activeDay: null,
+    activeDay: {
+      day: today.getDate(),
+      month: today.getMonth() + 1,
+      year: today.getFullYear(),
+    },
     loading: false,
     error: null,
   },
@@ -44,7 +50,7 @@ const watersSlice = createSlice({
       .addCase(getWaterDaily.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.daily = action.payload;
+        state.daily = action.payload.data;
       })
       .addCase(getWaterDaily.rejected, handleRejected)
       .addCase(addWater.pending, handlePending)

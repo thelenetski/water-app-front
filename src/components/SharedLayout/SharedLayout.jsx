@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { selectTypeModal } from "../../redux/modal/selectors";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 const SharedLayout = ({ children }) => {
   const type = useSelector(selectTypeModal);
@@ -20,6 +21,8 @@ const SharedLayout = ({ children }) => {
           <Suspense fallback={<Loader />}>{children}</Suspense>
           <ModalWindow>
             {type === modalTypes.addWater && <WaterModal />}
+            {type === modalTypes.editWater && <WaterModal />}
+            {type === modalTypes.confirmDelete && <DeleteModal />}
             {type === modalTypes.editUser && <UserSettingsModal />}
             {type === modalTypes.confirmLogOutUser && <LogOutModal />}
           </ModalWindow>

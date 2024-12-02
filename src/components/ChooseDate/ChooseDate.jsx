@@ -11,8 +11,8 @@ const ChooseDate = () => {
     return date.toLocaleDateString().replace(/\//g, ".");
   };
 
-  let day =
-    currentDate !== null && currentDate.replace(/\//g, ".").split(".")[0];
+  const day = currentDate?.day;
+  const date = `${currentDate?.day}.${currentDate?.month}.${currentDate?.year}`;
 
   const months = [
     "January",
@@ -29,17 +29,16 @@ const ChooseDate = () => {
     "December",
   ];
 
-  const month =
-    currentDate !== null ? months[+currentDate.split("/")[1] - 1] : "??";
-  const monthDot =
-    currentDate !== null ? months[+currentDate.split(".")[1] - 1] : "????";
+  const month = currentDate !== null ? months[+currentDate?.month - 1] : "??";
+  // const monthDot =
+  //   currentDate !== null ? months[+currentDate.split(".")[1] - 1] : "????";
 
   return (
     <>
       <h2 className={css.date}>
-        {currentDate !== null && currentDate.replace(/\//g, ".") === localDate()
+        {currentDate !== null && date === localDate()
           ? "Today"
-          : `${day}, ${month || monthDot}`}
+          : `${day}, ${month}`}
       </h2>
     </>
   );
