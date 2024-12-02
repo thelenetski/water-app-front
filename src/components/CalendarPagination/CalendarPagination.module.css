@@ -1,10 +1,29 @@
 .container {
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
 .text {
     font-weight: 700;
     font-size: 16px;
+}
+
+.button{
+    background-color: transparent;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --color1: var(--font-color);
+    width: 18px;
+    height: 18px;
+}
+
+.iconPrev{
+    transform:rotate(-90deg);
+}
+
+.iconNext{
+    transform:rotate(90deg);
 }
