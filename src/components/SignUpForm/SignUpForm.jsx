@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
+import Logo from "../Logo/Logo";
 
 const validationParams = Yup.object().shape({
   email: Yup.string()
@@ -64,7 +65,10 @@ const SignUpForm = () => {
         {({ values, setFieldValue, isValid, isSubmitting, errors, touched }) => (
           <Form className={css.form}>
             <h2 className={css.title}>Sign Up</h2>
-
+<div className={css.logoWrapper}>
+  <Logo/>
+  </div>
+        
             <label>
               <span className={css.inputLabel}>Email</span>
               <Field
