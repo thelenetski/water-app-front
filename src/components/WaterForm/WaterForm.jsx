@@ -11,7 +11,6 @@ import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
 import { selectContentModal } from "../../redux/modal/selectors";
 
-
 // Валідаційна схема
 const schema = yup.object({
   date: yup
@@ -64,10 +63,11 @@ const WaterForm = () => {
       .then(() => {
         if (type === modalTypes.addWater) {
           toast.success("Water record added successfully!");
+          dispatch(closeModal());
         } else if (type === modalTypes.editWater) {
           toast.success("Water record updated successfully!");
+          dispatch(closeModal());
         }
-        dispatch(closeModal());
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -75,91 +75,97 @@ const WaterForm = () => {
       });
   };
 
-  return loading ? (
-    <Loader />
-  ) : (
-    <Formik
-      initialValues={{
-        date: contentWaterModal?.date
-          ? time // ISO 8601 -> гг:хвхв
-          : new Date().toTimeString().slice(0, 5), // Поточний час
-        amount: contentWaterModal?.amount || 50,
-      }}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      {({ values, setFieldValue }) => (
-        <Form className={css.formWaterWrapper}>
-          <p className={css.secWaterTitle}>
-            {type === modalTypes.addWater
-              ? "Choose a value:"
-              : "Correct entered data:"}
-          </p>
+  return (
+    <>
+      {loading && <Loader />}
+      {loading && <div className={css.loaderBackdrop}></div>}
+      <Formik
+        initialValues={{
+          date: contentWaterModal?.date
+            ? time // ISO 8601 -> гг:хвхв
+            : new Date().toTimeString().slice(0, 5), // Поточний час
+          amount: contentWaterModal?.amount || 50,
+        }}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        {({ values, setFieldValue }) => (
+          <Form className={css.formWaterWrapper}>
+            <p className={css.secWaterTitle}>
+              {type === modalTypes.addWater
+                ? "Choose a value:"
+                : "Correct entered data:"}
+            </p>
 
-          <div className={css.counterWrapper}>
-            <span className={css.amountWaterTitle}>Amount of water:</span>
-            <div className={css.counterWaterWrapper}>
-              <button
-                type="button"
-                onClick={() =>
-                  setFieldValue("amount", Math.max(values.amount - 10, 10))
-                }
-                className={css.counterButton}
-                disabled={values.amount <= 10}
-              >
-                <svg className={css.changeValueIcon}>
-                  <use href="/sprite.svg#icon-minus"></use>
-                </svg>
-              </button>
-              <span className={css.counterValue}>{values.amount} ml</span>
-              <button
-                type="button"
-                onClick={() =>
-                  setFieldValue("amount", Math.min(values.amount + 10, 5000))
-                }
-                className={css.counterButton}
-                disabled={values.amount >= 5000}
-              >
-                <svg className={css.changeValueIcon}>
-                  <use href="/sprite.svg#icon-plus"></use>
-                </svg>
-              </button>
+            <div className={css.counterWrapper}>
+              <span className={css.amountWaterTitle}>Amount of water:</span>
+              <div className={css.counterWaterWrapper}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setFieldValue("amount", Math.max(values.amount - 10, 10))
+                  }
+                  className={css.counterButton}
+                  disabled={values.amount <= 10}
+                >
+                  <svg className={css.changeValueIcon}>
+                    <use href="/sprite.svg#icon-minus"></use>
+                  </svg>
+                </button>
+                <span className={css.counterValue}>{values.amount} ml</span>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setFieldValue("amount", Math.min(values.amount + 10, 5000))
+                  }
+                  className={css.counterButton}
+                  disabled={values.amount >= 5000}
+                >
+                  <svg className={css.changeValueIcon}>
+                    <use href="/sprite.svg#icon-plus"></use>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className={css.fieldsWaterWrapper}>
-            <label className={css.timeLabel} htmlFor="date">
-              Recording time:
-              <ErrorMessage
-                name="date"
-                component="span"
-                className={css.errorMessage}
-              />
-            </label>
-            <Field className={css.input} type="time" id="date" name="date" />
+            <div className={css.fieldsWaterWrapper}>
+              <label className={css.timeLabel} htmlFor="date">
+                Recording time:
+                <ErrorMessage
+                  name="date"
+                  component="span"
+                  className={css.errorMessage}
+                />
+              </label>
+              <Field className={css.input} type="time" id="date" name="date" />
 
-            <label className={css.valueLabel} htmlFor="value">
-              Enter the value of the water used:
-              <ErrorMessage
+              <label className={css.valueLabel} htmlFor="value">
+                Enter the value of the water used:
+                <ErrorMessage
+                  name="amount"
+                  component="span"
+                  className={css.errorMessage}
+                />
+              </label>
+              <Field
+                className={css.input}
+                type="number"
+                id="amount"
                 name="amount"
-                component="span"
-                className={css.errorMessage}
               />
-            </label>
-            <Field
-              className={css.input}
-              type="number"
-              id="amount"
-              name="amount"
-            />
-          </div>
+            </div>
 
-          <button className={css.submitButton} type="submit" disabled={loading}>
-            Save
-          </button>
-        </Form>
-      )}
-    </Formik>
+            <button
+              className={css.submitButton}
+              type="submit"
+              disabled={loading}
+            >
+              Save
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };
 

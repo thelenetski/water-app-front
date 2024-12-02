@@ -129,6 +129,16 @@
   background-color: #87d28d;
 }
 
+.loaderBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 0.7;
+}
+
 @media screen and (min-width: 768px) {
   .secWaterTitle {
     font-size: 18px;
@@ -149,7 +159,6 @@
   .counterValue {
     font-size: 15px;
     line-height: 1.49;
-
   }
 
   .timeLabel {
