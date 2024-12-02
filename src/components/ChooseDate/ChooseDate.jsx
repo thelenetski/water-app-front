@@ -36,7 +36,8 @@ const ChooseDate = () => {
   return (
     <>
       <h2 className={css.date}>
-        {currentDate !== null && date === localDate()
+        {currentDate !== null &&
+        date.toString().padStart(10, "0") === localDate()
           ? "Today"
           : `${day}, ${month}`}
       </h2>
