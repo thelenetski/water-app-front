@@ -1,9 +1,15 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Logo.module.css';
 
 const Logo = () => {
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate('/');
+    };
+
     return (
-        <div className={styles.logoWrapper}>
+        <div className={styles.logoWrapper} onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
             <span className={styles.logoText}>AQUATRACK</span>
         </div>
     );

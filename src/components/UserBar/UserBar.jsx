@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import css from "./UserBar.module.css";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -13,9 +13,13 @@ const UserBar = () => {
   const avatar = userInfo.avatar || defaultAvatar;
 
   const buttonRef = useRef(null);
+  const popoverRef = useRef(null);
 
   const handleOutsideClick = (e) => {
-    if (buttonRef.current && buttonRef.current.contains(e.target)) {
+    if (
+      (buttonRef.current && buttonRef.current.contains(e.target)) ||
+      (popoverRef.current && popoverRef.current.contains(e.target))
+    ) {
       return;
     }
     setIsShow(false);
@@ -40,10 +44,10 @@ const UserBar = () => {
   };
 
   const getDisplayName = () => {
-    if (userInfo?.name) {
-      return userInfo.name;
-    } else if (userInfo?.email) {
-      return userInfo.email.split("@")[0];
+    if (userInfo?.data?.name?.trim()) {
+      return userInfo.data.name;
+    } else if (userInfo?.data?.email) {
+      return userInfo.data.email.split("@")[0];
     }
     return "User";
   };
@@ -65,7 +69,9 @@ const UserBar = () => {
         )}
       </button>
 
-      {isShow && <UserBarPopover userBarWidth={userBarWidth} />}
+      {isShow && (
+        <UserBarPopover ref={popoverRef} userBarWidth={userBarWidth} />
+      )}
     </div>
   );
 };

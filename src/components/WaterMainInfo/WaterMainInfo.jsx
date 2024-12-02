@@ -1,42 +1,50 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import css from "./WaterMainInfo.module.css";
 import { selectWatersDaily } from "../../redux/waters/selectors";
-import { openAddWater } from "../../redux/modal/slice";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
+import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 
 export default function WaterMainInfo() {
-  const dispatch = useDispatch();
-
   const user = useSelector(selectUser);
 
-  const [percentValue, setPercentValue] = useState(0);
-  const [isVisiblePercent, setIsVisiblePercent] = useState(true);
-  const [isVisibleCircle, setIsVisibleCircle] = useState(true);
+  const dailyWaterArray = useSelector(selectWatersDaily);
 
-  const dailyNorm = 1500; //user.dailyNorm;
+  const [percentValue, setPercentValue] = useState(0);
+
+  const [isVisiblePercent, setIsVisiblePercent] = useState(false);
+
+  const [drankPerDay, setDrankPerDay] = useState(0);
+
+  const dailyNorm = user !== null ? user.data.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
-  const dailyArray = useSelector(selectWatersDaily);
-  const drankPerDay = 1500; //dailyArray.map(); //Дописать цикл
+
+  console.log(dailyWaterArray);
+  //victor change
+  const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
+    return previousValue + (glass.data?.amount || 0);
+  }, 0);
 
   useEffect(() => {
+    setDrankPerDay(amountDrankWater);
     setPercentValue(Math.round((drankPerDay * 100) / dailyNorm));
 
     if (drankPerDay > dailyNorm) {
-      setIsVisiblePercent(true);
-    }
-    if (percentValue === 0 || percentValue > 95) {
-      setIsVisibleCircle(false);
-    }
-  }, [drankPerDay, dailyNorm, percentValue]);
+      setIsVisiblePercent(false);
 
-  function handleOnClick() {
-    dispatch(openAddWater);
-  }
+      setPercentValue(100);
+    }
+
+    if (percentValue === 0 || percentValue >= 100) {
+      setIsVisiblePercent(true);
+    } else {
+      setIsVisiblePercent(false);
+    }
+  }, [dailyNorm, drankPerDay, percentValue, amountDrankWater]);
 
   return (
-    <div className={clsx(css.container, "container")}>
+    <>
       <div className={css.main}>
         <h2 className={css.h2}>AQUATRACK</h2>
         <picture className={css.picture}>
@@ -80,10 +88,7 @@ export default function WaterMainInfo() {
               ></div>
             </div>
             <div
-              className={clsx(
-                css.barCircle,
-                isVisibleCircle && css.hiddenCircle
-              )}
+              className={clsx(css.barCircle)}
               style={{ left: `${percentValue}%` }}
             ></div>
             <div
@@ -104,14 +109,10 @@ export default function WaterMainInfo() {
             </div>
           </div>
         </div>
-        <button className={css.button} type="button" onClick={handleOnClick}>
-          <svg>
-            className={css.buttonSvg}
-            <use href="/sprite.svg#icon-x"></use>
-          </svg>
-          Add water
-        </button>
+        <div className={css.buttonWaterMain}>
+          <AddWaterBtn section="waterMain" />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

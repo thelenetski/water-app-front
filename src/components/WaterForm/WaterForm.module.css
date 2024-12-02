@@ -1,64 +1,80 @@
 .secWaterTitle {
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: -0.16px;
-    line-height: 1.25;
-    color: #323F47;
-    
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  line-height: 1.25;
+  color: #323f47;
 }
 
 .amountWaterTitle {
-    display: inline-block;
-    font-size: 14px;
-    letter-spacing: -0.14px;
-    line-height: 1.28;
-    margin-bottom: 8px;
-    color:#2F2F2F;
-
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: -0.14px;
+  line-height: 1.28;
+  margin-bottom: 8px;
+  color: #2f2f2f;
 }
 
 .counterWaterWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .counterButton {
-    background-color: transparent;
-    border: none;
-    padding: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
 
+.changeValueIcon {
+  width: 14px;
+  height: 14px;
+  padding: 11px;
+  stroke: #323f47;
+  border: 1px solid #323f47;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.changeValueIcon:hover {
+  opacity: 0.8;
 }
 
 .counterValue {
-    padding: 11px 20px;
-    border-radius: 30px;
-    background-color: #323F47;
-    color: white;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.28;
+  padding: 11px 20px;
+  border-radius: 30px;
+  background-color: #323f47;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
 }
 
 .timeLabel {
-    display: block;
-    margin-bottom: 8px;
-    color: #2F2F2F;
-    font-size: 14px;
-    line-height: 1.28;
-    letter-spacing: -0.014px;
+  display: block;
+  margin-bottom: 8px;
+  color: #2f2f2f;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.014px;
 }
 
 .errorMessage {
-    display: block;
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    font-size: 14px;
-    color: #EF5050;
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ef5050;
+}
+
+.fieldsWaterWrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .input {
@@ -69,7 +85,7 @@
   border: 1px solid rgba(47, 47, 47, 0.15);
   outline: none;
 
-  color: #2F2F2F;
+  color: #2f2f2f;
   font-size: 14px;
   line-height: 1.28;
   letter-spacing: -0.014px;
@@ -77,48 +93,47 @@
 
 .input:hover,
 .input:focus {
-    border-color: #87D28D;
+  border-color: #87d28d;
 }
 
 .input:focus {
-    border-color: #87D28D;
-    transform: scale(1.01);
+  border-color: #87d28d;
+  transform: scale(1.01);
 }
 
 .valueLabel {
-    display: inline-block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.16px;
-    color: #323F47;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  color: #323f47;
 }
 
 .submitButton {
-    padding: 14px 40px;
-    border: none;
-    background-color: #9BE1A0;
-    border-radius: 30px;
-    color: #323F47;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.28;
-    letter-spacing: -0.14px;
-    cursor: pointer;
+  padding: 14px 40px;
+  border: none;
+  background-color: #9be1a0;
+  border-radius: 30px;
+  color: #323f47;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.14px;
+  cursor: pointer;
 }
 
 .submitButton:hover,
 .submitButton:focus {
-    color: #87D28D;
+  color: #87d28d;
 }
 
 @media screen and (min-width: 768px) {
-  
   .secWaterTitle {
     font-size: 18px;
     letter-spacing: -0.18px;
-    line-height: 1.33; 
+    line-height: 1.33;
   }
 
   .amountWaterTitle {
@@ -144,16 +159,16 @@
   }
 
   .input {
-  padding: 16px;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.16px;
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
   }
 
   .valueLabel {
-   font-size: 18px;
-   line-height: 1.33;
-   letter-spacing: -0.18px;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
   }
 
   .submitButton {
@@ -162,4 +177,3 @@
     letter-spacing: -0.18px;
   }
 }
-

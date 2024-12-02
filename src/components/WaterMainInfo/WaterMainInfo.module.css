@@ -15,7 +15,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -146,37 +146,10 @@
   transform: translateX(30%);
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30px;
-  padding: 14px 20px;
-  width: 140px;
-  height: 46px;
-  background-color: #323f47;
-  color: white;
-
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.01em;
-  text-align: center;
-
+.buttonWaterMain {
   position: absolute;
-  right: 16px;
-  bottom: 32px;
-}
-
-.button:hover,
-.button:focus {
-  color: #9be1a0;
-  stroke: #9be1a0;
-}
-
-.buttonSvg {
-  margin-right: 10px;
+  right: 32px;
+  bottom: 64px;
 }
 
 @media screen and (min-width: 768px) {
@@ -261,11 +234,10 @@
     line-height: 150%;
 
     right: 32px;
-    bottom: 64px;
+    bottom: 94px;
   }
 
   .buttonSvg {
-    stroke-width: 2px;
     width: 24px;
     height: 24px;
   }

@@ -2,7 +2,6 @@
   position: absolute;
   left: 0;
   width: 100%;
-  /* width: 105px; */
   padding: 16px;
   height: 72px;
   background-color: #ffffff;
@@ -10,7 +9,7 @@
   border-radius: 15px;
   top: 100%;
   margin-top: 5px;
-  z-index: 1111;
+  z-index: 999;
   box-sizing: border-box;
 }
 .iconSettings {
@@ -19,6 +18,7 @@
 }
 
 .settings {
+  all: unset;
   display: flex;
   align-items: center;
   border: 0;
@@ -40,6 +40,7 @@
 }
 
 .logOut {
+  all: unset;
   display: flex;
   align-items: center;
   margin-top: 8px;
@@ -58,7 +59,6 @@
 
 @media screen and (min-width: 768px) {
   .popover {
-    /* width: 125px; */
     height: 82px;
   }
   .settings {
@@ -69,4 +69,29 @@
     font-size: 15px;
     line-height: 149%;
   }
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 150px;
+}
+
+.menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background: #f0f0f0;
 }
