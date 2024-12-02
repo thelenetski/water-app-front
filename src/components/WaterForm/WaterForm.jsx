@@ -38,7 +38,7 @@ const WaterForm = () => {
       hour: "2-digit",
       minute: "2-digit",
     }
-  ); // Поточна дата
+  ); // Поточна датаa
 
   const handleSubmit = (values) => {
     const isoDate = new Date(
