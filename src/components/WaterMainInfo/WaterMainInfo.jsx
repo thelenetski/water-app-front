@@ -47,7 +47,6 @@ export default function WaterMainInfo() {
   return (
     <>
       <div className={css.main}>
-        <h2 className={css.h2}>AQUATRACK</h2>
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"
