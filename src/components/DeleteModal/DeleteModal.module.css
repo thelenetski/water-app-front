@@ -36,6 +36,12 @@
     background-color: #F0EFF4;
 }
 
+.btnDisabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    background: #e6e6e6;
+  }
+
 @media screen and (max-width: 450px) {
     .btn {
         width: 304px;
