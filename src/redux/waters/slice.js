@@ -30,7 +30,7 @@ const watersSlice = createSlice({
       year: today.getFullYear(),
     },
     activeMonth: {
-      month: today.getMonth() + 1,
+      month: today.getMonth(),
       year: today.getFullYear(),
     },
     loading: false,

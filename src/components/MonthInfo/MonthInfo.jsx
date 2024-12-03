@@ -12,7 +12,7 @@ const MonthInfo = () => {
   console.log(currentDate.month);
   const monthName = new Date(
     currentDate.year,
-    currentDate.month,
+    currentDate.month - 1,
     currentDate.day
   ).toLocaleString("en-EN", { month: "long" });
 
