@@ -20,7 +20,7 @@ const schema = yup.object({
   amount: yup
     .number()
     .required("Value is required")
-    .min(10, "Minimum value is 10ml")
+    .min(10, "Minimum value is 50ml")
     .max(5000, "Maximum value is 5000ml")
     .typeError("Value must be a number/ value in ml"),
 });
@@ -103,10 +103,10 @@ const WaterForm = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    setFieldValue("amount", Math.max(values.amount - 10, 10))
+                    setFieldValue("amount", Math.max(values.amount - 50, 50))
                   }
                   className={css.counterButton}
-                  disabled={values.amount <= 10}
+                  disabled={values.amount <= 50}
                 >
                   <svg className={css.changeValueIcon}>
                     <use href="/sprite.svg#icon-minus"></use>
@@ -116,7 +116,7 @@ const WaterForm = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    setFieldValue("amount", Math.min(values.amount + 10, 5000))
+                    setFieldValue("amount", Math.min(values.amount + 50, 5000))
                   }
                   className={css.counterButton}
                   disabled={values.amount >= 5000}
@@ -137,7 +137,11 @@ const WaterForm = () => {
                   className={css.errorMessage}
                 />
               </label>
-              <Field className={css.input} type="time" id="date" name="date" />
+              <Field className={css.input} type="time" id="date" name="date" /><ErrorMessage
+                  name="date"
+                  component="span"
+                  className={css.errorMessage}
+                />
 
               <label className={css.valueLabel} htmlFor="value">
                 Enter the value of the water used:
