@@ -1,12 +1,12 @@
+import { addActiveDay } from "../../redux/waters/slice";
 import css from "./CalendarItem.module.css";
 import { useDispatch } from "react-redux";
-import { addActiveDate } from "../../redux/waters/slice.js";
 
 const CalendarItem = ({ day, currentDay }) => {
   const dispatch = useDispatch();
 
   const chooseDay = (e) => {
-    dispatch(addActiveDate({ day: Number(e.target.innerHTML) }));
+    dispatch(addActiveDay({ day: Number(e.target.innerHTML) }));
   };
 
   return (

@@ -1,13 +1,13 @@
 import Calendar from "../Calendar/Calendar.jsx";
 import CalendarPagination from "../CalendarPagination/CalendarPagination.jsx";
 import css from "./MonthInfo.module.css";
-import { selectActiveDate } from "../../redux/waters/selectors.js";
+import { selectActiveDay } from "../../redux/waters/selectors.js";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { addActiveDate } from "../../redux/waters/slice.js";
+import { addActiveDay } from "../../redux/waters/slice.js";
 const MonthInfo = () => {
   const dispatch = useDispatch();
-  const currentDate = useSelector(selectActiveDate);
+  const currentDate = useSelector(selectActiveDay);
 
   console.log(currentDate.month);
   const monthName = new Date(
@@ -25,10 +25,10 @@ const MonthInfo = () => {
   const nextMonth = () => {
     const date = new Date(currentDate.year, currentDate.month + 1);
     if (date.getFullYear() !== currentDate.year) {
-      dispatch(addActiveDate({ year: date.getFullYear() }));
+      dispatch(addActiveDay({ year: date.getFullYear() }));
     }
 
-    dispatch(addActiveDate({ month: date.getMonth() }));
+    dispatch(addActiveDay({ month: date.getMonth() }));
   };
 
   const prevMonth = () => {
@@ -36,7 +36,7 @@ const MonthInfo = () => {
     const updatedYear = date.getFullYear();
     const updatedMonth = date.getMonth();
 
-    dispatch(addActiveDate({ year: updatedYear, month: updatedMonth }));
+    dispatch(addActiveDay({ year: updatedYear, month: updatedMonth }));
   };
 
   return (
