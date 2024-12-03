@@ -7,7 +7,7 @@ export const getWaterMonthly = createAsyncThunk(
   "water/getWaterMonthly",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/water/monthly");
+      const response = await axios.get("api/water/month");
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -22,7 +22,7 @@ export const getWaterDaily = createAsyncThunk(
   "water/getWaterDaily",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/water/daily");
+      const response = await axios.get("api/water/day");
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -37,7 +37,7 @@ export const addWater = createAsyncThunk(
   "water/addWater",
   async (water, thunkAPI) => {
     try {
-      const response = await axios.post("/water", water);
+      const response = await axios.post("api/water", water);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -52,7 +52,7 @@ export const deleteWater = createAsyncThunk(
   "water/deleteWater",
   async (waterId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/water/${waterId}`);
+      const response = await axios.delete(`api/water/${waterId}`);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -67,7 +67,7 @@ export const patchWater = createAsyncThunk(
   "water/patchWater",
   async (water, thunkAPI) => {
     try {
-      const response = await axios.patch(`/water/${water.id}`, water);
+      const response = await axios.patch(`api/water/${water.id}`, water);
       return response.data;
     } catch (error) {
       if (error.response) {

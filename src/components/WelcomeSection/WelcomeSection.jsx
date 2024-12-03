@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import styles from './WelcomeSection.module.css';
