@@ -13,9 +13,8 @@
 
 .advantagesWrapper {
   flex: 1;
-  display: flex;
+  display:flex;
   justify-content: center;
-  display: none;
   height: 736px;
 }
 
@@ -33,8 +32,9 @@
   }
 }
 
-@media (min-width: 1025px) {
-.signUpPage {
+
+@media (max-width: 1439px) {
+    .signUpPage {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -43,6 +43,6 @@
 
 }
   .advantagesWrapper {
-    display: flex;
+   display: none;
   }
 }
