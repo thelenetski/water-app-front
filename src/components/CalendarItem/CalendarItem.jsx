@@ -17,7 +17,16 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
       >
         {day}
       </button>
-      <span className={css.percentage}>{`${data && Math.trunc(((data?.reduce((acc, item) => acc += item.amount, 0)) / dailyNorm) * 100)}`}%</span>
+      <span className={css.percentage}>
+        {`${
+          data &&
+          Math.round(
+            (data?.reduce((acc, item) => (acc += item.amount), 0) / dailyNorm) *
+              100
+          )
+        }`}
+        %
+      </span>
     </div>
   );
 };

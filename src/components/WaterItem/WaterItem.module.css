@@ -36,7 +36,6 @@
   color: rgba(47, 47, 47, 0.6);
 }
 
-
 .btnBox {
   display: flex;
   align-items: flex-start;
@@ -48,6 +47,7 @@
 .button {
   height: 14px;
   padding: 0;
+  background: none;
 }
 
 .btnIcon {
@@ -62,18 +62,16 @@
     gap: 10px;
     padding: 18px 14px;
   }
-  
+
   .card:not(:last-child) {
     margin-right: 8px;
   }
-   
+
   .bottleIcon {
     width: 38px;
     height: 38px;
   }
-
 }
-
 
 @media screen and (min-width: 768px) {
   .card:not(:last-child) {
@@ -108,7 +106,6 @@
     line-height: 1.5;
   }
 }
-
 
 @media screen and (min-width: 1440px) {
   .card:not(:last-child) {

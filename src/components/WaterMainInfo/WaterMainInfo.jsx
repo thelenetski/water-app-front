@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
+import Logo from "../Logo/Logo";
 
 export default function WaterMainInfo() {
   const user = useSelector(selectUser);
@@ -47,6 +48,7 @@ export default function WaterMainInfo() {
   return (
     <>
       <div className={css.main}>
+        <Logo />
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"
