@@ -82,6 +82,10 @@
     width: 24px;
     height: 24px;
   }
+
+  .wrapper.waterMain {
+    gap: 7px;
+  }
 }
 
 .text.daily {
