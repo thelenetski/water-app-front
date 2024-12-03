@@ -24,21 +24,21 @@ const watersSlice = createSlice({
   initialState: {
     monthly: [],
     daily: [],
-    activeDate: {
+    activeDay: {
       day: today.getDate(),
-      month: today.getMonth(),
+      month: today.getMonth() + 1,
       year: today.getFullYear(),
     },
     activeMonth: {
-      month: today.getMonth() + 1,
+      month: today.getMonth(),
       year: today.getFullYear(),
     },
     loading: false,
     error: null,
   },
   reducers: {
-    addActiveDate(state, action) {
-      state.activeDate = {...state.activeDate, ...action.payload};
+    addActiveDay(state, action) {
+      state.activeDay = { ...state.activeDay, ...action.payload };
     },
     addActiveMonth(state, action) {
       state.activeMonth = action.payload;
@@ -100,6 +100,6 @@ const watersSlice = createSlice({
   },
 });
 
-export const { addActiveDate, addActiveMonth } = watersSlice.actions;
+export const { addActiveDay, addActiveMonth } = watersSlice.actions;
 
 export const watersReducer = watersSlice.reducer;

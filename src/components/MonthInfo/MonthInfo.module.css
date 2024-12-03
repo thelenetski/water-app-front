@@ -1,20 +1,26 @@
 .container {
-    width: 608px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  max-width: 608px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.monthInfo{
-    display: flex;
-    justify-content: space-between;
+.monthInfo {
+  display: flex;
+  justify-content: space-between;
 }
 
-.text{
-    display: flex;
-    align-items: center;
+.text {
+  display: flex;
+  align-items: center;
 
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.14;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.14;
+}
+
+@media screen and (max-width: 767px) {
+  .text{
+    font-size:20px;
+  }
 }

@@ -8,7 +8,7 @@ import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import { refreshUser } from "./redux/auth/operations.js";
 import { getWaterDaily } from "./redux/waters/operations.js";
-import {selectActiveDate} from "./redux/waters/selectors.js";
+import { selectActiveDate } from "./redux/waters/selectors.js";
 import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
@@ -20,7 +20,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const activeDate = useSelector(selectActiveDate);
+  const activeDay = useSelector(selectActiveDate);
 
   useEffect(() => {
     dispatch(refreshUser())
@@ -28,13 +28,13 @@ function App() {
       .then(() => {
         dispatch(
           getWaterDaily({
-            day: activeDate.day,
-            month: activeDate.month,
-            year: activeDate.year,
+            day: activeDay.day,
+            month: activeDay.month,
+            year: activeDay.year,
           })
         );
       });
-  }, [dispatch, activeDate]);
+  }, [dispatch, activeDay]);
 
   return isRefreshing ? (
     <Loader />

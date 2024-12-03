@@ -3,9 +3,9 @@ import axios from "axios";
 
 export const getWaterMonthly = createAsyncThunk(
   "water/getWaterMonthly",
-  async (_, thunkAPI) => {
+  async ({ month, year }, thunkAPI) => {
     try {
-      const response = await axios.get("api/water/month");
+      const response = await axios.get("api/water/month", {params: { month, year },});
       return response.data;
     } catch (error) {
       if (error.response) {

@@ -1,43 +1,65 @@
-import Calendar from '../Calendar/Calendar.jsx';
+import Calendar from "../Calendar/Calendar.jsx";
 import CalendarPagination from "../CalendarPagination/CalendarPagination.jsx";
-import css from './MonthInfo.module.css'
-import {selectActiveDate} from "../../redux/waters/selectors.js";
-import {useDispatch} from "react-redux";
-import {useSelector} from "react-redux";
-import {addActiveDate} from "../../redux/waters/slice.js";
+import css from "./MonthInfo.module.css";
+import { selectActiveDate } from "../../redux/waters/selectors.js";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addActiveDay } from "../../redux/waters/slice.js";
+import {useEffect} from "react";
+import {getWaterMonthly} from "../../redux/waters/operations.js";
 const MonthInfo = () => {
-    const dispatch = useDispatch();
-    const currentDate = useSelector(selectActiveDate);
+  const dispatch = useDispatch();
+  const currentDate = useSelector(selectActiveDate);
 
-    console.log(currentDate.month)
-    const monthName = new Date(currentDate.year, currentDate.month, currentDate.day).toLocaleString('en-EN', {month: 'long'})
+  console.log(currentDate.month);
+  const monthName = new Date(
+    currentDate.year,
+    currentDate.month - 1,
+    currentDate.day
+  ).toLocaleString("en-EN", { month: "long" });
 
-    const daysOfMonth = new Date(currentDate.year, currentDate.month, 0).getDate();
+  const daysOfMonth = new Date(
+    currentDate.year,
+    currentDate.month,
+    0
+  ).getDate();
 
-    const nextMonth = () => {
-        const date = new Date(currentDate.year, currentDate.month + 1);
-        if(date.getFullYear() !== currentDate.year) {
-            dispatch(addActiveDate({year: date.getFullYear()}));
-        }
-
-        dispatch(addActiveDate({month: date.getMonth()}));
+  const nextMonth = () => {
+    const date = new Date(currentDate.year, currentDate.month + 1);
+    if (date.getFullYear() !== currentDate.year) {
+      dispatch(addActiveDay({ year: date.getFullYear() }));
     }
 
-    const prevMonth = () => {
-        const date = new Date(currentDate.year, currentDate.month - 1);
-        const updatedYear = date.getFullYear();
-        const updatedMonth = date.getMonth();
+    dispatch(addActiveDay({ month: date.getMonth() }));
+  };
 
-        dispatch(addActiveDate({ year: updatedYear, month: updatedMonth }));
-    };
+  const prevMonth = () => {
+    const date = new Date(currentDate.year, currentDate.month - 1);
+    const updatedYear = date.getFullYear();
+    const updatedMonth = date.getMonth();
 
-    return <div className={css.container}>
-    <div className={css.monthInfo}>
+    dispatch(addActiveDay({ year: updatedYear, month: updatedMonth }));
+  };
+
+    useEffect(() => {
+        dispatch(getWaterMonthly({month: currentDate.month, year: currentDate.year}));
+    }, [currentDate]);
+  return (
+    <div className={css.container}>
+      <div className={css.monthInfo}>
         <span className={css.text}>Month</span>
-        <CalendarPagination year={currentDate.year} month={currentDate.month} day={currentDate.day} monthName={monthName} nextMonth={nextMonth} prevMonth={prevMonth} />
+        <CalendarPagination
+          year={currentDate.year}
+          month={currentDate.month}
+          day={currentDate.day}
+          monthName={monthName}
+          nextMonth={nextMonth}
+          prevMonth={prevMonth}
+        />
+      </div>
+      <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} />
     </div>
-    <Calendar daysOfMonth={daysOfMonth} day={currentDate.day}/>
-    </div>
-}
+  );
+};
 
 export default MonthInfo;
