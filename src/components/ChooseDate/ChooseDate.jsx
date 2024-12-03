@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectActiveDay } from "../../redux/waters/selectors.js";
 
 const ChooseDate = () => {
-  const currentDate = useSelector(selectActiveDay); //"нужно передать активную дату "
+  const currentDate = useSelector(selectActiveDay); 
 
   const localDate = () => {
     const milliseconds = Date.now();
@@ -30,8 +30,6 @@ const ChooseDate = () => {
   ];
 
   const month = currentDate !== null ? months[+currentDate?.month - 1] : "??";
-  // const monthDot =
-  //   currentDate !== null ? months[+currentDate.split(".")[1] - 1] : "????";
 
   return (
     <>
@@ -46,3 +44,4 @@ const ChooseDate = () => {
 };
 
 export default ChooseDate;
+

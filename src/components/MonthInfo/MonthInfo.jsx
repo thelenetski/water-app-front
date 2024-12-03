@@ -9,7 +9,6 @@ const MonthInfo = () => {
   const dispatch = useDispatch();
   const currentDate = useSelector(selectActiveDay);
 
-  console.log(currentDate.month);
   const monthName = new Date(
     currentDate.year,
     currentDate.month - 1,
