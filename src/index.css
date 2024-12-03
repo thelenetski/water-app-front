@@ -205,7 +205,7 @@ button.cancel:focus {
 .btn-disabled {
   pointer-events: none;
   cursor: not-allowed;
-  
+  background: #e6e6e6;
 }
 
 
