@@ -63,9 +63,9 @@ const UserBar = () => {
         <p className={css.name}>{getDisplayName()}</p>
         <img src={avatar} alt="User Avatar" className={css.avatar} />
         {isShow ? (
-          <FaChevronUp style={{ color: "#ffffff" }} />
+          <FaChevronUp className={css.FaChevron} />
         ) : (
-          <FaChevronDown style={{ color: "#ffffff" }} />
+          <FaChevronDown className={css.FaChevron} />
         )}
       </button>
 
