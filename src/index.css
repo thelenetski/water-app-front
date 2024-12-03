@@ -203,6 +203,15 @@ button.cancel:focus {
   color: var(--font-color);
 }
 
+/* disabled button */
+
+.btn-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #e6e6e6;
+}
+
+
 /* button.logOut */
 
 button.logOut {
