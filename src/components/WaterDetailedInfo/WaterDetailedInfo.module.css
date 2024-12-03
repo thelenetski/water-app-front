@@ -1,0 +1,28 @@
+.WaterDetailedInfoWrapper {
+  background-color: #F0EFF4;
+  border-radius: 30px;
+  padding: 32px;
+}
+
+@media screen and (max-width: 767px) {
+  .WaterDetailedInfoWrapper {
+    width: 343px;
+    padding: 40px 20px;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .WaterDetailedInfoWrapper {
+    width: 704px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .WaterDetailedInfoWrapper {
+    width: 672px;
+    height: 736px;
+  }
+}
+
+

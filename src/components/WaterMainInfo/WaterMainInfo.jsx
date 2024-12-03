@@ -20,11 +20,12 @@ export default function WaterMainInfo() {
   const dailyNorm = user !== null ? user.data.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
 
-  console.log(dailyWaterArray);
   //victor change
-  const amountDrankWater = dailyWaterArray.reduce((previousValue, glass) => {
-    return previousValue + (glass.data?.amount || 0);
-  }, 0);
+  const amountDrankWater =
+    dailyWaterArray.length > 0 &&
+    dailyWaterArray.reduce((previousValue, glass) => {
+      return previousValue + (glass?.amount || 0);
+    }, 0);
 
   useEffect(() => {
     setDrankPerDay(amountDrankWater);
@@ -46,7 +47,6 @@ export default function WaterMainInfo() {
   return (
     <>
       <div className={css.main}>
-        <h2 className={css.h2}>AQUATRACK</h2>
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"

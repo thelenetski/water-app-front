@@ -1,14 +1,13 @@
 .homePage {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-
 
 @media screen and (min-width: 1440px) {
-    .homePage {
-        flex-direction: row; 
-        row-gap: 32px; 
-    }
-
+  .homePage {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
+

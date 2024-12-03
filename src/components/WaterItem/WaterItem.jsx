@@ -1,25 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import css from "./WaterItem.module.css";
 import sprite from "../../../public/sprite.svg";
-import { WaterModal } from "../WaterModal/WaterModal";
-import { DeleteModal } from "../DeleteModal/DeleteModal";
-import { ModalWindow } from "../globalModal/globalModal";
-import {
-  modalTypes,
-  openConfirmDelete,
-  openEditWater,
-} from "../../redux/modal/slice";
-import { selectTypeModal } from "../../redux/modal/selectors";
+import { openConfirmDelete, openEditWater } from "../../redux/modal/slice";
 
 export function WaterItem({ item }) {
   const dispatch = useDispatch();
 
-  const type = useSelector(selectTypeModal);
-
   const water =
-    item.waterValue >= 999
-      ? Math.round((item.waterValue / 1000) * 100) / 100 + " L"
-      : item.waterValue + " ml";
+    item?.amount >= 1000
+      ? Math.round((item?.amount / 1000) * 100) / 100 + " L"
+      : item?.amount + " ML";
 
   return (
     <div className={css.card}>
@@ -28,7 +18,12 @@ export function WaterItem({ item }) {
       </svg>
       <div className={css.textBox}>
         <p className={css.ml}>{water}</p>
-        <p className={css.time}>{item.localTime}</p>
+        <p className={css.time}>
+          {new Date(item?.createdAt).toLocaleTimeString("ru-RU", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
       </div>
       <div className={css.btnBox}>
         <button
@@ -54,11 +49,6 @@ export function WaterItem({ item }) {
           </svg>
         </button>
       </div>
-
-      <ModalWindow>
-        {type === modalTypes.editWater && <WaterModal water={item} />}
-        {type === modalTypes.confirmDelete && <DeleteModal water={item} />}
-      </ModalWindow>
     </div>
   );
 }

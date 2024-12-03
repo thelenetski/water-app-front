@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
-
 export const getAllUsers = createAsyncThunk(
   "users/getAllUsers",
   async (_, thunkAPI) => {
@@ -37,7 +35,11 @@ export const patchUser = createAsyncThunk(
   "users/patchUser",
   async (user, thunkAPI) => {
     try {
-      const response = await axios.patch(`/users/current/${user.id}`, user);
+      console.log(user);
+      const response = await axios.patch(`api/users`, {
+        ...user,
+      });
+      console.log(response);
       return response.data;
     } catch (error) {
       if (error.response) {
