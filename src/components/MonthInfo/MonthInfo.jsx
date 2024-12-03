@@ -5,6 +5,8 @@ import { selectActiveDay } from "../../redux/waters/selectors.js";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addActiveDay } from "../../redux/waters/slice.js";
+import {useEffect} from "react";
+import {getWaterMonthly} from "../../redux/waters/operations.js";
 const MonthInfo = () => {
   const dispatch = useDispatch();
   const currentDate = useSelector(selectActiveDay);
@@ -38,6 +40,9 @@ const MonthInfo = () => {
     dispatch(addActiveDay({ year: updatedYear, month: updatedMonth }));
   };
 
+    useEffect(() => {
+        dispatch(getWaterMonthly({month: currentDate.month, year: currentDate.year}));
+    }, [currentDate]);
   return (
     <div className={css.container}>
       <div className={css.monthInfo}>

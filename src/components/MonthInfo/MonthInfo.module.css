@@ -1,8 +1,9 @@
 .container {
-  width: 608px;
+  max-width: 608px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-top:40px;
 }
 
 .monthInfo {
@@ -17,4 +18,10 @@
   font-weight: 700;
   font-size: 28px;
   line-height: 1.14;
+}
+
+@media screen and (max-width: 767px) {
+  .text{
+    font-size:20px;
+  }
 }

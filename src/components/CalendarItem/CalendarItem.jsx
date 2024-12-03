@@ -1,14 +1,11 @@
 import { addActiveDay } from "../../redux/waters/slice";
 import css from "./CalendarItem.module.css";
 import { useDispatch } from "react-redux";
-
-const CalendarItem = ({ day, currentDay }) => {
+const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
   const dispatch = useDispatch();
-
   const chooseDay = (e) => {
     dispatch(addActiveDay({ day: Number(e.target.innerHTML) }));
   };
-
   return (
     <div className={css.container}>
       <button
@@ -20,7 +17,7 @@ const CalendarItem = ({ day, currentDay }) => {
       >
         {day}
       </button>
-      <span className={css.percentage}>0%</span>
+      <span className={css.percentage}>{`${data && Math.trunc(((data?.reduce((acc, item) => acc += item.amount, 0)) / dailyNorm) * 100)}`}%</span>
     </div>
   );
 };

@@ -3,3 +3,9 @@
   flex-wrap: wrap;
   gap: 15px 43px;
 }
+
+@media screen and (max-width: 767px){
+  .calendarItems {
+    gap: 20px 18px;
+  }
+}
