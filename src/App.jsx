@@ -9,6 +9,7 @@ import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import { refreshUser } from "./redux/auth/operations.js";
 import { getWaterDaily } from "./redux/waters/operations.js";
 import { selectActiveDay } from "./redux/waters/selectors.js";
+import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
@@ -36,7 +37,7 @@ function App() {
   }, [dispatch, activeDay]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <SharedLayout>
       <Routes>

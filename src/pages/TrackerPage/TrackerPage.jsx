@@ -11,14 +11,17 @@ const TrackerPage = () => {
   const activeDay = useSelector(selectActiveDay);
 
   useEffect(() => {
-    dispatch(getUserCurrent());
-    dispatch(
-      getWaterDaily({
-        day: activeDay.day,
-        month: activeDay.month,
-        year: activeDay.year,
-      })
-    );
+    dispatch(getUserCurrent())
+      .unwrap()
+      .then(() => {
+        dispatch(
+          getWaterDaily({
+            day: activeDay.day,
+            month: activeDay.month,
+            year: activeDay.year,
+          })
+        );
+      });
   }, [dispatch, activeDay]);
 
   return (
