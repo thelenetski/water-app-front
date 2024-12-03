@@ -1,0 +1,20 @@
+.container {
+  width: 608px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.monthInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.14;
+}

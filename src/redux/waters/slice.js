@@ -38,7 +38,7 @@ const watersSlice = createSlice({
   },
   reducers: {
     addActiveDay(state, action) {
-      state.activeDay = action.payload;
+      state.activeDate = { ...state.activeDate, ...action.payload };
     },
     addActiveMonth(state, action) {
       state.activeMonth = action.payload;
