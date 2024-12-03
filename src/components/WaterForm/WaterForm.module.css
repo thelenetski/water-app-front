@@ -31,8 +31,8 @@
 }
 
 .changeValueIcon {
-  width: 14px;
-  height: 14px;
+  width: 43px;
+  height: 43px;
   padding: 11px;
   stroke: #323f47;
   border: 1px solid #323f47;
@@ -149,11 +149,6 @@
   .amountWaterTitle {
     letter-spacing: -0.16px;
     line-height: 1.5;
-  }
-
-  .counterButton {
-    width: 43px;
-    height: 43px;
   }
 
   .counterValue {
