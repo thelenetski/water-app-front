@@ -21,7 +21,10 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(getUserCurrent());
   }, [dispatch]);
+
+  // console.log(token);
 
   return isRefreshing ? (
     <Loader />

@@ -1,0 +1,45 @@
+.noWater {
+  padding-top: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  min-height: 142px;
+  color: rgba(50, 63, 71, 0.4);
+
+  @media (min-width: 768px) {
+    min-height: 142px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: overlay;
+  gap: 8px;
+  max-width: 672px;
+  padding-top: 24px;
+  min-height: 142px;
+}
+
+.wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #323f47;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.wrapper::-webkit-scrollbar-thumb:active {
+  background-color: #87d28d;
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 9px;
+}
+
+.wrapper::-webkit-scrollbar-thumb:vertical {
+  display: none;
+}

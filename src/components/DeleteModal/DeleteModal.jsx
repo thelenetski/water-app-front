@@ -36,7 +36,7 @@ const DeleteModal = () => {
       </button>
       <button
         type="button"
-        className={`${css.btn} ${css.cancelBtn}`}
+        className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
         onClick={() => dispatch(closeModal())}
       >
         Cancel

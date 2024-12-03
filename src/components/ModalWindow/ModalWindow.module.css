@@ -57,11 +57,11 @@
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 767px) {
+/* @media screen and (min-width: 375px) and (max-width: 767px) {
   .modalContent {
     width: 100%;
   }
-}
+} */
 
 @media screen and (min-width: 768px) {
   .modalWrapper {
