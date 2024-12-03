@@ -5,10 +5,6 @@
   line-height: 1.29;
   min-height: 142px;
   color: rgba(50, 63, 71, 0.4);
-
-  @media (min-width: 768px) {
-    min-height: 142px;
-  }
 }
 
 .wrapper {
@@ -17,12 +13,8 @@
   overflow-x: overlay;
   gap: 8px;
   padding-top: 24px;
+  padding-bottom: 24px;
   min-height: 118px;
-}
-
-.item {
-  width: 192px;
-  height: 86px;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -60,17 +52,27 @@
 
 }
 
-
 @media screen and (max-width: 768px) and (min-width: 376px) {
   .wrapper {
     width: 640px;
+    gap: 32px;
   }
 
+  .item {
+    width: 192px;
+    height: 86px;
+  }
 }
 
 
 @media screen and (min-width: 769px) {
   .wrapper {
     width: 608px;
+    gap: 16px;
+  }
+
+  .item {
+    width: 192px;
+    height: 86px;
   }
 }

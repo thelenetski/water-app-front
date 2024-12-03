@@ -5,13 +5,11 @@
   padding-top: 40px;
 }
 
-.container {
-  background-color: #F0EFF4;
-}
+
 
 @media screen and (max-width: 375px) {
   .container {
-    min-width: 343px;
+    min-width: 303px;
   }
   
   .wrapper {
@@ -21,7 +19,7 @@
 
 @media screen and (max-width: 768px) and (min-width: 376px) {
   .container {
-    min-width: 704px;
+    width: 640px;
   }
   
   .wrapper {
@@ -31,10 +29,10 @@
 
 @media screen and (min-width: 769px) {
   .container {
-    min-width: 672px;
+    min-width: 608px;
   }
   
   .wrapper {
-    width: 672px;
+    width: 608px;
   }
 }
