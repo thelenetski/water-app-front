@@ -3,11 +3,11 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 0;
 }
 
 .wrapper.waterMain {
   border-radius: 30px;
-  padding: 14px 20px;
   background-color: #323f47;
 }
 
