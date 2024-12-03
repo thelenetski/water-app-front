@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  width: 100%;
+  width: 672px;
   height: 736px;
   background: #f0eff4;
   /* padding: 130px 118px; */
@@ -20,9 +20,7 @@
   margin-top: 30px;
 }
 
-/* .form > .signuptext {
-  margin-top: -4px;
-} */
+
 .logoWrapper {
   cursor: pointer;
   position: absolute;
@@ -162,7 +160,7 @@ position: absolute;
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .formContainer {
-  width: 100%;
+  width: 704px;
   height: 960px;
     display: flex;
   flex-direction: column;
@@ -185,16 +183,16 @@ position: absolute;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  max-width: 343px;
   height: 780px;
   
   /* padding: 170px 16px; */
 }
 .form {
-  gap: 16px;
-  width: 311px;
-  height: 440px;
-}
+    width: 311px;
+    height: 348px;
+    gap: 16px;
+  }
 .logoWrapper {
   position: absolute;
   top: 24px;

@@ -1,4 +1,5 @@
 .waterModalWrapper {
+  position: relative;
   max-width: 303px;
 }
 
@@ -9,7 +10,6 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.2px;
-  
 }
 
 @media screen and (min-width: 768px) {
@@ -20,6 +20,7 @@
   }
 
   .waterModalWrapper {
+    position: relative;
     max-width: 438px;
   }
 }
