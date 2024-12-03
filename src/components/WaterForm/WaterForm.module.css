@@ -28,14 +28,15 @@
   background-color: transparent;
   border: none;
   padding: 0;
+  height: 40px;
 }
 
 .changeValueIcon {
-  width: 14px;
-  height: 14px;
+  width: 40px;
+  height: 40px;
   padding: 11px;
   stroke: #323f47;
-  border: 1px solid #323f47;
+  border: 1.5px solid #323f47;
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -151,14 +152,18 @@
     line-height: 1.5;
   }
 
-  .counterButton {
-    width: 43px;
-    height: 43px;
-  }
-
   .counterValue {
     font-size: 15px;
     line-height: 1.49;
+  }
+
+  .changeValueIcon {
+  width: 43px;
+  height: 43px;
+  }
+
+  .counterButton {
+  height: 43px;
   }
 
   .timeLabel {

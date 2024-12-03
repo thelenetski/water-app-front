@@ -30,7 +30,7 @@ const watersSlice = createSlice({
       year: today.getFullYear(),
     },
     activeMonth: {
-      month: today.getMonth() + 1,
+      month: today.getMonth(),
       year: today.getFullYear(),
     },
     loading: false,
@@ -38,7 +38,7 @@ const watersSlice = createSlice({
   },
   reducers: {
     addActiveDay(state, action) {
-      state.activeDay = action.payload;
+      state.activeDay = { ...state.activeDay, ...action.payload };
     },
     addActiveMonth(state, action) {
       state.activeMonth = action.payload;
