@@ -122,6 +122,7 @@ body {
   flex-direction: column;
   gap: 16px;
   justify-content: center;
+  align-items: center;
 }
 
 /* button */
