@@ -17,6 +17,7 @@
 }
 
 * {
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; /*Прибирає синій фон з елементів при натисканні на мобілці*/
 }
 
@@ -26,7 +27,8 @@ body {
 
 :root {
   font-family: Poppins, sans-serif;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 0.7;
   font-weight: 400;
   --main-color: #9be1a0;
   --hover-green-color: #87d28d;
@@ -71,6 +73,41 @@ a {
   text-decoration: none;
 }
 
+/* headers */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.0;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 0.8;
+}
+
+p {
+  font-size: 14px;
+  line-height: 0.7;
+}
+
 body {
   margin: 0;
 }
@@ -79,10 +116,13 @@ body {
 
 .pageContentWrapper {
   padding: 40px 20px;
-  margin: 8px;
   height: 100vh;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* button */
@@ -215,6 +255,34 @@ input.error {
 /* media for tablets */
 
 @media screen and (min-width: 768px) {
+
+  h1 {
+    font-size: 64px;
+    line-height: 0.9;
+  }
+
+  h2 {
+    font-size: 36px;
+    line-height: 0.9;
+  }
+
+  h3 {
+    font-size: 28px;
+    line-height: 0.8;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 0.7;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 0.6;
+  }
+
+  /* main container */
+
   .pageContentWrapper {
     padding: 40px;
   }
@@ -224,4 +292,25 @@ input.error {
 /* media for desktop */
 
 @media screen and (min-width: 1440px) {
+  h1 {
+    font-size: 80px;
+    line-height: 1.05;
+  }
+
+  h2 {}
+
+  h3 {
+    line-height: 0.9;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 0.7;
+  }
+
+  .pageContentWrapper {
+    flex-direction: row;
+    gap: 32px;
+  }
+
 }

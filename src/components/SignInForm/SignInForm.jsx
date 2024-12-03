@@ -9,9 +9,6 @@ import * as Yup from "yup";
 import { signIn } from "../../redux/auth/operations";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
-import { getUserCurrent } from "../../redux/user/operations";
-import { getWaterDaily } from "../../redux/waters/operations";
-import { selectActiveDay } from "../../redux/waters/selectors";
 
 const UserValidationSchema = Yup.object().shape({
   userEmail: Yup.string().email("Must be a valid email!").required("Required"),
@@ -23,7 +20,6 @@ const INITIAL_VALUES = { userEmail: "", userPassword: "" };
 const SignInForm = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
-  const activeDay = useSelector(selectActiveDay);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,17 +32,6 @@ const SignInForm = () => {
     )
       .unwrap()
       .then(() => {
-        dispatch(getUserCurrent())
-          .unwrap()
-          .then(() => {
-            dispatch(
-              getWaterDaily({
-                day: activeDay.day,
-                month: activeDay.month,
-                year: activeDay.year,
-              })
-            );
-          });
         toast.success("Login successful!");
         actions.resetForm();
         actions.setSubmitting(false);

@@ -29,12 +29,19 @@ const watersSlice = createSlice({
       month: today.getMonth() + 1,
       year: today.getFullYear(),
     },
+    activeMonth: {
+      month: today.getMonth() + 1,
+      year: today.getFullYear(),
+    },
     loading: false,
     error: null,
   },
   reducers: {
     addActiveDay(state, action) {
       state.activeDay = action.payload;
+    },
+    addActiveMonth(state, action) {
+      state.activeMonth = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -65,9 +72,11 @@ const watersSlice = createSlice({
         state.loading = false;
         state.error = null;
         const index = state.daily.findIndex(
-          (water) => water.id === action.payload.id
+          (water) => water._id === action.payload
         );
-        state.daily.splice(index, 1);
+        if (index !== -1) {
+          state.daily.splice(index, 1);
+        }
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(patchWater.pending, handlePending)
@@ -91,6 +100,6 @@ const watersSlice = createSlice({
   },
 });
 
-export const { addActiveDay } = watersSlice.actions;
+export const { addActiveDay, addActiveMonth } = watersSlice.actions;
 
 export const watersReducer = watersSlice.reducer;
