@@ -7,9 +7,9 @@ export function WaterItem({ item }) {
   const dispatch = useDispatch();
 
   const water =
-    item?.waterValue >= 999
+    item?.amount >= 1000
       ? Math.round((item?.amount / 1000) * 100) / 100 + " L"
-      : item?.amount + " ml";
+      : item?.amount + " ML";
 
   return (
     <div className={css.card}>
