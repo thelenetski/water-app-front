@@ -17,6 +17,7 @@
 }
 
 * {
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; /*Прибирає синій фон з елементів при натисканні на мобілці*/
 }
 
