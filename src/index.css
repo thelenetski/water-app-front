@@ -116,8 +116,7 @@ body {
 /* mainContainer */
 
 .pageContentWrapper {
-  padding: 40px 20px;
-  height: 100vh;
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -284,7 +283,7 @@ input.error {
   /* main container */
 
   .pageContentWrapper {
-    padding: 40px;
+    padding: 32px;
   }
 }
 
@@ -309,6 +308,7 @@ input.error {
   }
 
   .pageContentWrapper {
+    height: 100vh;
     flex-direction: row;
     gap: 32px;
   }
