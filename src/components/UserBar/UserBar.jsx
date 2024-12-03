@@ -10,7 +10,6 @@ const UserBar = () => {
   const [isShow, setIsShow] = useState(false);
   const [userBarWidth, setUserBarWidth] = useState(0);
   const userInfo = useSelector(selectUser) || {};
-  const avatar = userInfo.avatarUrl || defaultAvatar;
 
   const buttonRef = useRef(null);
   const popoverRef = useRef(null);
@@ -61,7 +60,11 @@ const UserBar = () => {
         ref={buttonRef}
       >
         <p className={css.name}>{getDisplayName()}</p>
-        <img src={avatar} alt="User Avatar" className={css.avatar} />
+        <img
+          src={userInfo?.data?.avatarUrl || defaultAvatar}
+          alt="User Avatar"
+          className={css.avatar}
+        />
         {isShow ? (
           <FaChevronUp className={css.FaChevron} />
         ) : (

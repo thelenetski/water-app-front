@@ -15,10 +15,10 @@ import css from "./UserSettingsForm.module.css";
 import avatar from "../../img/default-avatar.webp";
 import clsx from "clsx";
 
-const UserSettingsForm = () => {
+const UserSettingsForm = ({ setImg }) => {
   // const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const [preview, setPreview] = useState(user.avatarUrl || null);
+  const [preview, setPreview] = useState(user?.data?.avatarUrl || null);
   // const [gender, setGender] = useState("woman");
   // const [weight, setWeight] = useState(0);
   // const [sportParticipation, setSportParticipation] = useState(0);
@@ -39,7 +39,7 @@ const UserSettingsForm = () => {
   useEffect(() => {
     if (values.weight) {
       const norma =
-        values.gender === "woman"
+        values.gender === "female"
           ? values.weight * 0.03 + values.sportParticipation * 0.4
           : values.weight * 0.04 + values.sportParticipation * 0.6;
       setRecommendedDailyNorma(norma.toFixed(1));
@@ -65,6 +65,7 @@ const UserSettingsForm = () => {
     const file = event.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file)); // Створення URL для файлу
+      setImg(file);
     }
   };
 
@@ -113,7 +114,7 @@ const UserSettingsForm = () => {
               <Field
                 type="radio"
                 name="gender"
-                value="woman"
+                value="female"
                 // checked={gender === "woman"}
                 // onChange={(e) => {
                 //   setGender(e.target.value);
@@ -126,7 +127,7 @@ const UserSettingsForm = () => {
               <Field
                 type="radio"
                 name="gender"
-                value="man"
+                value="male"
                 // checked={gender === "man"}
                 // onChange={(e) => {
                 //   setGender(e.target.value);
