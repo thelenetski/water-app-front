@@ -15,7 +15,6 @@
 
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -38,8 +37,7 @@
   left: 10px;
   border-radius: 15px;
   padding: 12px;
-  max-width: 102px;
-  max-height: 54px;
+
   background-color: #ffffff;
 }
 
