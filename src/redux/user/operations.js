@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
-
 export const getAllUsers = createAsyncThunk(
   "users/getAllUsers",
   async (_, thunkAPI) => {

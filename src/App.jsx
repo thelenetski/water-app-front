@@ -6,8 +6,10 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
-import { getUserCurrent } from "./redux/user/operations.js";
 import { refreshUser } from "./redux/auth/operations.js";
+import { getWaterDaily } from "./redux/waters/operations.js";
+import {selectActiveDate} from "./redux/waters/selectors.js";
+import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
@@ -18,16 +20,24 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const activeDate = useSelector(selectActiveDate);
 
   useEffect(() => {
-    dispatch(refreshUser());
-    dispatch(getUserCurrent());
-  }, [dispatch]);
-
-  // console.log(token);
+    dispatch(refreshUser())
+      .unwrap()
+      .then(() => {
+        dispatch(
+          getWaterDaily({
+            day: activeDate.day,
+            month: activeDate.month,
+            year: activeDate.year,
+          })
+        );
+      });
+  }, [dispatch, activeDate]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <SharedLayout>
       <Routes>

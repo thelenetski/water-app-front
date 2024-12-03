@@ -1,6 +1,8 @@
 import css from './CalendarPagination.module.css'
 
 const CalendarPagination = ({year, monthName, nextMonth, prevMonth}) => {
+
+
     return <div className={css.container}>
         <button type="button" onClick={prevMonth} className={css.button}>
             <svg className={`${css.icon} ${css.iconPrev}`}>

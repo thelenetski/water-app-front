@@ -7,7 +7,7 @@
   width: 672px;
   height: 736px;
   background: #f0eff4;
-  padding: 130px 118px;
+  /* padding: 130px 118px; */
   position: relative;
 }
 
@@ -17,8 +17,9 @@
   gap: 20px;
   width: 436px;
   height: 506px;
-  margin: 0 auto;
+  margin-top: 30px;
 }
+
 
 .logoWrapper {
   cursor: pointer;
@@ -40,7 +41,8 @@
   text-align: center;
   color: #323f47;
   display: block;
-  margin: 0 auto 16px;
+  /* margin-top:32px; */
+  /* margin: 0 auto 16px; */
   box-shadow: none;
   border: none;
   outline: none;
@@ -64,7 +66,7 @@
   line-height: 1.05556;
   letter-spacing: -0.01em;
   color: #323f47;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
   text-align: left;
 }
 
@@ -72,13 +74,14 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
+  margin-top:10px;
   line-height: 1.28571;
   letter-spacing: -0.01em;
   color: #ef5050;
 }
 
 .field {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
   padding: 16px 16px 16px;
@@ -88,6 +91,7 @@
 }
 .fieldError {
   border-color: #ef5050;
+    margin-bottom:10px;
 }
 .field::placeholder {
   font-family: "Poppins", sans-serif;
@@ -107,7 +111,7 @@
 .iconButton{
 position: absolute;
   right: 8px;
-margin-bottom:18px;
+/* margin-bottom:20px; */
   background: none; 
   border: none; 
   cursor: pointer; 
@@ -121,6 +125,7 @@ margin-bottom:18px;
 }
 
 .signuptext {
+   margin-top: -4px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -128,6 +133,7 @@ margin-bottom:18px;
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: rgba(47, 47, 47, 0.5);
+
 }
 
 .signinlink{
@@ -156,7 +162,11 @@ margin-bottom:18px;
   .formContainer {
   width: 704px;
   height: 960px;
-  padding: 227px 134px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 227px 134px; */
 }
 
 }
@@ -169,15 +179,20 @@ margin-bottom:18px;
 
 @media (max-width: 767px) {
     .formContainer {
-  width: 343px;
+        display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 343px;
   height: 780px;
-  padding: 170px 16px;
+  
+  /* padding: 170px 16px; */
 }
 .form {
-  gap: 16px;
-  width: 311px;
-  height: 440px;
-}
+    width: 311px;
+    height: 348px;
+    gap: 16px;
+  }
 .logoWrapper {
   position: absolute;
   top: 24px;
@@ -185,6 +200,7 @@ margin-bottom:18px;
 }
 
 .button {
+  margin-top:16px;
   padding: 16px 0;
 width: 311px;
 height: 50px;
@@ -199,7 +215,7 @@ font-size: 32px;
   line-height: 1;
 }
 .field {
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   width: 311px;
   height: 50px;
 }

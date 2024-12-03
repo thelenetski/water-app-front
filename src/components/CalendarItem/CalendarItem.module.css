@@ -20,6 +20,9 @@
     color: var(--main-color);
 }
 
+.pickedDay {
+    border:1px solid var(--main-color);
+}
 .container {
     display: flex;
     align-items: center;

@@ -2,7 +2,7 @@ export const selectWatersMonthly = (state) => state.waters.monthly;
 
 export const selectWatersDaily = (state) => state.waters.daily;
 
-export const selectActiveDay = (state) => state.waters.activeDay;
+export const selectActiveDate = (state) => state.waters.activeDate;
 
 export const selectLoading = (state) => state.waters.loading;
 

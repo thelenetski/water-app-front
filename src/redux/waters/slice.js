@@ -17,18 +17,31 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const today = new Date();
+
 const watersSlice = createSlice({
   name: "water",
   initialState: {
     monthly: [],
     daily: [],
-    activeDay: null,
+    activeDate: {
+      day: today.getDate(),
+      month: today.getMonth(),
+      year: today.getFullYear(),
+    },
+    activeMonth: {
+      month: today.getMonth() + 1,
+      year: today.getFullYear(),
+    },
     loading: false,
     error: null,
   },
   reducers: {
-    addActiveDay(state, action) {
-      state.activeDay = action.payload;
+    addActiveDate(state, action) {
+      state.activeDate = {...state.activeDate, ...action.payload};
+    },
+    addActiveMonth(state, action) {
+      state.activeMonth = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -37,21 +50,21 @@ const watersSlice = createSlice({
       .addCase(getWaterMonthly.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.monthly = action.payload;
+        state.monthly = action.payload.data;
       })
       .addCase(getWaterMonthly.rejected, handleRejected)
       .addCase(getWaterDaily.pending, handlePending)
       .addCase(getWaterDaily.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.daily = action.payload;
+        state.daily = action.payload.data;
       })
       .addCase(getWaterDaily.rejected, handleRejected)
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.daily.push(action.payload);
+        state.daily.push(action.payload.data);
       })
       .addCase(addWater.rejected, handleRejected)
       .addCase(deleteWater.pending, handlePending)
@@ -59,9 +72,11 @@ const watersSlice = createSlice({
         state.loading = false;
         state.error = null;
         const index = state.daily.findIndex(
-          (water) => water.id === action.payload.id
+          (water) => water._id === action.payload
         );
-        state.daily.splice(index, 1);
+        if (index !== -1) {
+          state.daily.splice(index, 1);
+        }
       })
       .addCase(deleteWater.rejected, handleRejected)
       .addCase(patchWater.pending, handlePending)
@@ -69,8 +84,8 @@ const watersSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.daily = state.daily.map((water) => {
-          if (water.id === action.payload.id) {
-            return (water = action.payload);
+          if (water && water._id === action.payload.data?._id) {
+            return action.payload.data;
           }
           return water;
         });
@@ -85,6 +100,6 @@ const watersSlice = createSlice({
   },
 });
 
-export const { addActiveDay } = watersSlice.actions;
+export const { addActiveDate, addActiveMonth } = watersSlice.actions;
 
 export const watersReducer = watersSlice.reducer;
