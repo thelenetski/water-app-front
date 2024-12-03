@@ -60,8 +60,8 @@
   position: absolute;
   border-radius: 15px;
   padding: 12px;
-  width: 198px;
-  height: 70px;
+  width: 295px;
+  height: 106px;
   background-color: white;
   left: 50%;
   transform: translateX(-50%);
@@ -130,13 +130,18 @@
 .staticPercent {
   width: 184px;
   position: absolute;
-  top: 12px;
+  top: 16px;
   display: flex;
   justify-content: space-between;
 
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
+}
+
+.percent_0,
+.percent_50,
+.percent_100 {
   color: rgba(47, 47, 47, 0.6);
 }
 
@@ -185,8 +190,8 @@
   }
 
   .progressBar {
-    width: 255px;
-    height: 66px;
+    width: 295px;
+    height: 106px;
     padding: 20px;
 
     bottom: 150px;
