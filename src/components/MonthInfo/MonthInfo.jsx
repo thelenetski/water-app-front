@@ -1,7 +1,7 @@
 import Calendar from "../Calendar/Calendar.jsx";
 import CalendarPagination from "../CalendarPagination/CalendarPagination.jsx";
 import css from "./MonthInfo.module.css";
-import { selectActiveDate } from "../../redux/waters/selectors.js";
+import { selectActiveDay } from "../../redux/waters/selectors.js";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addActiveDay } from "../../redux/waters/slice.js";
@@ -9,7 +9,7 @@ import {useEffect} from "react";
 import {getWaterMonthly} from "../../redux/waters/operations.js";
 const MonthInfo = () => {
   const dispatch = useDispatch();
-  const currentDate = useSelector(selectActiveDate);
+  const currentDate = useSelector(selectActiveDay);
 
   console.log(currentDate.month);
   const monthName = new Date(

@@ -3,12 +3,12 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import { getUserCurrent } from "../../redux/user/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { getWaterDaily } from "../../redux/waters/operations";
-import { selectActiveDate } from "../../redux/waters/selectors";
+import { selectActiveDay } from "../../redux/waters/selectors";
 import { useEffect } from "react";
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
-  const activeDay = useSelector(selectActiveDate);
+  const activeDay = useSelector(selectActiveDay);
 
   useEffect(() => {
     dispatch(getUserCurrent())

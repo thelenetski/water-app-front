@@ -1,9 +1,9 @@
 import css from "./ChooseDate.module.css";
 import { useSelector } from "react-redux";
-import { selectActiveDate } from "../../redux/waters/selectors.js";
+import { selectActiveDay } from "../../redux/waters/selectors.js";
 
 const ChooseDate = () => {
-  const currentDate = useSelector(selectActiveDate); //"нужно передать активную дату "
+  const currentDate = useSelector(selectActiveDay); //"нужно передать активную дату "
 
   const localDate = () => {
     const milliseconds = Date.now();
