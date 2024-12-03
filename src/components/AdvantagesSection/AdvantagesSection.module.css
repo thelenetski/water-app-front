@@ -1,27 +1,55 @@
 .advantagesSection {
     position: relative;
-    text-align: center;
-    padding: 20px;
+    text-align: start;
+    padding: 16px;
     color: white;
-    background-image: url('/assets/background.jpg');
+    background-image: image-set(
+        url('/src/img/adventages-section/mobile-adventage-background.webp') 1x,
+        url('/src/img/adventages-section/mobile-adventage-background_2x.webp') 2x
+    );
+    background-color: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
 }
 
 .advantagesContent {
-    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 8px;
 }
 
 .advantagesCaption {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
+    margin-top: 193px;
+    padding: 10px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #323F47;
+    background-color: #FFFFFF;
+    line-height: 117%;
+}
+
+.advantagesCaptionSpan {
+    color: #9be1a0;
 }
 
 @media screen and (min-width: 768px) {
     .advantagesSection {
-        padding: 40px 60px;
+        padding: 32px;
+        background-image: image-set(
+            url('/src/img/adventages-section/tablet-adventage-background.webp') 1x,
+            url('/src/img/adventages-section/tablet-adventage-background_2x.webp') 2x
+        );
     }
 
     .advantagesContent {
@@ -29,11 +57,14 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
     }
 
     .advantagesCaption {
-        font-size: 24px;
-        margin-right: 20px;
+        margin-top: 251px;
+        font-size: 15px;
+        line-height: 149%;
+        margin-left: 16px;
     }
 }
 
@@ -42,14 +73,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 60px;
+        gap: 129px;
+        background-image: image-set(
+            url('/src/img/adventages-section/desktop-adventage-background.webp') 1x,
+            url('/src/img/adventages-section/desktop-adventage-background_2x.webp') 2x
+        );
     }
 
     .advantagesContent {
-        max-width: 50%;
+        margin-top: 505px;
     }
 
     .advantagesCaption {
-        font-size: 28px;
+        margin-top: 0px;
+        font-size: 15px;
+        line-height: 149%;
     }
 }

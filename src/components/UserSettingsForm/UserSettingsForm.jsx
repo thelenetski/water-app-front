@@ -1,35 +1,98 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { FiUpload } from "react-icons/fi";
+import { BsExclamationLg } from "react-icons/bs";
+import toast from "react-hot-toast";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { BsExclamationLg } from "react-icons/bs";
-import { FiUpload } from "react-icons/fi";
+
+import { selectUser } from "../../redux/user/selectors";
+import { patchUser } from "../../redux/user/operations";
 
 import css from "./UserSettingsForm.module.css";
+import avatar from "../../img/default-avatar.webp";
+import clsx from "clsx";
 
 const validationParams = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!"),
-  gender: Yup.string(),
+  gender: Yup.string().oneOf(["woman", "man"]),
   email: Yup.string().email("Enter a valid email!").required("Required"),
   photo: Yup.object().shape({
     name: Yup.string().required(),
   }),
-  weight: Yup.number().positive("Enter a valid value"),
-  hoursOfSport: Yup.number().positive("Enter a valid value"),
-  dailyNorma: Yup.number().positive("Enter a valid value"),
+  weight: Yup.number()
+    .max(500, "Enter a valid value")
+    .positive("Enter a valid value"),
+  hoursOfSport: Yup.number()
+    .max(24, "Enter a valid value")
+    .positive("Enter a valid value"),
+  dailyNorma: Yup.number()
+    .max(15, "Enter a valid value")
+    .positive("Enter a valid value"),
 });
 
 const UserSettingsForm = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const [preview, setPreview] = useState(user.avatarUrl || null);
+  const [gender, setGender] = useState("woman");
+  const [weight, setWeight] = useState(0);
+  const [hoursOfSport, setHoursOfSport] = useState(0);
+  const [recommendedDailyNorma, setRecommendedDailyNorma] = useState(null);
+
   const initialValues = {
-    name: "",
-    gender: "",
-    email: "",
-    photo: "",
-    weight: "",
-    hoursOfSport: "",
-    dailyNorma: "",
+    name: user.data.name || "",
+    gender: user.data.gender || "woman",
+    email: user.data.email || "",
+    photo: user.data.avatarUrl || "",
+    weight: user.data.weight || "",
+    hoursOfSport: user.data.sportParticipation || "",
+    dailyNorma: user.data.dailyNorm / 1000 || "",
   };
 
-  const handleSubmit = (values, actions) => {
-    //dispatch(saveUserDetailes(values));
+  useEffect(() => {
+    setRecommendedDailyNorma(1.8);
+    if (weight) {
+      if (gender === "woman") {
+        setRecommendedDailyNorma(
+          (weight * 0.03 + hoursOfSport * 0.4).toFixed(1)
+        );
+      } else {
+        setRecommendedDailyNorma(
+          (weight * 0.04 + hoursOfSport * 0.6).toFixed(1)
+        );
+      }
+    }
+  }, [weight, hoursOfSport, gender]);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file)); // Створення URL для файлу
+    }
+  };
+
+  const handleSubmit = (values) => {
+    dispatch(
+      patchUser({
+        ...user.data,
+        name: values.name,
+        gender: values.gender,
+        email: values.email,
+        avatarUrl: values.photo,
+        weight: values.weight,
+        sportParticipation: values.hoursOfSport,
+        dailyNorm: values.dailyNorma,
+      })
+        .unwrap()
+        .then(() => {
+          toast.success("Saved info successfully");
+        })
+        .catch((error) => {
+          toast.error("Something went wrong: " + error.message);
+        })
+    );
   };
 
   return (
@@ -40,6 +103,11 @@ const UserSettingsForm = () => {
     >
       <Form className={css.formWrapper}>
         <div className={css.fileWrapper}>
+          {preview ? (
+            <img className={css.avatarImg} src={preview} alt="User's avatar" />
+          ) : (
+            <img className={css.avatarImg} src={avatar} alt="User's avatar" />
+          )}
           <label>
             <div className={css.iconWrapper}>
               <FiUpload className={css.icon} />
@@ -48,8 +116,9 @@ const UserSettingsForm = () => {
                 name="photo"
                 placeholder="Upload a photo"
                 hidden
+                onChange={handleFileChange}
               />
-              <span>Upload a photo</span>
+              <span className={css.fileUpload}>Upload a photo</span>
             </div>
           </label>
         </div>
@@ -62,14 +131,25 @@ const UserSettingsForm = () => {
                 <Field
                   type="radio"
                   name="gender"
-                  value="Woman"
-                  checked={true}
+                  value="woman"
+                  checked={gender === "woman"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
                 />
                 <span className={css.checkmark}></span>
                 <span>Woman</span>
               </label>
               <label className={css.radioWrapper}>
-                <Field type="radio" name="gender" value="Man" />
+                <Field
+                  type="radio"
+                  name="gender"
+                  value="man"
+                  checked={gender === "man"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                />
                 <span className={css.checkmark}></span>
                 <span>Man</span>
               </label>
@@ -126,7 +206,15 @@ const UserSettingsForm = () => {
             <div className={css.blockWrapper}>
               <label className={css.inputWrapper}>
                 <span>Your weight in kilograms:</span>
-                <Field type="text" name="weight" placeholder="0" />
+                <Field
+                  type="text"
+                  name="weight"
+                  placeholder="0"
+                  value={weight}
+                  onChange={(e) => {
+                    setWeight(e.target.value);
+                  }}
+                />
                 <ErrorMessage
                   className={css.errorMessage}
                   name="weight"
@@ -135,7 +223,15 @@ const UserSettingsForm = () => {
               </label>
               <label className={css.inputWrapper}>
                 <span>The time of active participation in sports:</span>
-                <Field type="text" name="hoursOfSport" placeholder="0" />
+                <Field
+                  type="text"
+                  name="hoursOfSport"
+                  placeholder="0"
+                  value={hoursOfSport}
+                  onChange={(e) => {
+                    setHoursOfSport(e.target.value);
+                  }}
+                />
                 <ErrorMessage
                   className={css.errorMessage}
                   name="hoursOfSport"
@@ -147,7 +243,7 @@ const UserSettingsForm = () => {
             <div className={css.blockWrapper}>
               <p>
                 The required amount of water in liters per day: <br />
-                <span className={css.accentText}>1.8L</span>
+                <span className={css.accentText}>{recommendedDailyNorma}L</span>
               </p>
               <label className={css.inputWrapper}>
                 <span className={css.inputLabel}>
@@ -163,7 +259,7 @@ const UserSettingsForm = () => {
             </div>
           </div>
         </div>
-        <button className={css.saveButton} type="submit">
+        <button className={clsx("green", css.saveButton)} type="submit">
           Save
         </button>
       </Form>
