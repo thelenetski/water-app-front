@@ -11,7 +11,6 @@ import { selectUser } from "../../redux/user/selectors";
 
 import "simplebar-react/dist/simplebar.min.css";
 import css from "./UserSettingsModal.module.css";
-import { data } from "react-router-dom";
 
 const validationParams = Yup.object().shape({
   avatarUrl: Yup.mixed(),
