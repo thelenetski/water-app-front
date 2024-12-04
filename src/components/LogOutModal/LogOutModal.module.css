@@ -57,7 +57,7 @@
   .btnBlock {
     flex-direction: column;
   }
-  
+
   .logoutBtn {
     margin-right: 0;
     width: 100%;
@@ -78,6 +78,7 @@
     font-size: 28px;
     line-height: 32px;
   }
+
   .btn {
     padding: 18px 57px;
     width: 176px;
@@ -88,6 +89,7 @@
     line-height: 24px;
     font-weight: 400;
   }
+  
   .logoutModal {
     max-width: 516px;
     margin-right: 42px;

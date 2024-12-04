@@ -43,7 +43,6 @@ const DeleteModal = () => {
           Cancel
         </button>
       </div>
-      
     </div>
   );
 };
