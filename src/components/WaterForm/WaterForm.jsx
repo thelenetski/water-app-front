@@ -47,10 +47,6 @@ const WaterForm = () => {
         "0"
       )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
     ).toISOString();
-    //   new Date(
-    //   `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
-    // ).toISOString();
-    console.log(isoDate);
     const action =
       type === modalTypes.addWater
         ? addWater({
