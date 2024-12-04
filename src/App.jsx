@@ -8,6 +8,7 @@ import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import { refreshUser } from "./redux/auth/operations.js";
 import Loader from "./components/Loader/Loader.jsx";
+import { getUserCurrent } from "./redux/user/operations.js";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
