@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
-
-import SimpleBar from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
-import * as Yup from "yup";
-
-import css from "./UserSettingsModal.module.css";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/user/selectors";
 import { Formik } from "formik";
+import * as Yup from "yup";
+import SimpleBar from "simplebar-react";
 import toast from "react-hot-toast";
+
+import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import { getUserCurrent, patchUser } from "../../redux/user/operations";
+import { selectUser } from "../../redux/user/selectors";
+
+import "simplebar-react/dist/simplebar.min.css";
+import css from "./UserSettingsModal.module.css";
 
 const validationParams = Yup.object().shape({
   avatarUrl: Yup.mixed(),
@@ -51,12 +51,11 @@ const UserSettingsModal = () => {
   };
 
   const handleSubmit = (values) => {
-    // Создание FormData
     const formData = new FormData();
     formData.append("name", values.name);
     formData.append("gender", values.gender);
     formData.append("email", values.email);
-    img && formData.append("avatarUrl", img); // Передача файла
+    img && formData.append("avatarUrl", img);
     formData.append("weight", Number(values.weight));
     formData.append("sportParticipation", Number(values.sportParticipation));
     formData.append("dailyNorm", Number(values.dailyNorm) * 1000);
@@ -74,7 +73,7 @@ const UserSettingsModal = () => {
 
   return (
     <div className={css.container}>
-      <SimpleBar style={{ maxHeight: "1000px" }}>
+      <SimpleBar style={{ maxHeight: "500px" }}>
         <h3 className={css.title}>Settings</h3>
         <Formik
           initialValues={initialValues}
