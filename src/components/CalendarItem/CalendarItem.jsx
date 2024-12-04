@@ -1,12 +1,14 @@
 import { addActiveDay } from "../../redux/waters/slice";
 import css from "./CalendarItem.module.css";
 import { useDispatch } from "react-redux";
-const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
+const CalendarItem = ({ day, currentDay, data, dailyNorm, currentData }) => {
   const dispatch = useDispatch();
   const chooseDay = (e) => {
     dispatch(addActiveDay({ day: Number(e.target.innerHTML) }));
   };
 
+  const currentDate = new Date()
+  const isCurrentDate = new Date(currentData.year, currentData.month, currentData.day).getTime() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day).getTime()
   return (
     <div className={css.container}>
       <button
@@ -15,7 +17,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
           data?.reduce((acc, item) => (acc += item.amount), 0) >= dailyNorm
             ? css.completed
             : css.notCompleted
-        } ${new Date().getDate() === day && css.currentDay} ${
+        } ${isCurrentDate && css.currentDay} ${
           currentDay === day && css.pickedDay
         }`}
         onClick={chooseDay}

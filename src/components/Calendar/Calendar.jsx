@@ -1,11 +1,12 @@
 import CalendarItem from "../CalendarItem/CalendarItem.jsx";
 import css from "./Calendar.module.css";
 import { useSelector } from "react-redux";
-import { selectWatersMonthly } from "../../redux/waters/selectors.js";
+import { selectWatersMonthly, selectActiveDay } from "../../redux/waters/selectors.js";
 import { selectUser } from "../../redux/user/selectors.js";
 const Calendar = ({ daysOfMonth, day }) => {
   const months = useSelector(selectWatersMonthly);
   const userData = useSelector(selectUser);
+  const currentData = useSelector(selectActiveDay)
 
   const components = Array.from({ length: daysOfMonth }, (_, index) => {
     const currentDayStart = new Date(
@@ -25,8 +26,6 @@ const Calendar = ({ daysOfMonth, day }) => {
     return dataFromDay || undefined;
   });
 
-  // console.log(components)
-
   return (
     <>
       {userData && (
@@ -38,6 +37,7 @@ const Calendar = ({ daysOfMonth, day }) => {
                 currentDay={day}
                 data={item}
                 dailyNorm={userData.data.dailyNorm}
+                currentData={currentData}
               />
             </div>
           ))}

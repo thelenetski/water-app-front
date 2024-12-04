@@ -34,7 +34,7 @@
 }
 
 .pickedDay {
-  border: 1px solid var(--main-color);
+  border: 3px solid var(--main-color);
 }
 .container {
   display: flex;
