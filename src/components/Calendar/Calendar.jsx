@@ -25,8 +25,7 @@ const Calendar = ({ daysOfMonth, day }) => {
 
     return dataFromDay || undefined;
   });
-
-  console.log(components)
+ 
   return (
     <>
       {userData && (
