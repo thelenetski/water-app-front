@@ -23,23 +23,23 @@ const usersSlice = createSlice({
     builder
       .addCase(getAllUsers.pending, handlePending)
       .addCase(getAllUsers.fulfilled, (state, action) => {
-        state.loading = false;
         state.all = action.payload;
+        state.loading = false;
       })
       .addCase(getAllUsers.rejected, handleRejected)
       .addCase(getUserCurrent.pending, handlePending)
       .addCase(getUserCurrent.fulfilled, (state, action) => {
-        state.loading = false;
         state.current = action.payload;
+        state.loading = false;
       })
       .addCase(getUserCurrent.rejected, handleRejected)
       .addCase(patchUser.pending, handlePending)
       .addCase(patchUser.fulfilled, (state, action) => {
-        state.loading = false;
         state.error = null;
         if (state.current && state.current._id === action.payload.data?._id) {
           state.current = action.payload.data;
         }
+        state.loading = false;
       })
       .addCase(patchUser.rejected, handleRejected)
       .addCase(logOut.pending, handlePending)
