@@ -7,9 +7,14 @@ const AdvantagesSection = () => {
     return (
         <section className={styles.advantagesSection}>
             <div className={styles.advantagesContent}>
-                <button className={styles.advantagesCaption}>
-                    Our <span className={styles.advantagesCaptionSpan}>happy</span> customers
-                </button>
+                <div className={styles.advantagesCaption}>
+                <div className={styles.avatarGroup}>
+                 <div className={`${styles.avatarItem} ${styles.avatar1}`}></div>
+                 <div className={`${styles.avatarItem} ${styles.avatar2}`}></div>
+                 <div className={`${styles.avatarItem} ${styles.avatar3}`}></div>
+                </div>
+                <div className={styles.advantagesCaptionText}>Our <span className={styles.advantagesCaptionSpan}>happy</span> customers</div>                   
+                </div>
                 <AdvantagesList items={advantages} />
             </div>
         </section>

@@ -32,8 +32,9 @@
 }
 
 .advantagesCaption {
-  width: 160px;
-  height: 48px;
+  width: auto;
+  max-width: 160px;
+  height: auto;
   position: absolute;
   left: 0;
   bottom: 80px;
@@ -44,14 +45,65 @@
   color: #323f47;
   background-color: #ffffff;
   line-height: 117%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  white-space: normal;
 }
 
 .advantagesCaptionSpan {
   color: #9be1a0;
 }
 
+.avatarGroup {
+  display: flex;
+  position: relative;
+  width: 50%;
+  height: 28px;
+}
 
+.avatarItem {
+  width: 26.4px;
+  height: 28px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
+.avatar1  {
+  background-image: image-set(
+    url('/src/img/adventages-section/user-1.webp') 1x,
+    url('/src/img/adventages-section/user-1@2x.webp') 2x
+  );
+  z-index: 1;
+  transform: translateX(34.89px);
+}
+
+.avatar2 {
+  background-image: image-set(
+    url('/src/img/adventages-section/user-2.webp') 1x,
+    url('/src/img/adventages-section/user-2@2x.webp') 2x
+  );
+  transform: translateX(18px);
+  z-index: 2;
+}
+
+.avatar3 {
+  background-image: image-set(
+    url('/src/img/adventages-section/user-3.webp') 1x,
+    url('/src/img/adventages-section/user-3@2x.webp') 2x
+  );
+  z-index: 3;
+}
+
+.advantagesCaptionText {
+  width: 50%;
+}
 
 @media screen and (min-width: 768px) {
   .advantagesSection {
@@ -72,12 +124,36 @@
   }
 
   .advantagesCaption {
-    width: 237px;
+    max-width: 237px;
     height: 67px;
     font-size: 15px;
     line-height: 149%;
     left: 16px;
+    padding: 10px 20px;
   }
+
+  .avatarGroup {
+    height: 47px;
+    width: 107px;
+  }
+
+  .avatarItem {
+    width: 47px;
+    height: 47px;
+  }
+
+  .avatar1  {
+    transform: translateX(56px);
+  }
+  
+  .avatar2 {
+    transform: translateX(28px);
+  }
+
+  .advantagesCaptionText {
+    width: 90px;
+  }
+
 }
 
 @media screen and (min-width: 1440px) {
