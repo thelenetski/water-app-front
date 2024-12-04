@@ -8,13 +8,14 @@
   font-size: 16px;
 }
 
-@media screen and (max-width: 767px){
-  .text{
+@media screen and (max-width: 767px) {
+  .text {
     font-size: 14px;
   }
 }
 .button {
   background-color: transparent;
+  padding: 0;
 }
 .icon {
   display: flex;

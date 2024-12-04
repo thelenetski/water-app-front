@@ -14,7 +14,6 @@
   gap: 8px;
   padding-top: 24px;
   padding-bottom: 24px;
-  min-height: 142px;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -38,6 +37,12 @@
 
 .wrapper::-webkit-scrollbar-thumb:vertical {
   display: none;
+}
+
+@media screen and (min-width: 376px) {
+  .wrapper {
+    min-height: 142px;
+  }
 }
 
 @media screen and (max-width: 767px) {
