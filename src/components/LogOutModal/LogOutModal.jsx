@@ -39,6 +39,7 @@ const LogOutModal = () => {
           Cancel
         </button>
       </div>
+      
     </div>
   );
 };
