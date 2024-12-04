@@ -118,7 +118,7 @@
 
 @media screen and (min-width: 1440px) {
   .card {
-    gap: 20;
+    gap: 20px;
   }
   .card:not(:last-child) {
     margin-right: 16px;
