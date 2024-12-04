@@ -28,7 +28,7 @@ body {
 :root {
   font-family: Poppins, sans-serif;
   font-size: 14px;
-  line-height: 0.7;
+  /* line-height: 0.7; */
   font-weight: 400;
   --main-color: #9be1a0;
   --hover-green-color: #87d28d;
@@ -106,7 +106,7 @@ h4 {
 
 p {
   font-size: 14px;
-  line-height: 0.7;
+  /* line-height: 0.7; */
 }
 
 body {
@@ -277,7 +277,7 @@ input.error {
 
   p {
     font-size: 16px;
-    line-height: 0.6;
+    /* line-height: 0.6; */
   }
 
   /* main container */
@@ -304,7 +304,7 @@ input.error {
 
   h4 {
     font-size: 18px;
-    line-height: 0.7;
+    /* line-height: 0.7; */
   }
 
   .pageContentWrapper {
