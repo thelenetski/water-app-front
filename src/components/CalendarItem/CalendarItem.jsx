@@ -8,7 +8,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm, currentData }) => {
   };
 
   const currentDate = new Date()
-  const isCurrentDate = new Date(currentData.year, currentData.month, currentData.day).getTime() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day).getTime()
+  const isCurrentDate = new Date(currentData.year, currentData.month, currentDate.getDate()).getTime() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day).getTime()
   return (
     <div className={css.container}>
       <button
