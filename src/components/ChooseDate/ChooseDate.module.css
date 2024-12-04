@@ -3,7 +3,7 @@
   font-size: 28px;
   line-height: 32px;
   letter-spacing: -1%;
-  color: #323F47;
+  color: #323f47;
 }
 
 @media screen and (max-width: 375px) {
@@ -13,10 +13,9 @@
   }
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (min-width: 768px) {
   .date {
     font-size: 28px;
     line-height: 32px;
   }
 }
-
