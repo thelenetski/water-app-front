@@ -21,7 +21,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
       <span className={css.percentage}>
         {`${
           data &&
-          Math.trunc(
+          Math.round(
             (data?.reduce((acc, item) => (acc += item.amount), 0) / dailyNorm) *
               100
           )

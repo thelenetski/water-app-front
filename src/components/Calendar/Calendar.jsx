@@ -6,15 +6,24 @@ import { selectUser } from "../../redux/user/selectors.js";
 const Calendar = ({ daysOfMonth, day }) => {
   const months = useSelector(selectWatersMonthly);
   const userData = useSelector(selectUser);
+
   const components = Array.from({ length: daysOfMonth }, (_, index) => {
-    const day = index + 1;
-    const dataFromDay = months.filter(
-      (month) => new Date(month.createdAt).getDate() === day
+    const currentDayStart = new Date(
+      Date.UTC(new Date().getFullYear(), new Date().getMonth(), index + 1)
     );
+    const nextDayStart = new Date(currentDayStart);
+    nextDayStart.setUTCDate(currentDayStart.getUTCDate() + 1);
+
+    const dataFromDay = months.filter((month) => {
+      const createdAt = new Date(month.createdAt).getTime();
+      return (
+        createdAt >= currentDayStart.getTime() &&
+        createdAt < nextDayStart.getTime()
+      );
+    });
+
     return dataFromDay || undefined;
   });
-
-  console.log(components);
 
   return (
     <>
