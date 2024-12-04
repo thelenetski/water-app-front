@@ -25,6 +25,9 @@
   background-color: var(--not-completed-days-background-color);
 }
 
+.completed {
+  background-color: white;
+}
 .currentDay {
   background-color: var(--font-color);
   color: var(--main-color);

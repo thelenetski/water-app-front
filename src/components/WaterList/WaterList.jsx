@@ -25,8 +25,6 @@ const WaterList = () => {
     );
   }, [dispatch, activeDay]);
 
-  console.log(waterItems);
-
   return (
     <>
       {loading.daily ? (

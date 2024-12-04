@@ -11,7 +11,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
     <div className={css.container}>
       <button
         type="button"
-        className={`${css.item} ${css.notCompleted} ${
+        className={`${css.item} ${ (data?.reduce((acc, item) => acc += item.amount, 0)) >= dailyNorm ? css.completed : css.notCompleted} ${
           new Date().getDate() === day && css.currentDay
         } ${currentDay === day && css.pickedDay}`}
         onClick={chooseDay}
@@ -21,7 +21,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
       <span className={css.percentage}>
         {`${
           data &&
-          Math.trunc(
+          Math.round(
             (data?.reduce((acc, item) => (acc += item.amount), 0) / dailyNorm) *
               100
           )

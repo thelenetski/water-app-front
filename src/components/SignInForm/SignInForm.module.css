@@ -210,4 +210,8 @@
     font-size: 14px;
     line-height: 1.28571;
   }
+
+  .icon {
+    display: none;
+  }
 }
