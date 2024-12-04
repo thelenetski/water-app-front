@@ -17,6 +17,7 @@
 @media screen and (min-width: 375px) {
   .WaterDetailedInfoWrapper {
     width: 343px;
+    height: 770px;
     padding: 40px 20px;
   }
 }
