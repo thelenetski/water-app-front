@@ -4,7 +4,6 @@
   gap: 20px;
   border-radius: 15px;
   padding: 20px;
-  backdrop-filter: blur(33.599998474121094px);
   background: #fff;
 }
 
@@ -12,29 +11,6 @@
   fill: #9be1a0;
   width: 44px;
   height: 45px;
-}
-
-
-.button {
-  height: 14px;
-  padding: 0;
-}
-
-.btnIcon {
-  width: 14px;
-  height: 14px;
-  stroke: #323f47;
-  fill: none;
-}
-
-@media only screen and (min-width: 768px) {
-  .button {
-    height: 16px;
-  }
-  .btnIcon {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 .textBox {
@@ -45,10 +21,19 @@
   min-width: 50px;
 }
 
-@media only screen and (min-width: 768px) {
-  .textBox {
-    gap: 0px;
-  }
+.ml {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: #323f47;
+  white-space: nowrap;
+}
+
+.time {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: rgba(47, 47, 47, 0.6);
 }
 
 .btnBox {
@@ -59,31 +44,27 @@
   gap: 8px;
 }
 
-.ml {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1;
-  color: #323f47;
-  white-space: nowrap;
+.button {
+  height: 14px;
+  padding: 0;
+  background: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .ml {
-    font-size: 15px;
-    line-height: 1.5;
+.btnIcon {
+  width: 14px;
+  height: 14px;
+  stroke: #323f47;
+  fill: none;
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    gap: 10px;
+    padding: 18px 14px;
   }
-}
 
-.time {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1;
-  color: rgba(47, 47, 47, 0.6);
-}
-
-@media only screen and (min-width: 768px) {
-  .time {
-    line-height: 1.9;
+  .card:not(:last-child) {
+    margin-right: 8px;
   }
 
   .bottleIcon {
@@ -92,27 +73,41 @@
   }
 }
 
-@media screen and (max-width: 375px) {
-  .card {
-    gap: 10px;
-    padding: 18px 14px;
-  }
-  
-  .card:not(:last-child) {
-    margin-right: 8px;
-  }
-
-}
-
-
-@media screen and (max-width: 768px) and (min-width: 376px) {
+@media screen and (min-width: 768px) {
   .card:not(:last-child) {
     margin-right: 32px;
   }
+
+  .button {
+    height: 16px;
+  }
+
+  .btnIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .textBox {
+    width: 52px;
+    gap: 0px;
+  }
+
+  .time {
+    line-height: 1.9;
+  }
+
+  .bottleIcon {
+    width: 44px;
+    height: 45px;
+  }
+
+  .ml {
+    font-size: 15px;
+    line-height: 1.5;
+  }
 }
 
-
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1440px) {
   .card:not(:last-child) {
     margin-right: 16px;
   }

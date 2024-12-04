@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import { refreshUser } from "./redux/auth/operations.js";
-import { getWaterDaily } from "./redux/waters/operations.js";
-import { selectActiveDay } from "./redux/waters/selectors.js";
 import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
@@ -20,21 +18,10 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const activeDay = useSelector(selectActiveDay);
 
   useEffect(() => {
-    dispatch(refreshUser())
-      .unwrap()
-      .then(() => {
-        dispatch(
-          getWaterDaily({
-            day: activeDay.day,
-            month: activeDay.month,
-            year: activeDay.year,
-          })
-        );
-      });
-  }, [dispatch, activeDay]);
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return isRefreshing ? (
     <Loader />

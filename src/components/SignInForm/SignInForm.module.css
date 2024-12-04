@@ -1,11 +1,13 @@
+.formWrapper {
+  width: 343px;
+  height: 780px;
+}
+
 .formContainer {
   border-radius: 30px;
-  width: 672px;
-  height: 736px;
   background: #f0eff4;
   padding: 169px 118px;
   position: relative;
-  margin: 32px;
 }
 
 .form {
@@ -143,10 +145,20 @@
   text-align: left;
 }
 
+@media screen and (min-width: 1440px) {
+  .formWrapper {
+    width: 672px;
+    height: 736px;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
-  .formContainer {
+  .formWrapper {
     width: 704px;
     height: 960px;
+  }
+
+  .formContainer {
     padding: 227px 134px;
   }
 

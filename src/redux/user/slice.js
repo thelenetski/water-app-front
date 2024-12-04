@@ -37,14 +37,12 @@ const usersSlice = createSlice({
       .addCase(patchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.current = state.current.map((user) => {
-          if (user.id === action.payload.id) {
-            return (user = action.payload);
-          }
-          return user;
-        });
+        if (state.current && state.current._id === action.payload.data?._id) {
+          state.current = action.payload.data;
+        }
       })
       .addCase(patchUser.rejected, handleRejected)
+      .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, (state) => {
         state.all = [];
         state.current = null;

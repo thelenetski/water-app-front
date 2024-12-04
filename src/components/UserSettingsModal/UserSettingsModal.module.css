@@ -1,11 +1,18 @@
-/* .container {
+.container {
   box-sizing: border-box;
-  width: 343px;
-  padding: 40px 20px;
-} */
+
+  /* width: 303px; */
+}
 
 .title {
   margin-bottom: 20px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    max-width: 303px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -13,18 +20,13 @@
     font-size: 28px;
   }
 
-  /* .container {
+  .container {
     width: 648px;
-    padding: 40px;
-  } */
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-  .title {
-    font-size: 28px;
+  .container {
+    width: 840px;
   }
-
-  /* .container {
-    width: 920px;
-  } */
 }

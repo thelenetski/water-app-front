@@ -1,52 +1,58 @@
 .logoutModal {
-    max-width: 516px;
-    text-align: center;
-    padding: 40px;
-    border-radius: 15px;
+  max-width: 516px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 15px;
 }
 
 .title {
-    color: #323F47;
-    font-weight: bold;
-    font-size: 28;
+  color: #323f47;
+  font-weight: bold;
+  font-size: 28;
 }
 
 .text {
-    color: #323F47;
-    margin: 24px 0 24px 0;
-    font-size: 18px;
+  color: #323f47;
+  margin: 24px 0 24px 0;
+  font-size: 18px;
 }
 
 .btn {
-    min-width: 170px;
-    padding: 18px 0;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #323F47;
+  min-width: 170px;
+  padding: 18px 0;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #323f47;
 }
 
 .logoutBtn {
-    margin-right: 10px;
-    background-color: #9BE1A0;
+  margin-right: 10px;
+  background-color: #9be1a0;
 }
 
 .cancelBtn {
-    opacity: 30%;
-    background-color: #F0EFF4;
+  opacity: 30%;
+  background-color: #f0eff4;
+}
+
+.btnDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #e6e6e6;
 }
 
 @media screen and (max-width: 450px) {
-    .btn {
-        width: 304px;
-    }
+  .btn {
+    width: 304px;
+  }
 
-    .logoutBtn {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+  .logoutBtn {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 
-    .logoutModal {
-        padding: 40px 17px;
-    }
+  .logoutModal {
+    padding: 40px 17px;
+  }
 }
