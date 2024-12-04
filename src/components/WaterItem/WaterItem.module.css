@@ -1,7 +1,7 @@
 .card {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 8px;
   border-radius: 15px;
   padding: 20px;
   background: #fff;
@@ -57,6 +57,12 @@
   fill: none;
 }
 
+@media screen and (max-width: 375px) {
+  .card {
+    gap: 8px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .card {
     gap: 10px;
@@ -74,6 +80,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .card {
+    width: 192px;
+  }
   .card:not(:last-child) {
     margin-right: 32px;
   }
@@ -108,6 +117,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .card {
+    gap: 20;
+  }
   .card:not(:last-child) {
     margin-right: 16px;
   }

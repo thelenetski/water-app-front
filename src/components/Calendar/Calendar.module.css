@@ -4,8 +4,24 @@
   gap: 15px 43px;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   .calendarItems {
     gap: 20px 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .calendarItems {
+    width: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 48px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .calendarItems {
+    width: 605px;
+    gap: 15px 43px;
   }
 }
