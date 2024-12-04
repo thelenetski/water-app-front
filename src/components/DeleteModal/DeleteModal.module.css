@@ -1,7 +1,6 @@
 .deleteModal {
   max-width: 344px;
   text-align: center;
-  border-radius: 15px;
 }
 
 .title {
@@ -13,12 +12,20 @@
   align-items: center;
   text-transform: initial;
 }
+
 .text {
   color: #323f47;
-  margin: 16px 10px 28px 10px;
+  margin: 16px 0 28px ;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+}
+
+.buttonDelWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
 }
 
 .btn {
@@ -35,19 +42,27 @@
   background-color: #9be1a0;
 }
 
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-color: #87d28d;
+}
+
 .cancelBtn {
   opacity: 30%;
   background-color: #f0eff4;
-  margin-top: 9px;
+}
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+  opacity: 100%;
+  background-color: #f0eff4;
+  color: #323f47;
 }
 
 @media screen and (min-width: 768px) {
   .deleteModal {
-    max-width: 516px;
+    max-width: 436px;
     text-align: center;
-    border-radius: 15px;
-    margin-right: 28px;
-    margin-left: 28px;
   }
 
   .title {
@@ -58,22 +73,30 @@
   }
 
   .text {
+    width: 436px;
     color: #323f47;
     margin: 24px 0 24px 0;
     font-size: 18px;
+    line-height: 133%;
+  }
+
+  .buttonDelWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .btn {
-    min-width: 170px;
+    max-width: 170px;
     padding: 18px 0;
     border-radius: 30px;
     font-size: 16px;
     font-weight: bold;
     color: #323f47;
+    height: 60px;
   }
 
   .deleteBtn {
-    margin-right: 10px;
     background-color: #9be1a0;
   }
 
@@ -86,14 +109,26 @@
   .deleteBtn {
     margin-right: 0;
     width: 100%;
-    margin-bottom: 10px;
+  }
+
+  .deleteBtn:hover,
+  .deleteBtn:focus {
+    background-color: #87d28d;
   }
 
   .deleteModal {
     padding: 40px 17px;
     max-width: 100%;
   }
+  
   .cancelBtn {
     width: 100%;
+  }
+
+  .cancelBtn:hover,
+  .cancelBtn:focus {
+  opacity: 100%;
+  background-color: #f0eff4;
+  color: #323f47;
   }
 }
