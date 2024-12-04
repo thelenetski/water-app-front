@@ -1,86 +1,42 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { BsExclamationLg } from "react-icons/bs";
-import toast from "react-hot-toast";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import clsx from "clsx";
+import { Form, Field, ErrorMessage } from "formik";
 import { useFormikContext } from "formik";
-import * as Yup from "yup";
 
-import { selectUser } from "../../redux/user/selectors";
-import { patchUser } from "../../redux/user/operations";
+import { selectUser, selectUserLoading } from "../../redux/user/selectors";
 
 import css from "./UserSettingsForm.module.css";
 import avatar from "../../img/default-avatar.webp";
-import clsx from "clsx";
 
-const UserSettingsForm = () => {
-  // const dispatch = useDispatch();
+const UserSettingsForm = ({ setImg }) => {
   const user = useSelector(selectUser);
-  const [preview, setPreview] = useState(user.avatarUrl || null);
-  // const [gender, setGender] = useState("woman");
-  // const [weight, setWeight] = useState(0);
-  // const [sportParticipation, setSportParticipation] = useState(0);
+  const loading = useSelector(selectUserLoading);
+  const [preview, setPreview] = useState(user?.data?.avatarUrl || null);
   const [recommendedDailyNorma, setRecommendedDailyNorma] = useState(null);
 
-  // const initialValues = {
-  //   name: user.data.name || "",
-  //   gender: user.data.gender || "woman",
-  //   email: user.data.email || "",
-  //   avatarUrl: user.data.avatarUrl || "",
-  //   weight: user.data.weight || "",
-  //   sportParticipation: user.data.sportParticipation || "",
-  //   dailyNorm: user.data.dailyNorm / 1000 || "",
-  // };
   const { values, setFieldValue } = useFormikContext();
 
-  // Приклад: Динамічний розрахунок
   useEffect(() => {
     if (values.weight) {
       const norma =
-        values.gender === "woman"
+        values.gender === "female"
           ? values.weight * 0.03 + values.sportParticipation * 0.4
           : values.weight * 0.04 + values.sportParticipation * 0.6;
       setRecommendedDailyNorma(norma.toFixed(1));
     } else setRecommendedDailyNorma(1.8);
   }, [values.weight, values.sportParticipation, values.gender]);
 
-  // useEffect(() => {
-  //   setRecommendedDailyNorma(1.8);
-  //   if (weight) {
-  //     if (gender === "woman") {
-  //       setRecommendedDailyNorma(
-  //         (weight * 0.03 + sportParticipation * 0.4).toFixed(1)
-  //       );
-  //     } else {
-  //       setRecommendedDailyNorma(
-  //         (weight * 0.04 + sportParticipation * 0.6).toFixed(1)
-  //       );
-  //     }
-  //   }
-  // }, [weight, sportParticipation, gender]);
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file)); // Створення URL для файлу
+      setImg(file);
     }
   };
-
-  // const handleSubmit = (values, actions) => {
-  //   console.log(values);
-  //   dispatch(
-  //     patchUser({ ...user.data, ...values })
-  //       .unwrap()
-  //       .then(() => {
-  //         toast.success("Saved info successfully");
-  //       })
-  //       .catch((error) => {
-  //         toast.error("Something went wrong: " + error.message);
-  //       })
-  //   );
-  // };
 
   return (
     <Form className={css.formWrapper}>
@@ -110,28 +66,12 @@ const UserSettingsForm = () => {
           <h3 className={css.inputLabel}>Your gender identity</h3>
           <div className={css.checkmarkWrapper}>
             <label className={css.radioWrapper}>
-              <Field
-                type="radio"
-                name="gender"
-                value="woman"
-                // checked={gender === "woman"}
-                // onChange={(e) => {
-                //   setGender(e.target.value);
-                // }}
-              />
+              <Field type="radio" name="gender" value="female" />
               <span className={css.checkmark}></span>
               <span>Woman</span>
             </label>
             <label className={css.radioWrapper}>
-              <Field
-                type="radio"
-                name="gender"
-                value="man"
-                // checked={gender === "man"}
-                // onChange={(e) => {
-                //   setGender(e.target.value);
-                // }}
-              />
+              <Field type="radio" name="gender" value="male" />
               <span className={css.checkmark}></span>
               <span>Man</span>
             </label>
@@ -187,15 +127,7 @@ const UserSettingsForm = () => {
           <div className={css.blockWrapper}>
             <label className={css.inputWrapper}>
               <span>Your weight in kilograms:</span>
-              <Field
-                type="text"
-                name="weight"
-                placeholder="0"
-                // value={weight}
-                // onChange={(e) => {
-                //   setWeight(e.target.value);
-                // }}
-              />
+              <Field type="text" name="weight" placeholder="0" />
               <ErrorMessage
                 className={css.errorMessage}
                 name="weight"
@@ -204,15 +136,7 @@ const UserSettingsForm = () => {
             </label>
             <label className={css.inputWrapper}>
               <span>The time of active participation in sports:</span>
-              <Field
-                type="text"
-                name="sportParticipation"
-                placeholder="0"
-                // value={sportParticipation}
-                // onChange={(e) => {
-                //   setSportParticipation(e.target.value);
-                // }}
-              />
+              <Field type="text" name="sportParticipation" placeholder="0" />
               <ErrorMessage
                 className={css.errorMessage}
                 name="sportParticipation"
@@ -241,7 +165,7 @@ const UserSettingsForm = () => {
         </div>
       </div>
       <button type="submit" className={clsx("green", css.saveButton)}>
-        Save
+        {loading ? "Loading..." : "Save"}
       </button>
     </Form>
   );

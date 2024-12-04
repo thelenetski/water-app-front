@@ -1,5 +1,5 @@
 .container {
-  width: 608px;
+  max-width: 608px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -17,4 +17,22 @@
   font-weight: 700;
   font-size: 28px;
   line-height: 1.14;
+}
+
+@media screen and (max-width: 767px) {
+  .text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 672px;
+  }
 }

@@ -9,5 +9,8 @@
     flex-direction: row;
     gap: 32px;
   }
-}
 
+  .advantagesWrapper {
+    display: flex;
+  }
+}

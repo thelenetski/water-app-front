@@ -1,10 +1,14 @@
 import { useSelector } from "react-redux";
 import css from "./WaterMainInfo.module.css";
-import { selectWatersDaily } from "../../redux/waters/selectors";
+import {
+  selectActiveDay,
+  selectWatersDaily,
+} from "../../redux/waters/selectors";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
+import Logo from "../Logo/Logo";
 
 export default function WaterMainInfo() {
   const user = useSelector(selectUser);
@@ -17,8 +21,38 @@ export default function WaterMainInfo() {
 
   const [drankPerDay, setDrankPerDay] = useState(0);
 
+  const currentDate = useSelector(selectActiveDay);
+
   const dailyNorm = user !== null ? user.data.dailyNorm : 1500;
   const dailyNormLiter = dailyNorm / 1000;
+
+  const localDate = () => {
+    const milliseconds = Date.now();
+    const date = new Date(milliseconds);
+    return date.toLocaleDateString().replace(/\//g, ".");
+  };
+
+  const day = currentDate?.day;
+  const date = `${currentDate?.day}.${currentDate?.month + 1}.${
+    currentDate?.year
+  }`;
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const month = currentDate !== null ? months[+currentDate?.month] : "??";
 
   //victor change
   const amountDrankWater =
@@ -47,6 +81,7 @@ export default function WaterMainInfo() {
   return (
     <>
       <div className={css.main}>
+        <Logo />
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"
@@ -79,7 +114,12 @@ export default function WaterMainInfo() {
           <p className={css.p2}>My daily norma</p>
         </div>
         <div className={css.progressBar}>
-          <p className={css.pToday}>Today</p>
+          <p className={css.pToday}>
+            {currentDate !== null &&
+            date.toString().padStart(10, "0") === localDate()
+              ? "Today"
+              : `${day}, ${month}`}
+          </p>
           <div className={css.barMain}>
             <div className={css.barBg}>
               <div

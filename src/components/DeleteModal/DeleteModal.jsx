@@ -30,14 +30,14 @@ const DeleteModal = () => {
       <div className={css.btnBlock}>
         <button
           type="button"
-          className={`${css.btn} ${css.deleteBtn}`}
+          className={`${css.btn} ${loading.main ? css.btnDisabled : css.deleteBtn}`}
           onClick={handleDelete}
         >
-          {loading ? "Deleting..." : "Delete"}
+          {loading.main ? "Deleting..." : "Delete"}
         </button>
         <button
           type="button"
-          className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
+          className={`${css.btn} ${css.cancelBtn}`}
           onClick={() => dispatch(closeModal())}
         >
           Cancel

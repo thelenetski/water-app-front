@@ -5,15 +5,12 @@
   padding-top: 40px;
 }
 
-
-
 @media screen and (max-width: 767px) {
   .container {
-    min-width: 303px;
   }
-  
+
   .wrapper {
-    width: 303px;
+    width: 100%;
   }
 }
 
@@ -21,9 +18,10 @@
   .container {
     width: 640px;
   }
-  
+
   .wrapper {
     width: 640px;
+    padding: 0;
   }
 }
 
@@ -31,7 +29,7 @@
   .container {
     min-width: 608px;
   }
-  
+
   .wrapper {
     width: 608px;
   }

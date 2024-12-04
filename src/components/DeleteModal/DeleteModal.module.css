@@ -1,55 +1,114 @@
 .deleteModal {
-    max-width: 516px;
-    text-align: center;
-    padding: 40px;
-    border-radius: 15px;
-    color: #323F47;
+  max-width: 344px;
+  text-align: center;
+  border-radius: 15px;
 }
 
 .title {
-    font-weight: bold;
-    font-size: 28;
+  color: #323f47;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+  align-items: center;
+  text-transform: initial;
 }
-
 .text {
-    margin: 24px 0 24px 0;
-    font-size: 18px;
+  color: #323f47;
+  margin: 16px 10px 28px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .btn {
-    min-width: 170px;
-    padding: 18px 0;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: bold;
+  width: 304px;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #323f47;
+  text-transform: initial;
 }
 
 .deleteBtn {
-    background-color: #9BE1A0;
+  background-color: #9be1a0;
 }
 
 .cancelBtn {
-    opacity: 30%;
-    background-color: #F0EFF4;
+  opacity: 30%;
+  background-color: #f0eff4;
 }
 
 .btnDisabled {
-    pointer-events: none;
-    cursor: not-allowed;
-    background: #e6e6e6;
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #e6e6e6;
 }
 
 .btnBlock {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-@media screen and (max-width: 450px) {
-    .btnBlock {
-        flex-direction: column;
-    }
+@media screen and (min-width: 768px) {
 
-    .logoutModal {
-        padding: 40px 17px;
-    }
+  .deleteModal {
+    max-width: 516px;
+    text-align: center;
+    border-radius: 15px;
+    margin-right: 28px;
+    margin-left: 28px;
+  }
+
+  .title {
+    color: #323f47;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .text {
+    color: #323f47;
+    margin: 24px 0 24px 0;
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 18px 57px;
+    width: 176px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #323f47;
+  }
+
+  .deleteBtn {
+    margin-right: 10px;
+    background-color: #9be1a0;
+  }
+
+  .cancelBtn {
+    opacity: 30%;
+    background-color: #f0eff4;
+  }
+}
+@media screen and (max-width: 374px) {
+  .btnBlock {
+    flex-direction: column;
+  }
+
+  .deleteBtn {
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .deleteModal {
+    padding: 40px 17px;
+    max-width: 100%;
+  }
+  .cancelBtn {
+    width: 100%;
+  }
 }

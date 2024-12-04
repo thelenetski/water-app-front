@@ -6,7 +6,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { toast } from "react-hot-toast";
 import { modalTypes } from "../../redux/modal/slice";
 import { selectTypeModal } from "../../redux/modal/selectors";
-import { selectLoading } from "../../redux/waters/selectors";
+import { selectActiveDay, selectLoading } from "../../redux/waters/selectors";
 import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
 import { selectContentModal } from "../../redux/modal/selectors";
@@ -30,6 +30,7 @@ const WaterForm = () => {
   const loading = useSelector(selectLoading);
   const type = useSelector(selectTypeModal);
   const contentWaterModal = useSelector(selectContentModal);
+  const activeDay = useSelector(selectActiveDay);
 
   const time = new Date(contentWaterModal?.createdAt).toLocaleTimeString(
     "ua-UA",
@@ -41,14 +42,23 @@ const WaterForm = () => {
 
   const handleSubmit = (values) => {
     const isoDate = new Date(
-      `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+      `${activeDay.year}-${String(activeDay.month + 1).padStart(
+        2,
+        "0"
+      )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
     ).toISOString();
-
+    //   new Date(
+    //   `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+    // ).toISOString();
+    console.log(isoDate);
     const action =
       type === modalTypes.addWater
         ? addWater({
             date: new Date(
-              `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+              `${activeDay.year}-${String(activeDay.month + 1).padStart(
+                2,
+                "0"
+              )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
             ).toISOString(),
             amount: values.amount,
           })
@@ -77,8 +87,8 @@ const WaterForm = () => {
 
   return (
     <>
-      {loading && <Loader />}
-      {loading && <div className={css.loaderBackdrop}></div>}
+      {loading.main && <Loader />}
+      {loading.main && <div className={css.loaderBackdrop}></div>}
       <Formik
         initialValues={{
           date: contentWaterModal?.date
@@ -137,11 +147,12 @@ const WaterForm = () => {
                   className={css.errorMessage}
                 />
               </label>
-              <Field className={css.input} type="time" id="date" name="date" /><ErrorMessage
-                  name="date"
-                  component="span"
-                  className={css.errorMessage}
-                />
+              <Field className={css.input} type="time" id="date" name="date" />
+              <ErrorMessage
+                name="date"
+                component="span"
+                className={css.errorMessage}
+              />
 
               <label className={css.valueLabel} htmlFor="value">
                 Enter the value of the water used:
@@ -162,7 +173,7 @@ const WaterForm = () => {
             <button
               className={css.submitButton}
               type="submit"
-              disabled={loading}
+              disabled={loading.main}
             >
               Save
             </button>

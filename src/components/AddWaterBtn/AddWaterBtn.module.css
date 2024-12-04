@@ -47,7 +47,8 @@
   border-radius: 30px;
   background-color: #9be1a0;
   fill: #323f47;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .text {
@@ -63,6 +64,13 @@
   letter-spacing: -0.01em;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.btnDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 @media only screen and (max-width: 767px) {
   .wrapper.waterMain {
     width: 140px;
@@ -90,4 +98,4 @@
     line-height: 1.5;
     color: #323f47;
   }
-}  
+}

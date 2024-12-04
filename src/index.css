@@ -28,7 +28,7 @@ body {
 :root {
   font-family: Poppins, sans-serif;
   font-size: 14px;
-  line-height: 0.7;
+  /* line-height: 0.7; */
   font-weight: 400;
   --main-color: #9be1a0;
   --hover-green-color: #87d28d;
@@ -106,7 +106,7 @@ h4 {
 
 p {
   font-size: 14px;
-  line-height: 0.7;
+  /* line-height: 0.7; */
 }
 
 body {
@@ -116,8 +116,7 @@ body {
 /* mainContainer */
 
 .pageContentWrapper {
-  padding: 40px 20px;
-  height: 100vh;
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -278,13 +277,13 @@ input.error {
 
   p {
     font-size: 16px;
-    line-height: 0.6;
+    /* line-height: 0.6; */
   }
 
   /* main container */
 
   .pageContentWrapper {
-    padding: 40px;
+    padding: 32px;
   }
 }
 
@@ -305,10 +304,11 @@ input.error {
 
   h4 {
     font-size: 18px;
-    line-height: 0.7;
+    /* line-height: 0.7; */
   }
 
   .pageContentWrapper {
+    height: 100vh;
     flex-direction: row;
     gap: 32px;
   }

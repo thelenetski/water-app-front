@@ -5,16 +5,29 @@
   width: 38px;
   height: 38px;
 
+  padding: 0;
   border-radius: 50%;
   color: var(--font-color);
 
   font-weight: 700;
 }
 
+@media screen and (max-width:767px){
+  .item{
+    width: 27px;
+    height: 27px;
+
+    font-size: 14px;
+  }
+}
+
 .notCompleted {
   background-color: var(--not-completed-days-background-color);
 }
 
+.completed {
+  background-color: white;
+}
 .currentDay {
   background-color: var(--font-color);
   color: var(--main-color);

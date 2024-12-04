@@ -37,11 +37,8 @@ const usersSlice = createSlice({
       .addCase(patchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        console.log(action.payload.data);
         if (state.current && state.current._id === action.payload.data?._id) {
           state.current = action.payload.data;
-        } else {
-          console.error("User ID mismatch or state.current is undefined.");
         }
       })
       .addCase(patchUser.rejected, handleRejected)

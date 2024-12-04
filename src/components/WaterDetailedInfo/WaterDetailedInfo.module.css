@@ -1,20 +1,31 @@
 .WaterDetailedInfoWrapper {
-  background-color: #F0EFF4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f0eff4;
   border-radius: 30px;
-  padding: 32px;
+  padding: 16px;
 }
 
-@media screen and (max-width: 767px) {
+.TodayWaterInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media screen and (min-width: 375px) {
   .WaterDetailedInfoWrapper {
     width: 343px;
     padding: 40px 20px;
   }
-
 }
 
 @media screen and (min-width: 768px) {
   .WaterDetailedInfoWrapper {
     width: 704px;
+    height: 738px;
+    padding: 40px 32px;
   }
 }
 
@@ -24,5 +35,3 @@
     height: 736px;
   }
 }
-
-

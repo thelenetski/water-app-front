@@ -33,7 +33,7 @@ const LogOutModal = () => {
         </button>
         <button
           type="button"
-          className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
+          className={`${css.btn} ${css.cancelBtn}`}
           onClick={() => dispatch(closeModal())}
         >
           Cancel

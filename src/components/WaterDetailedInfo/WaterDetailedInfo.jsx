@@ -6,8 +6,10 @@ import css from "./WaterDetailedInfo.module.css";
 const WaterDetailedInfo = () => {
   return (
     <div className={css.WaterDetailedInfoWrapper}>
-      <UserPanel />
-      <DailyInfo />
+      <div className={css.TodayWaterInfoWrapper}>
+        <UserPanel />
+        <DailyInfo />
+      </div>
       <MonthInfo />
     </div>
   );

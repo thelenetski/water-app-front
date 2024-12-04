@@ -4,9 +4,8 @@
   border-radius: 15px;
   background-color: #ffffff;
   box-shadow: 0 4px 50px rgba(0, 0, 0, 0.1);
-  width: fit-content;
+  width: 344px;
   height: fit-content;
-  /* max-height: 80%; */
 }
 
 .modalOverlay {
@@ -24,6 +23,7 @@
 
 .modalContent {
   position: relative;
+
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -51,26 +51,15 @@
   stroke: #2f2f2f;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 374px) {
   .modalWrapper {
-    width: calc(100% - 72px);
-  }
-}
-
-/* @media screen and (min-width: 375px) and (max-width: 767px) {
-  .modalContent {
-    width: 100%;
+    width: calc(100% - 32px);
   }
 } */
 
 @media screen and (min-width: 768px) {
   .modalWrapper {
     padding: 40px;
+    width: fit-content;
   }
-  .modalContent {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
 }

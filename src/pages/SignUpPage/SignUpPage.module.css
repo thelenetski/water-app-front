@@ -3,8 +3,6 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 32px;
-  padding: 32px;
-
 }
 
 .formWrapper {
@@ -13,36 +11,31 @@
 
 .advantagesWrapper {
   flex: 1;
-  display:flex;
+  display: flex;
   justify-content: center;
   height: 736px;
 }
 
 @media (max-width: 1024px) {
   .signUpPage {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 16px;
-
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
   .advantagesWrapper {
     display: none;
   }
 }
 
-
 @media (max-width: 1439px) {
-    .signUpPage {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 32px;
-
-}
+  .signUpPage {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+  }
   .advantagesWrapper {
-   display: none;
+    display: none;
   }
 }
