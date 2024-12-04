@@ -32,7 +32,7 @@ const DeleteModal = () => {
         className={`${css.btn} ${css.deleteBtn}`}
         onClick={handleDelete}
       >
-        {loading ? "Deleting..." : "Delete"}
+        {loading.main ? "Deleting..." : "Delete"}
       </button>
       <button
         type="button"

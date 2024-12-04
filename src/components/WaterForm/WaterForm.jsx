@@ -77,8 +77,8 @@ const WaterForm = () => {
 
   return (
     <>
-      {loading && <Loader />}
-      {loading && <div className={css.loaderBackdrop}></div>}
+      {loading.main && <Loader />}
+      {loading.main && <div className={css.loaderBackdrop}></div>}
       <Formik
         initialValues={{
           date: contentWaterModal?.date
@@ -137,11 +137,12 @@ const WaterForm = () => {
                   className={css.errorMessage}
                 />
               </label>
-              <Field className={css.input} type="time" id="date" name="date" /><ErrorMessage
-                  name="date"
-                  component="span"
-                  className={css.errorMessage}
-                />
+              <Field className={css.input} type="time" id="date" name="date" />
+              <ErrorMessage
+                name="date"
+                component="span"
+                className={css.errorMessage}
+              />
 
               <label className={css.valueLabel} htmlFor="value">
                 Enter the value of the water used:
@@ -162,7 +163,7 @@ const WaterForm = () => {
             <button
               className={css.submitButton}
               type="submit"
-              disabled={loading}
+              disabled={loading.main}
             >
               Save
             </button>

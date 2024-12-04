@@ -27,20 +27,20 @@ const WaterList = () => {
 
   return (
     <>
-      {!waterItems?.length ? (
-        <div className={css.noWater}>
-          {!loading ? `You haven\u2019t added the water yet.` : "Loading..."}
-        </div>
-      ) : loading ? (
-        <div className={css.noWater}>{`Loading...`}</div>
+      {loading.daily ? (
+        <div className={css.noWater}>Loading...</div>
+      ) : !waterItems?.length ? (
+        <div className={css.noWater}>You haven’t added the water yet.</div>
       ) : (
-        <ul className={css.wrapper}>
-          {waterItems.map((item) => (
-            <li key={item?._id} className={css.item}>
-              <WaterItem item={item} />
-            </li>
-          ))}
-        </ul>
+        !loading.daily && (
+          <ul className={css.wrapper}>
+            {waterItems.map((item) => (
+              <li key={item?._id} className={css.item}>
+                <WaterItem item={item} />
+              </li>
+            ))}
+          </ul>
+        )
       )}
     </>
   );
