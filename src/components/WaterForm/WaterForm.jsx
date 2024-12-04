@@ -6,7 +6,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { toast } from "react-hot-toast";
 import { modalTypes } from "../../redux/modal/slice";
 import { selectTypeModal } from "../../redux/modal/selectors";
-import { selectLoading } from "../../redux/waters/selectors";
+import { selectActiveDay, selectLoading } from "../../redux/waters/selectors";
 import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
 import { selectContentModal } from "../../redux/modal/selectors";
@@ -30,6 +30,7 @@ const WaterForm = () => {
   const loading = useSelector(selectLoading);
   const type = useSelector(selectTypeModal);
   const contentWaterModal = useSelector(selectContentModal);
+  const activeDay = useSelector(selectActiveDay);
 
   const time = new Date(contentWaterModal?.createdAt).toLocaleTimeString(
     "ua-UA",
@@ -41,14 +42,23 @@ const WaterForm = () => {
 
   const handleSubmit = (values) => {
     const isoDate = new Date(
-      `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+      `${activeDay.year}-${String(activeDay.month + 1).padStart(
+        2,
+        "0"
+      )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
     ).toISOString();
-
+    //   new Date(
+    //   `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+    // ).toISOString();
+    console.log(isoDate);
     const action =
       type === modalTypes.addWater
         ? addWater({
             date: new Date(
-              `${new Date().toISOString().split("T")[0]}T${values.date}:00Z`
+              `${activeDay.year}-${String(activeDay.month + 1).padStart(
+                2,
+                "0"
+              )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
             ).toISOString(),
             amount: values.amount,
           })

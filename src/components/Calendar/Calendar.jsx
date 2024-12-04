@@ -15,7 +15,7 @@ const Calendar = ({ daysOfMonth, day }) => {
     nextDayStart.setUTCDate(currentDayStart.getUTCDate() + 1);
 
     const dataFromDay = months.filter((month) => {
-      const createdAt = new Date(month.createdAt).getTime();
+      const createdAt = new Date(month.date).getTime();
       return (
         createdAt >= currentDayStart.getTime() &&
         createdAt < nextDayStart.getTime()
@@ -24,6 +24,8 @@ const Calendar = ({ daysOfMonth, day }) => {
 
     return dataFromDay || undefined;
   });
+
+  // console.log(components)
 
   return (
     <>
