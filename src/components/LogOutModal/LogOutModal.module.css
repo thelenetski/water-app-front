@@ -1,18 +1,17 @@
 .logoutModal {
-  max-width: 516px;
+  width: 516px;
   text-align: center;
   padding: 40px;
   border-radius: 15px;
+  color: #323f47;
 }
 
 .title {
-  color: #323f47;
   font-weight: bold;
   font-size: 28;
 }
 
 .text {
-  color: #323f47;
   margin: 24px 0 24px 0;
   font-size: 18px;
 }
@@ -23,7 +22,6 @@
   border-radius: 30px;
   font-size: 16px;
   font-weight: bold;
-  color: #323f47;
 }
 
 .logoutBtn {
@@ -42,14 +40,14 @@
   background: #e6e6e6;
 }
 
-@media screen and (max-width: 450px) {
-  .btn {
-    width: 304px;
-  }
+.btnBlock {
+  display: flex;
+  gap: 10px;
+}
 
-  .logoutBtn {
-    margin-right: 0;
-    margin-bottom: 10px;
+@media screen and (max-width: 450px) {
+  .btnBlock {
+    flex-direction: column;
   }
 
   .logoutModal {

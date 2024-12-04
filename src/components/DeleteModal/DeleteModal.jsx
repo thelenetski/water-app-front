@@ -27,20 +27,23 @@ const DeleteModal = () => {
     <div className={css.deleteModal}>
       <h2 className={css.title}>Delete entry</h2>
       <p className={css.text}>Are you sure you want to delete the entry?</p>
-      <button
-        type="button"
-        className={`${css.btn} ${css.deleteBtn}`}
-        onClick={handleDelete}
-      >
-        {loading ? "Deleting..." : "Delete"}
-      </button>
-      <button
-        type="button"
-        className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
-        onClick={() => dispatch(closeModal())}
-      >
-        Cancel
-      </button>
+      <div className={css.btnBlock}>
+        <button
+          type="button"
+          className={`${css.btn} ${css.deleteBtn}`}
+          onClick={handleDelete}
+        >
+          {loading ? "Deleting..." : "Delete"}
+        </button>
+        <button
+          type="button"
+          className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
+          onClick={() => dispatch(closeModal())}
+        >
+          Cancel
+        </button>
+      </div>
+      
     </div>
   );
 };

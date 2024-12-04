@@ -3,16 +3,15 @@
     text-align: center;
     padding: 40px;
     border-radius: 15px;
+    color: #323F47;
 }
 
 .title {
-    color: #323F47;
     font-weight: bold;
     font-size: 28;
 }
 
 .text {
-    color: #323F47;
     margin: 24px 0 24px 0;
     font-size: 18px;
 }
@@ -23,11 +22,9 @@
     border-radius: 30px;
     font-size: 16px;
     font-weight: bold;
-    color: #323F47;
 }
 
 .deleteBtn {
-    margin-right: 10px;
     background-color: #9BE1A0;
 }
 
@@ -40,16 +37,16 @@
     pointer-events: none;
     cursor: not-allowed;
     background: #e6e6e6;
-  }
+}
+
+.btnBlock {
+    display: flex;
+    gap: 10px;
+}
 
 @media screen and (max-width: 450px) {
-    .btn {
-        width: 304px;
-    }
-
-    .logoutBtn {
-        margin-right: 0;
-        margin-bottom: 10px;
+    .btnBlock {
+        flex-direction: column;
     }
 
     .logoutModal {

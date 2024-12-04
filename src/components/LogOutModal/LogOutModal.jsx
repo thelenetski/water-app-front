@@ -24,19 +24,21 @@ const LogOutModal = () => {
     <div className={css.logoutModal}>
       <h2 className={css.title}>Log out</h2>
       <p className={css.text}>Do you really want to leave?</p>
-      <button
-        className={`${css.btn} ${css.logoutBtn} ${loading && css.btnDisabled}`}
-        onClick={handleLogout}
-      >
-        {loading ? "Logging out..." : "Log out"}
-      </button>
-      <button
-        type="button"
-        className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
-        onClick={() => dispatch(closeModal())}
-      >
-        Cancel
-      </button>
+      <div className={css.btnBlock}>
+        <button
+          className={`${css.btn} ${css.logoutBtn} ${loading && css.btnDisabled}`}
+          onClick={handleLogout}
+        >
+          {loading ? "Logging out..." : "Log out"}
+        </button>
+        <button
+          type="button"
+          className={`${css.btn} ${loading ? css.btnDisabled : css.cancelBtn}`}
+          onClick={() => dispatch(closeModal())}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };
