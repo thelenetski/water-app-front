@@ -42,10 +42,10 @@
   background-color: #9be1a0;
 }
 
-.deleteBtn:hover,
+/* .deleteBtn:hover,
 .deleteBtn:focus {
   background-color: #87d28d;
-}
+} */
 
 .cancelBtn {
   opacity: 30%;
@@ -57,6 +57,12 @@
   opacity: 100%;
   background-color: #f0eff4;
   color: #323f47;
+}
+
+.btnDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #e6e6e6;
 }
 
 @media screen and (min-width: 768px) {
@@ -111,16 +117,16 @@
     width: 100%;
   }
 
-  .deleteBtn:hover,
+  /* .deleteBtn:hover,
   .deleteBtn:focus {
     background-color: #87d28d;
-  }
+  } */
 
   .deleteModal {
     padding: 40px 17px;
     max-width: 100%;
   }
-  
+
   .cancelBtn {
     width: 100%;
   }
@@ -131,4 +137,10 @@
   background-color: #f0eff4;
   color: #323f47;
   }
+
+  .btnDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: #e6e6e6;
+ }
 }

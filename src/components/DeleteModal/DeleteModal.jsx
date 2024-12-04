@@ -30,7 +30,7 @@ const DeleteModal = () => {
       <div className={css.buttonDelWrapper}>
           <button
             type="button"
-            className={`${css.btn} ${css.deleteBtn}`}
+            className={`${css.btn} ${css.deleteBtn} ${loading.main && css.btnDisabled}`}
             onClick={handleDelete}
           >
             {loading.main ? "Deleting..." : "Delete"}
