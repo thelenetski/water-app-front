@@ -11,11 +11,13 @@ import { selectUser } from "../../redux/user/selectors";
 
 import "simplebar-react/dist/simplebar.min.css";
 import css from "./UserSettingsModal.module.css";
+import { data } from "react-router-dom";
 
 const validationParams = Yup.object().shape({
   avatarUrl: Yup.mixed(),
   gender: Yup.string().oneOf(["female", "male"]),
   name: Yup.string()
+    .nullable()
     .min(3, "Name must be at least 3 characters!")
     .max(50, "Name must not exceed 50 characters!"),
   email: Yup.string()
@@ -52,14 +54,13 @@ const UserSettingsModal = () => {
 
   const handleSubmit = (values) => {
     const formData = new FormData();
-    formData.append("name", values.name);
+    if (values.name) formData.append("name", values.name);
     formData.append("gender", values.gender);
     formData.append("email", values.email);
     img && formData.append("avatarUrl", img);
     formData.append("weight", Number(values.weight));
     formData.append("sportParticipation", Number(values.sportParticipation));
     formData.append("dailyNorm", Number(values.dailyNorm) * 1000);
-
     dispatch(patchUser(formData))
       .unwrap()
       .then(() => {

@@ -47,7 +47,7 @@ const usersSlice = createSlice({
         state.all = [];
         state.current = null;
         state.error = null;
-        state.isLoading = false;
+        state.loading = false;
       });
   },
 });
