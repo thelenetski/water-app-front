@@ -21,20 +21,19 @@ const AddWaterBtn = ({ section }) => {
     clsx(mainClass, {
       [css.waterMain]: section === "waterMain",
       [css.daily]: section === "daily",
+      [css.btnDisabled]: date.toString().padStart(10, "0") > localDate(),
     });
 
   return (
     <>
-      {date.toString().padStart(10, "0") === localDate() && (
-        <button
-          onClick={() => dispatch(openAddWater())}
-          type="button"
-          className={classes(css.wrapper)}
-        >
-          <FaPlus className={classes(css.plusIcon)} />
-          <p className={classes(css.text)}>Add water</p>
-        </button>
-      )}
+      <button
+        onClick={() => dispatch(openAddWater())}
+        type="button"
+        className={classes(css.wrapper)}
+      >
+        <FaPlus className={classes(css.plusIcon)} />
+        <p className={classes(css.text)}>Add water</p>
+      </button>
     </>
   );
 };

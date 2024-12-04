@@ -17,7 +17,7 @@ const MonthInfo = () => {
 
   const monthName = new Date(
     currentDate.year,
-    currentDate.month - 1,
+    currentDate.month,
     currentDate.day
   ).toLocaleString("en-EN", { month: "long" });
 
@@ -29,24 +29,29 @@ const MonthInfo = () => {
 
   const nextMonth = () => {
     const date = new Date(currentDate.year, currentDate.month + 1);
-    if (date.getFullYear() !== currentDate.year) {
-      dispatch(addActiveDay({ year: date.getFullYear() }));
-    }
 
-    dispatch(addActiveDay({ month: date.getMonth() }));
+    dispatch(
+      addActiveDay({
+        year: date.getFullYear(),
+        month: date.getMonth(),
+      })
+    );
   };
 
   const prevMonth = () => {
     const date = new Date(currentDate.year, currentDate.month - 1);
-    const updatedYear = date.getFullYear();
-    const updatedMonth = date.getMonth();
 
-    dispatch(addActiveDay({ year: updatedYear, month: updatedMonth }));
+    dispatch(
+      addActiveDay({
+        year: date.getFullYear(),
+        month: date.getMonth(),
+      })
+    );
   };
 
   useEffect(() => {
     dispatch(
-      getWaterMonthly({ month: currentDate.month, year: currentDate.year })
+      getWaterMonthly({ month: currentDate.month + 1, year: currentDate.year })
     );
   }, [dispatch, currentDate, watersDaily]);
   return (

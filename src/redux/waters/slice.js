@@ -27,7 +27,7 @@ const watersSlice = createSlice({
     daily: [],
     activeDay: {
       day: today.getDate(),
-      month: today.getMonth() + 1,
+      month: today.getMonth(),
       year: today.getFullYear(),
     },
     activeMonth: {

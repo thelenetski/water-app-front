@@ -19,11 +19,13 @@ const WaterList = () => {
     dispatch(
       getWaterDaily({
         day: activeDay.day,
-        month: activeDay.month,
+        month: activeDay.month + 1,
         year: activeDay.year,
       })
     );
   }, [dispatch, activeDay]);
+
+  console.log(waterItems);
 
   return (
     <>

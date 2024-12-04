@@ -6,6 +6,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
   const chooseDay = (e) => {
     dispatch(addActiveDay({ day: Number(e.target.innerHTML) }));
   };
+
   return (
     <div className={css.container}>
       <button
@@ -20,7 +21,7 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm }) => {
       <span className={css.percentage}>
         {`${
           data &&
-          Math.round(
+          Math.trunc(
             (data?.reduce((acc, item) => (acc += item.amount), 0) / dailyNorm) *
               100
           )
