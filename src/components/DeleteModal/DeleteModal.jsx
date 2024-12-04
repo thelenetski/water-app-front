@@ -27,20 +27,22 @@ const DeleteModal = () => {
     <div className={css.deleteModal}>
       <h2 className={css.title}>Delete entry</h2>
       <p className={css.text}>Are you sure you want to delete the entry?</p>
-      <button
-        type="button"
-        className={`${css.btn} ${css.deleteBtn}`}
-        onClick={handleDelete}
-      >
-        {loading.main ? "Deleting..." : "Delete"}
-      </button>
-      <button
-        type="button"
-        className={`${css.btn} ${css.cancelBtn}`}
-        onClick={() => dispatch(closeModal())}
-      >
-        Cancel
-      </button>
+      <div className={css.buttonDelWrapper}>
+          <button
+            type="button"
+            className={`${css.btn} ${css.deleteBtn} ${loading.main && css.btnDisabled}`}
+            onClick={handleDelete}
+          >
+            {loading.main ? "Deleting..." : "Delete"}
+          </button>
+          <button
+            type="button"
+            className={`${css.btn} ${css.cancelBtn}`}
+            onClick={() => dispatch(closeModal())}
+          >
+            Cancel
+          </button>
+      </div>
     </div>
   );
 };
