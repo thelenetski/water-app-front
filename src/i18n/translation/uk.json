@@ -30,5 +30,26 @@
   "butLogOut": "Вийти",
   "butCancel": "Скасувати",
   "logoutFailed": "Помилка виходу: {{message}}"
-  }
+  },
+  "signInForm": {
+    "toastSuccess": "Успішний вхід!",
+    "toastFailed": "Помилка входу: {{message}}",
+    "toastGoogleSuccess": "Успішний вхід через Google!",
+    "toastGoogleFailed": "Помилка входу через Google: {{error}}",
+    "signinTitle": "Увійти",
+    "signinEmail": "Електронна пошта",
+    "signinEmailField": "Введіть вашу пошту",
+    "signinPassword": "Пароль",
+    "signupPasswordField": "Введіть ваш пароль",
+    "signinBtnLoading": "Завантаження...",
+    "signinBtnSignin": "Увійти",
+    "signintext": "Не маєте акаунта?",
+    "signinWithGoogle": "Увійти через Google",
+    "signinLink": "Реєстрація",
+    "validation": {
+        "email": "Пошта має бути правильною!",
+        "emailRequired": "Обов'язкове поле",
+        "requiredPassword": "Пароль не вказано"
+    }
+}
 }

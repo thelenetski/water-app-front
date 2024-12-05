@@ -14,17 +14,35 @@ import {
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
 import googleAuthLogo from "../../img/google-auth.png";
+import { useTranslation } from "react-i18next";
 
-const UserValidationSchema = Yup.object().shape({
-  userEmail: Yup.string().email("Must be a valid email!").required("Required"),
-  userPassword: Yup.string().required("No password provided"),
-});
+// const UserValidationSchema = Yup.object().shape({
+//   userEmail: Yup.string()
+//     .email(t("signInForm.validation.email"))
+//     .required(t("signInForm.validation.emailRequired")),
+//   userPassword: Yup.string().required(
+//     t("signInForm.validation.requiredPassword")
+//   ),
+// });
 
-const INITIAL_VALUES = { userEmail: "", userPassword: "" };
+// const INITIAL_VALUES = { userEmail: "", userPassword: "" };
 
 const SignInForm = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
+
+  
+  const UserValidationSchema = Yup.object().shape({
+    userEmail: Yup.string()
+      .email(t("signInForm.validation.email"))
+      .required(t("signInForm.validation.emailRequired")),
+    userPassword: Yup.string().required(
+      t("signInForm.validation.requiredPassword")
+    ),
+  });
+
+  const INITIAL_VALUES = { userEmail: "", userPassword: "" };
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,12 +55,12 @@ const SignInForm = () => {
     )
       .unwrap()
       .then(() => {
-        toast.success("Login successful!");
+        toast.success(t("signInForm.toastSuccess"));
         actions.resetForm();
         actions.setSubmitting(false);
       })
       .catch((error) => {
-        toast.error("Login failed: " + error.message);
+        toast.error(`${t("signInForm.toastFailed")} ${error.message}`);
         actions.setSubmitting(false);
       });
   };
@@ -64,10 +82,12 @@ const SignInForm = () => {
       dispatch(confirmGoogleOAuth(code))
         .unwrap()
         .then(() => {
-          toast.success("Google login successful!");
+          toast.success(t("signInForm.toastGoogleSuccess"));
         })
         .catch((error) => {
-          toast.error("Google sign-in failed:", error);
+          toast.error(
+            t("signInForm.toastGoogleFailed", { error: error.message })
+          );
         });
     } else {
       console.error("Authorization code not found in URL");
@@ -86,16 +106,18 @@ const SignInForm = () => {
             <div className={css.logoWrapper}>
               <Logo />
             </div>
-            <h2 className={css.title}>Sign In</h2>
+            <h2 className={css.title}>{t("signInForm.signinTitle")}</h2>
             <label>
-              <span className={css.inputLabel}>Email</span>
+              <span className={css.inputLabel}>
+                {t("signInForm.signinEmail")}
+              </span>
               <Field
                 className={clsx(css.field, {
                   [css.fieldError]: errors.userEmail && touched.userEmail,
                 })}
                 type="email"
                 name="userEmail"
-                placeholder="Enter your email"
+                placeholder={t("signInForm.signinEmailField")}
                 aria-label="Email"
               />
               <ErrorMessage
@@ -105,7 +127,9 @@ const SignInForm = () => {
               />
             </label>
             <label>
-              <span className={css.inputLabel}>Password</span>
+              <span className={css.inputLabel}>
+                {t("signInForm.signinPassword")}
+              </span>
               <div className={css.passwordWrapper}>
                 <Field
                   className={clsx(css.field, {
@@ -114,7 +138,7 @@ const SignInForm = () => {
                   })}
                   type={showPassword ? "text" : "password"}
                   name="userPassword"
-                  placeholder="Enter your password"
+                  placeholder={t("signInForm.signupPasswordField")}
                   aria-label="Password"
                 />
                 <button
@@ -144,7 +168,9 @@ const SignInForm = () => {
                 type="submit"
                 disabled={!isValid || isSubmitting || loading}
               >
-                {loading ? "Loading..." : "Sign in"}
+                {loading
+                  ? t("signInForm.signinBtnLoading")
+                  : t("signInForm.signinBtnSignin")}
               </button>
               <button
                 className={css.button}
@@ -154,13 +180,13 @@ const SignInForm = () => {
                 <picture>
                   <img src={googleAuthLogo} alt="google logo" />
                 </picture>
-                Sign In with Google
+                {t("signInForm.signinWithGoogle")}
               </button>
             </div>
             <p className={css.signuptext}>
-              Don’t have an account?{" "}
+              {t("signInForm.signintext")}{" "}
               <Link to="/signup" className={css.signuplink}>
-                Sign Up
+                {t("signInForm.signinLink")}
               </Link>
             </p>
           </Form>
