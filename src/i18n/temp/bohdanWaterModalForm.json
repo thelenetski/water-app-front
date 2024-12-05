@@ -1,0 +1,23 @@
+{
+  "modal": {
+    "addWater": "Add water",
+    "editWater": "Edit the entered amount of water"
+  },
+  
+  "waterForm": {
+    "chooseValue": "Choose a value:",
+    "correctData": "Correct entered data:",
+    "amountWater": "Amount of water:",
+    "recordingTime": "Recording time:",
+    "enterValue": "Enter the value of the water used:",
+    "saveButton": "Save",
+    "validation": {
+      "timeRequired": "Time is required",
+      "invalidTimeFormat": "Invalid time format",
+      "valueRequired": "Value is required",
+      "minValue": "Minimum value is 50ml",
+      "maxValue": "Maximum value is 5000ml",
+      "typeError": "Value must be a number/ value in ml"
+    }
+  }
+}
