@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { addActiveDay } from "../../redux/waters/slice.js";
 import { useEffect } from "react";
 import { getWaterMonthly } from "../../redux/waters/operations.js";
+import  MonthInfoChart  from '../MonthInfoChart/MonthInfoChart.jsx'
 const MonthInfo = () => {
   const dispatch = useDispatch();
   const currentDate = useSelector(selectActiveDay);
@@ -58,16 +59,26 @@ const MonthInfo = () => {
     <div className={css.container}>
       <div className={css.monthInfo}>
         <span className={css.text}>Month</span>
-        <CalendarPagination
-          year={currentDate.year}
-          month={currentDate.month}
-          day={currentDate.day}
-          monthName={monthName}
-          nextMonth={nextMonth}
-          prevMonth={prevMonth}
-        />
+        <div className={css.calendarPagination}>
+          <CalendarPagination
+            year={currentDate.year}
+            month={currentDate.month}
+            day={currentDate.day}
+            monthName={monthName}
+            nextMonth={nextMonth}
+            prevMonth={prevMonth}
+          />
+          <span>
+            <button type="button" className={css.button}>
+              <svg className={css.icon}>
+                <use href="/sprite.svg#icon-pie-chart"></use>
+              </svg>
+            </button>
+          </span>
+        </div>
       </div>
-      <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} />
+      {/* <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} /> */}
+      <MonthInfoChart />
     </div>
   );
 };

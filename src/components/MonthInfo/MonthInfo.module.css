@@ -19,6 +19,23 @@
   line-height: 1.14;
 }
 
+.calendarPagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.button{
+  padding: 0;
+}
 @media screen and (max-width: 767px) {
   .text {
     font-size: 20px;
