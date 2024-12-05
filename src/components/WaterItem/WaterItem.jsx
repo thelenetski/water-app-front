@@ -19,9 +19,10 @@ export function WaterItem({ item }) {
       <div className={css.textBox}>
         <p className={css.ml}>{water}</p>
         <p className={css.time}>
-          {new Date(item?.createdAt).toLocaleTimeString("ru-RU", {
+          {new Date(item?.date || item?.createdAt).toLocaleTimeString("ru-RU", {
             hour: "2-digit",
             minute: "2-digit",
+            timeZone: "UTC",
           })}
         </p>
       </div>

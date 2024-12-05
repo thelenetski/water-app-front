@@ -32,13 +32,12 @@ const WaterForm = () => {
   const contentWaterModal = useSelector(selectContentModal);
   const activeDay = useSelector(selectActiveDay);
 
-  const time = new Date(contentWaterModal?.createdAt).toLocaleTimeString(
-    "ua-UA",
-    {
-      hour: "2-digit",
-      minute: "2-digit",
-    }
-  ); // Поточна датаa
+  const time = new Date(
+    contentWaterModal?.date || contentWaterModal?.createdAt
+  ).toLocaleTimeString("ua-UA", {
+    hour: "2-digit",
+    minute: "2-digit",
+  }); // Поточна датаa
 
   const handleSubmit = (values) => {
     const isoDate = new Date(
