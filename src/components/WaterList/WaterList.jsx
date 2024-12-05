@@ -8,8 +8,10 @@ import { WaterItem } from "../WaterItem/WaterItem";
 import css from "./WaterList.module.css";
 import { useEffect } from "react";
 import { getWaterDaily } from "../../redux/waters/operations";
+import { useTranslation } from 'react-i18next';
 
 const WaterList = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const activeDay = useSelector(selectActiveDay);
   const waterItems = useSelector(selectWatersDaily);
@@ -28,9 +30,9 @@ const WaterList = () => {
   return (
     <>
       {loading.daily ? (
-        <div className={css.noWater}>Loading...</div>
+        <div className={css.noWater}>{t("Loading...")}</div>
       ) : !waterItems?.length ? (
-        <div className={css.noWater}>You haven’t added the water yet.</div>
+        <div className={css.noWater}>{t("You haven’t added the water yet.")}</div>
       ) : (
         !loading.daily && (
           <ul className={css.wrapper}>

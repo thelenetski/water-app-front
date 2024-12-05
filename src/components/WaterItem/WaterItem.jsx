@@ -2,14 +2,17 @@ import { useDispatch } from "react-redux";
 import css from "./WaterItem.module.css";
 import sprite from "../../../public/sprite.svg";
 import { openConfirmDelete, openEditWater } from "../../redux/modal/slice";
+import { useTranslation } from 'react-i18next';
 
 export function WaterItem({ item }) {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const water =
     item?.amount >= 1000
-      ? Math.round((item?.amount / 1000) * 100) / 100 + " L"
-      : item?.amount + " ML";
+      ? Math.round((item?.amount / 1000) * 100) / 100 + t(" L")
+      : item?.amount + t(" ML");
 
   return (
     <div className={css.card}>
