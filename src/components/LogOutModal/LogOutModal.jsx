@@ -30,7 +30,9 @@ const LogOutModal = () => {
         className={`${css.btn} ${css.logoutBtn} ${loading && css.btnDisabled}`}
         onClick={handleLogout}
       >
-        {loading ? t("logOutModal.butLoggingOut") : t("logOutModal.butLogOut")}
+        {loading.logOut
+          ? t("logOutModal.butLoggingOut")
+          : t("logOutModal.butLogOut")}
       </button>
       <button
         type="button"

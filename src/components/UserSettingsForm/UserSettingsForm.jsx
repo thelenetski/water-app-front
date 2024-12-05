@@ -165,7 +165,7 @@ const UserSettingsForm = ({ setImg }) => {
         </div>
       </div>
       <button type="submit" className={clsx("green", css.saveButton)}>
-        {loading ? "Loading..." : "Save"}
+        {loading.main ? "Loading..." : "Save"}
       </button>
     </Form>
   );
