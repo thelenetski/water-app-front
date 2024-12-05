@@ -39,5 +39,43 @@
       "emailRequired": "Required",
       "requiredPassword": "No password provided",
     }
+  },
+    "deleteModal": {
+    "toastSuccess":"Water record successfuly deleted!",
+    "toastFailed":"Delete failed:",
+    "deleteModalTitle": "Delete entry",
+    "deleteModalText": "Are you sure you want to delete the entry?",
+    "deleteBtnLoader": "Deleting...",
+    "deleteBtn": "Delete"
+    },
+     "userSettingModal": {
+    "name": "name",
+    "gender": "gender",
+    "email":"email",
+    "avatarUrl": "avatarUrl",
+    "weight":"weight",
+    "dailyNorm":"dailyNorm",
+    "toastSuccess":"Saved info successfully",
+    "toastFailed":"Something went wrong:",
+    "maxHeight":"maxHeight:",
+    "settings":"Settings",        
+    "validation": {
+      "genderFemale":"female", 
+      "genderMale":"male", 
+      "nameMin":"Name must be at least 3 characters!",
+      "nameMax":"Name must not exceed 50 characters!",
+      "email": "Please enter a valid email address!",
+      "emailRequired": "Email is required!",
+      "weight":"Weight must be a number!",
+      "weightMin":"Weight must be a positive number!",
+      "weightMax":"Please enter a valid weight!",
+      "sportParticipation":"Active time must be a number!",
+      "sportParticipationMin":"Active time must be a positive number!",
+      "sportParticipationMax":"The maximum allowed time is 24 hours!",
+      "dailyNorm":"Daily water intake must be a number!",
+      "dailyNormMin":"Daily water intake must be a positive number!",
+      "dailyNormMax":"Daily water intake cannot exceed 15 liters!"
+     
+    }
   }
-}
+  }
