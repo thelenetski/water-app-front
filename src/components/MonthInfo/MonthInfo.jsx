@@ -23,7 +23,7 @@ const MonthInfo = () => {
 
   const daysOfMonth = new Date(
     currentDate.year,
-    currentDate.month,
+    currentDate.month + 1,
     0
   ).getDate();
 
