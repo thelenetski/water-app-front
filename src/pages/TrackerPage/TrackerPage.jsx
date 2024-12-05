@@ -3,7 +3,6 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import { getUserCurrent } from "../../redux/user/operations";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { selectUser } from "../../redux/user/selectors";
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
