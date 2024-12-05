@@ -107,3 +107,38 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
+
+/*-----------------GOOGLE--------------------*/
+
+export const googleSignIn = createAsyncThunk(
+  "auth/googleSignIn",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`api/auth/get-oauth-url`);
+      return response.data.data.url;
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || "Unknown error");
+    }
+  }
+);
+
+export const confirmGoogleOAuth = createAsyncThunk(
+  "auth/confirmGoogleOAuth",
+  async (code, thunkAPI) => {
+    if (code) {
+      try {
+        const res = await axios.post("api/auth/confirm-oauth", { code });
+        setAuthHeader(res.data.data.accessToken);
+        return res.data;
+      } catch (error) {
+        if (error.response) {
+          return thunkAPI.rejectWithValue(error.response.data);
+        }
+        return thunkAPI.rejectWithValue(error.message || "Unknown error");
+      }
+    }
+  }
+);
