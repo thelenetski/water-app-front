@@ -3,7 +3,7 @@
     "addWater": "Add water",
     "editWater": "Edit the entered amount of water"
   },
-  
+
   "waterForm": {
     "chooseValue": "Choose a value:",
     "correctData": "Correct entered data:",
@@ -31,5 +31,26 @@
     "butLogOut": "Log out",
     "butCancel": "Cancel",
     "logoutFailed": "Logout failed: {{message}}"
+  },
+  "signInForm": {
+    "toastSuccess": "Login successful!",
+    "toastFailed": "Login failed: {{message}}",
+    "toastGoogleSuccess": "Google login successful!",
+    "toastGoogleFailed": "Google sign-in failed: {{error}}",
+    "signinTitle": "Sign In",
+    "signinEmail": "Email",
+    "signinEmailField": "Enter your email",
+    "signinPassword": "Password",
+    "signupPasswordField": "Enter your password",
+    "signinBtnLoading": "Loading...",
+    "signinBtnSignin": "Sign up",
+    "signintext": "Don’t have an account?",
+    "signinWithGoogle": "Sign In with Google",
+    "signinLink": "Sign Up",
+    "validation": {
+      "email": "Must be a valid email!",
+      "emailRequired": "Required",
+      "requiredPassword": "No password provided"
+    }
   }
 }
