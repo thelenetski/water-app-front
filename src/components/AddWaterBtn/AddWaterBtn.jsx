@@ -4,8 +4,10 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { openAddWater } from "../../redux/modal/slice";
 import { selectActiveDay } from "../../redux/waters/selectors.js";
+import { useTranslation } from "react-i18next";
 
 const AddWaterBtn = ({ section }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const currentDate = useSelector(selectActiveDay);
 
@@ -32,7 +34,7 @@ const AddWaterBtn = ({ section }) => {
         className={classes(css.wrapper)}
       >
         <FaPlus className={classes(css.plusIcon)} />
-        <p className={classes(css.text)}>Add water</p>
+        <p className={classes(css.text)}>{t("Add water")}</p>
       </button>
     </>
   );
