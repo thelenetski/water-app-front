@@ -154,7 +154,7 @@ const SignInForm = () => {
                 <picture>
                   <img src={googleAuthLogo} alt="google logo" />
                 </picture>
-                Sign In with google
+                Sign In with Google
               </button>
             </div>
             <p className={css.signuptext}>
