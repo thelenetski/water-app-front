@@ -16,17 +16,6 @@ import Logo from "../Logo/Logo";
 import googleAuthLogo from "../../img/google-auth.png";
 import { useTranslation } from "react-i18next";
 
-// const UserValidationSchema = Yup.object().shape({
-//   userEmail: Yup.string()
-//     .email(t("signInForm.validation.email"))
-//     .required(t("signInForm.validation.emailRequired")),
-//   userPassword: Yup.string().required(
-//     t("signInForm.validation.requiredPassword")
-//   ),
-// });
-
-// const INITIAL_VALUES = { userEmail: "", userPassword: "" };
-
 const SignInForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();

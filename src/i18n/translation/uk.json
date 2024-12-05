@@ -51,5 +51,30 @@
         "emailRequired": "Обов'язкове поле",
         "requiredPassword": "Пароль не вказано"
     }
+  },
+  "signUpForm": {
+    "toastSuccess": "Ви успішно зареєструвалися!",
+    "toastFailed": "Реєстрація не вдалася: {{message}}",
+    "signupTitle": "Реєстрація",
+    "signupEmail": "Електронна пошта",
+    "signUpEmailField": "Введіть вашу пошту",
+    "signupPassword": "Пароль",
+    "signupPasswordField": "Введіть ваш пароль",
+    "signupRepeatPassword": "Повторіть пароль",
+    "signupRepeatPasswordField": "Повторіть ваш пароль",
+    "signupBtnLoading": "Завантаження...",
+    "signupBtnSignup": "Зареєструватися",
+    "signuptext": "Вже маєте акаунт?",
+    "signupLink": "Увійти",
+    "validation": {
+      "email": "Введіть коректну пошту!",
+      "emailRequired": "Пошта обов’язкова",
+      "minPassword": "Пароль має бути не менше 6 символів",
+      "maxPassword": "Пароль має бути менше 50 символів",
+      "matchesPassword": "Пароль може містити тільки букви та цифри",
+      "requiredPassword": "Пароль обов’язковий",
+      "repeatPassword": "Паролі мають збігатися",
+      "repeatRequiredPassword": "Повторний пароль обов’язковий"
+    }
 }
 }

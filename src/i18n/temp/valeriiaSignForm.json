@@ -1,7 +1,7 @@
 {
   "signUpForm": {
     "toastSuccess":"You have successfully registered!",
-    "toastFailed":"Registration failed:",
+    "toastFailed":"Registration failed: {{message}}",
     "signupTitle": "Sign Up",
     "signupEmail": "Email",
     "signUpEmailField":"Enter your email",
@@ -12,6 +12,7 @@
     "signupBtnLoading":"Loading...",
     "signupBtnSignup":"Sign up",
     "signuptext":"Already have an account?",
+    "signupLink":"Sign In",
     "validation": {
       "email": "Enter a valid email!",
       "emailRequired": "Email is required",
