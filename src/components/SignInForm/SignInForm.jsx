@@ -1,14 +1,19 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import css from "./SignInForm.module.css";
 import { clsx } from "clsx";
 import * as Yup from "yup";
-import { signIn } from "../../redux/auth/operations";
+import {
+  confirmGoogleOAuth,
+  googleSignIn,
+  signIn,
+} from "../../redux/auth/operations";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
+import googleAuthLogo from "../../img/google-auth.png";
 
 const UserValidationSchema = Yup.object().shape({
   userEmail: Yup.string().email("Must be a valid email!").required("Required"),
@@ -41,6 +46,33 @@ const SignInForm = () => {
         actions.setSubmitting(false);
       });
   };
+
+  const googleHandleSubmit = () => {
+    dispatch(googleSignIn())
+      .unwrap()
+      .then((url) => (window.location.href = url))
+      .catch((err) => console.log(err.message));
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params || params.toString() === "") {
+      return;
+    }
+    const code = params.get("code");
+    if (code) {
+      dispatch(confirmGoogleOAuth(code))
+        .unwrap()
+        .then(() => {
+          toast.success("Google login successful!");
+        })
+        .catch((error) => {
+          toast.error("Google sign-in failed:", error);
+        });
+    } else {
+      console.error("Authorization code not found in URL");
+    }
+  }, [dispatch]);
 
   return (
     <div className={css.formContainer}>
@@ -106,13 +138,25 @@ const SignInForm = () => {
                 component="span"
               />
             </label>
-            <button
-              className={css.button}
-              type="submit"
-              disabled={!isValid || isSubmitting}
-            >
-              {loading ? "Loading..." : "Sign in"}
-            </button>
+            <div className={css.signInFormBtnWrap}>
+              <button
+                className={css.button}
+                type="submit"
+                disabled={!isValid || isSubmitting || loading}
+              >
+                {loading ? "Loading..." : "Sign in"}
+              </button>
+              <button
+                className={css.button}
+                type="button"
+                onClick={googleHandleSubmit}
+              >
+                <picture>
+                  <img src={googleAuthLogo} alt="google logo" />
+                </picture>
+                Sign In with google
+              </button>
+            </div>
             <p className={css.signuptext}>
               Don’t have an account?{" "}
               <Link to="/signup" className={css.signuplink}>
