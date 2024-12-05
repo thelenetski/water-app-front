@@ -188,7 +188,7 @@ const SignUpForm = () => {
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              {loading
+              {loading.signUp
                 ? t("signUpForm.signupBtnLoading")
                 : t("signUpForm.signupBtnSignup")}
             </button>
