@@ -4,10 +4,12 @@ import { logOut } from "../../redux/auth/operations";
 import { closeModal } from "../../redux/modal/slice";
 import toast from "react-hot-toast";
 import { selectUserLoading } from "../../redux/user/selectors";
+import { useTranslation } from "react-i18next";
 
 const LogOutModal = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectUserLoading);
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     dispatch(logOut())
@@ -16,26 +18,26 @@ const LogOutModal = () => {
         dispatch(closeModal());
       })
       .catch((error) => {
-        toast.error("Logout failed: " + error.message);
+        toast.error(t("logOutModal.logoutFailed", { message: error.message }));
       });
   };
 
   return (
     <div className={css.logoutModal}>
-      <h2 className={css.title}>Log out</h2>
-      <p className={css.text}>Do you really want to leave?</p>
+      <h2 className={css.title}>{t("logOutModal.logOut")}</h2>
+      <p className={css.text}>{t("logOutModal.text")}</p>
       <button
         className={`${css.btn} ${css.logoutBtn} ${loading && css.btnDisabled}`}
         onClick={handleLogout}
       >
-        {loading ? "Logging out..." : "Log out"}
+        {loading ? t("logOutModal.butLoggingOut") : t("logOutModal.butLogOut")}
       </button>
       <button
         type="button"
         className={`${css.btn} ${css.cancelBtn}`}
         onClick={() => dispatch(closeModal())}
       >
-        Cancel
+        {t("logOutModal.butCancel")}
       </button>
     </div>
   );

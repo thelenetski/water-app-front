@@ -5,6 +5,7 @@
   letter-spacing: -0.16px;
   line-height: 1.25;
   color: #323f47;
+  text-transform: initial;
 }
 
 .amountWaterTitle {
