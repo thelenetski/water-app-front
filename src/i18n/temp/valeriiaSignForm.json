@@ -1,0 +1,43 @@
+{
+  "signUpForm": {
+    "toastSuccess":"You have successfully registered!",
+    "toastFailed":"Registration failed:",
+    "signupTitle": "Sign Up",
+    "signupEmail": "Email",
+    "signUpEmailField":"Enter your email",
+    "signupPassword": "Password",
+    "signupPasswordField":"Enter your password",
+    "signupRepeatPassword":"Repeat Password",
+    "signupRepeatPasswordField":"Repeat your password",
+    "signupBtnLoading":"Loading...",
+    "signupBtnSignup":"Sign up",
+    "signuptext":"Already have an account?",
+    "validation": {
+      "email": "Enter a valid email!",
+      "emailRequired": "Email is required",
+      "minPassword": "Password must be at least 6 characters long",
+      "maxPassword": "Password must be less than 50 characters",
+      "matchesPassword": "Password can only contain letters and numbers",
+      "requiredPassword": "Password is required",
+      "repeatPassword": "Passwords must match",
+      "repeatRequiredPassword": "Repeat password is required"
+    }
+  },
+  "signInForm": {
+    "toastSuccess":"Login successful!",
+    "toastFailed":"Login failed:",
+    "signinTitle": "Sign In",
+    "signinEmail": "Email",
+    "signinEmailField":"Enter your email",
+    "signinPassword": "Password",
+    "signupPasswordField":"Enter your password",
+    "signinBtnLoading":"Loading...",
+    "signinBtnSignin":"Sign up",
+    "signintext":"Don’t have an account?",
+    "validation": {
+      "email": "Must be a valid email!",
+      "emailRequired": "Required",
+      "requiredPassword": "No password provided",
+    }
+  }
+}
