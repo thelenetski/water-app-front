@@ -41,7 +41,6 @@ const UserSettingsModal = () => {
   const user = useSelector(selectUser);
   const [img, setImg] = useState(null);
 
-  console.log(user?.data?.avatarUrl);
   const initialValues = {
     name: user?.data?.name || "",
     gender: user?.data?.gender || "female",
@@ -73,7 +72,7 @@ const UserSettingsModal = () => {
 
   return (
     <div className={css.container}>
-      <SimpleBar style={{ maxHeight: "500px" }}>
+      <SimpleBar style={{ maxHeight: "700px" }}>
         <h3 className={css.title}>Settings</h3>
         <Formik
           initialValues={initialValues}

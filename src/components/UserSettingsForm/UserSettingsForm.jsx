@@ -18,7 +18,7 @@ const UserSettingsForm = ({ setImg }) => {
   const [preview, setPreview] = useState(user?.data?.avatarUrl || null);
   const [recommendedDailyNorma, setRecommendedDailyNorma] = useState(null);
 
-  const { values, setFieldValue } = useFormikContext();
+  const { values } = useFormikContext();
 
   useEffect(() => {
     if (values.weight) {
