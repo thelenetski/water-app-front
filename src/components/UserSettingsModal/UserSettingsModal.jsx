@@ -72,7 +72,7 @@ const UserSettingsModal = () => {
 
   return (
     <div className={css.container}>
-      <SimpleBar style={{ maxHeight: "700px" }}>
+      <SimpleBar style={{ maxHeight: "650px" }}>
         <h3 className={css.title}>Settings</h3>
         <Formik
           initialValues={initialValues}
