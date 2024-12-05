@@ -6,11 +6,10 @@ import {
   selectWatersDaily,
   selectWatersMonthly
 } from "../../redux/waters/selectors.js";
-import { selectUser } from "../../redux/user/selectors.js";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addActiveDay } from "../../redux/waters/slice.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getWaterMonthly } from "../../redux/waters/operations.js";
 import  MonthInfoChart  from '../MonthInfoChart/MonthInfoChart.jsx'
 const MonthInfo = () => {
@@ -18,6 +17,7 @@ const MonthInfo = () => {
   const currentDate = useSelector(selectActiveDay);
   const watersDaily = useSelector(selectWatersDaily);
   const months = useSelector(selectWatersMonthly);
+  const [info, setInfo] = useState(false);
   const monthName = new Date(
     currentDate.year,
     currentDate.month,
@@ -78,6 +78,7 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
       getWaterMonthly({ month: currentDate.month + 1, year: currentDate.year })
     );
   }, [dispatch, currentDate, watersDaily]);
+
   return (
    <div className={css.container}>
       <div className={css.monthInfo}>
@@ -92,7 +93,7 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
             prevMonth={prevMonth}
           />
           <span>
-            <button type="button" className={css.button}>
+            <button type="button" className={css.button} onClick={() => setInfo(prevInfo => dataForChart.length > 0 ? !prevInfo : false)}>
               <svg className={css.icon}>
                 <use href="/sprite.svg#icon-pie-chart"></use>
               </svg>
@@ -100,8 +101,8 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
           </span>
         </div>
       </div>
-      {/* <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} months={months}/> */}
-      <MonthInfoChart data={dataForChart}/>
+     {!info && <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} months={months}/> }
+     {info && <MonthInfoChart data={dataForChart}/>}
     </div>
   );
 };
