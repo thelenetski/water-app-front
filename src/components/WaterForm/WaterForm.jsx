@@ -10,22 +10,27 @@ import { selectActiveDay, selectLoading } from "../../redux/waters/selectors";
 import Loader from "../Loader/Loader";
 import css from "./WaterForm.module.css";
 import { selectContentModal } from "../../redux/modal/selectors";
+import { useTranslation } from "react-i18next";
 
 // Валідаційна схема
-const schema = yup.object({
-  date: yup
-    .string()
-    .required("Time is required")
-    .matches(/^([0-1]\d|2[0-3]):([0-5]\d)$/, "Invalid time format"),
-  amount: yup
-    .number()
-    .required("Value is required")
-    .min(10, "Minimum value is 50ml")
-    .max(5000, "Maximum value is 5000ml")
-    .typeError("Value must be a number/ value in ml"),
-});
-
 const WaterForm = () => {
+  const { t } = useTranslation();
+  const schema = yup.object({
+    date: yup
+      .string()
+      .required(t("waterForm.validation.timeRequired"))
+      .matches(
+        /^([0-1]\d|2[0-3]):([0-5]\d)$/,
+        t("waterForm.validation.invalidTimeFormat")
+      ),
+    amount: yup
+      .number()
+      .required(t("waterForm.validation.valueRequired"))
+      .min(10, t("waterForm.validation.minValue"))
+      .max(5000, t("waterForm.validation.maxValue"))
+      .typeError(t("waterForm.validation.typeError")),
+  });
+
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const type = useSelector(selectTypeModal);
@@ -37,7 +42,7 @@ const WaterForm = () => {
   ).toLocaleTimeString("ua-UA", {
     hour: "2-digit",
     minute: "2-digit",
-  }); // Поточна датаa
+  });
 
   const handleSubmit = (values) => {
     const isoDate = new Date(
@@ -46,15 +51,11 @@ const WaterForm = () => {
         "0"
       )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
     ).toISOString();
+
     const action =
       type === modalTypes.addWater
         ? addWater({
-            date: new Date(
-              `${activeDay.year}-${String(activeDay.month + 1).padStart(
-                2,
-                "0"
-              )}-${String(activeDay.day).padStart(2, "0")}T${values.date}:00Z`
-            ).toISOString(),
+            date: isoDate,
             amount: values.amount,
           })
         : patchWater({
@@ -66,17 +67,16 @@ const WaterForm = () => {
     dispatch(action)
       .unwrap()
       .then(() => {
-        if (type === modalTypes.addWater) {
-          toast.success("Water record added successfully!");
-          dispatch(closeModal());
-        } else if (type === modalTypes.editWater) {
-          toast.success("Water record updated successfully!");
-          dispatch(closeModal());
-        }
+        toast.success(
+          type === modalTypes.addWater
+            ? t("waterForm.successAdd")
+            : t("waterForm.successEdit")
+        );
+        dispatch(closeModal());
       })
       .catch((error) => {
         console.error("Error:", error);
-        toast.error(`Error: ${error.message}`);
+        toast.error(`${t("waterForm.error")}: ${error.message}`);
       });
   };
 
@@ -87,8 +87,11 @@ const WaterForm = () => {
       <Formik
         initialValues={{
           date: contentWaterModal?.date
-            ? time // ISO 8601 -> гг:хвхв
-            : new Date().toTimeString().slice(0, 5), // Поточний час
+            ? time
+            : new Date().toLocaleTimeString("ua-UA", {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
           amount: contentWaterModal?.amount || 50,
         }}
         validationSchema={schema}
@@ -98,12 +101,14 @@ const WaterForm = () => {
           <Form className={css.formWaterWrapper}>
             <p className={css.secWaterTitle}>
               {type === modalTypes.addWater
-                ? "Choose a value:"
-                : "Correct entered data:"}
+                ? t("waterForm.chooseValue")
+                : t("waterForm.correctData")}
             </p>
 
             <div className={css.counterWrapper}>
-              <span className={css.amountWaterTitle}>Amount of water:</span>
+              <span className={css.amountWaterTitle}>
+                {t("waterForm.amountWater")}
+              </span>
               <div className={css.counterWaterWrapper}>
                 <button
                   type="button"
@@ -135,7 +140,7 @@ const WaterForm = () => {
 
             <div className={css.fieldsWaterWrapper}>
               <label className={css.timeLabel} htmlFor="date">
-                Recording time:
+                {t("waterForm.recordingTime")}
                 <ErrorMessage
                   name="date"
                   component="span"
@@ -143,14 +148,9 @@ const WaterForm = () => {
                 />
               </label>
               <Field className={css.input} type="time" id="date" name="date" />
-              <ErrorMessage
-                name="date"
-                component="span"
-                className={css.errorMessage}
-              />
 
-              <label className={css.valueLabel} htmlFor="value">
-                Enter the value of the water used:
+              <label className={css.valueLabel} htmlFor="amount">
+                {t("waterForm.enterValue")}
                 <ErrorMessage
                   name="amount"
                   component="span"
@@ -170,7 +170,7 @@ const WaterForm = () => {
               type="submit"
               disabled={loading.main}
             >
-              Save
+              {t("waterForm.saveButton")}
             </button>
           </Form>
         )}
