@@ -1,8 +1,11 @@
 import css from "./ChooseDate.module.css";
 import { useSelector } from "react-redux";
 import { selectActiveDay } from "../../redux/waters/selectors.js";
+import { useTranslation } from 'react-i18next';
 
 const ChooseDate = () => {
+  const { t } = useTranslation();
+
   const currentDate = useSelector(selectActiveDay);
 
   const localDate = () => {
@@ -17,18 +20,18 @@ const ChooseDate = () => {
   }`;
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    t("January"),
+    t("February"),
+    t("March"),
+    t("April"),
+    t("May"),
+    t("June"),
+    t("July"),
+    t("August"),
+    t("September"),
+    t("October"),
+    t("November"),
+    t("December"),
   ];
 
   const month = currentDate !== null ? months[+currentDate?.month] : "??";
@@ -38,7 +41,7 @@ const ChooseDate = () => {
       <h2 className={css.date}>
         {currentDate !== null &&
         date.toString().padStart(10, "0") === localDate()
-          ? "Today"
+          ? t("Today")
           : `${day}, ${month}`}
       </h2>
     </>
