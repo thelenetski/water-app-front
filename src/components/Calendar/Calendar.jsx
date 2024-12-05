@@ -10,7 +10,7 @@ const Calendar = ({ daysOfMonth, day }) => {
 
   const components = Array.from({ length: daysOfMonth }, (_, index) => {
     const currentDayStart = new Date(
-      Date.UTC(new Date().getFullYear(), new Date().getMonth(), index + 1)
+      Date.UTC(currentData.year, currentData.month, index + 1)
     );
     const nextDayStart = new Date(currentDayStart);
     nextDayStart.setUTCDate(currentDayStart.getUTCDate() + 1);
@@ -25,7 +25,7 @@ const Calendar = ({ daysOfMonth, day }) => {
 
     return dataFromDay || undefined;
   });
-
+ 
   return (
     <>
       {userData && (

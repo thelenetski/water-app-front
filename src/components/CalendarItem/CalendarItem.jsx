@@ -28,8 +28,9 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm, currentData }) => {
         {`${
           data &&
           Math.round(
-            (data?.reduce((acc, item) => (acc += item.amount), 0) / dailyNorm) *
-              100
+            (data?.reduce((acc, item) => {
+              return (acc += item.amount) / dailyNorm * 100
+            }, 0))
           )
         }`}
         %
