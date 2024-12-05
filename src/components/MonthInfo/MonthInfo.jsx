@@ -23,7 +23,7 @@ const MonthInfo = () => {
 
   const daysOfMonth = new Date(
     currentDate.year,
-    currentDate.month,
+    currentDate.month + 1,
     0
   ).getDate();
 
@@ -54,6 +54,7 @@ const MonthInfo = () => {
       getWaterMonthly({ month: currentDate.month + 1, year: currentDate.year })
     );
   }, [dispatch, currentDate, watersDaily]);
+
   return (
     <div className={css.container}>
       <div className={css.monthInfo}>
