@@ -27,7 +27,7 @@ const UserPanel = () => {
     <div className={css.userPanelContainer}>
       <p className={css.greetings}>
         Hello
-        {!loading && (
+        {!loading.main && (
           <span className={css.greetingsName}>, {getDisplayName()}!</span>
         )}
       </p>

@@ -27,10 +27,14 @@ const LogOutModal = () => {
       <h2 className={css.title}>{t("logOutModal.logOut")}</h2>
       <p className={css.text}>{t("logOutModal.text")}</p>
       <button
-        className={`${css.btn} ${css.logoutBtn} ${loading && css.btnDisabled}`}
+        className={`${css.btn} ${css.logoutBtn} ${
+          loading.logOut && css.btnDisabled
+        }`}
         onClick={handleLogout}
       >
-        {loading ? t("logOutModal.butLoggingOut") : t("logOutModal.butLogOut")}
+        {loading.logOut
+          ? t("logOutModal.butLoggingOut")
+          : t("logOutModal.butLogOut")}
       </button>
       <button
         type="button"

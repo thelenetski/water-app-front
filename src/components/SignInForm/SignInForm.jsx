@@ -166,9 +166,9 @@ const SignInForm = () => {
               <button
                 className={css.button}
                 type="submit"
-                disabled={!isValid || isSubmitting || loading}
+                disabled={!isValid || isSubmitting}
               >
-                {loading
+                {loading.signIn
                   ? t("signInForm.signinBtnLoading")
                   : t("signInForm.signinBtnSignin")}
               </button>
@@ -180,7 +180,7 @@ const SignInForm = () => {
                 <picture>
                   <img src={googleAuthLogo} alt="google logo" />
                 </picture>
-                {t("signInForm.signinWithGoogle")}
+                {loading.googleSignIn ? t("signInForm.signinBtnLoading") : t("signInForm.signinWithGoogle")}
               </button>
             </div>
             <p className={css.signuptext}>

@@ -12,31 +12,29 @@ import Logo from "../Logo/Logo";
 import { getUserCurrent } from "../../redux/user/operations";
 import { useTranslation } from "react-i18next";
 
-
-
 const SignUpForm = () => {
   const { t } = useTranslation();
   const validationParams = Yup.object().shape({
-  email: Yup.string()
-    .email("Enter a valid email!")
-    .required("Email is required"),
-  password: Yup.string()
-    .min(6, "Password must be at least 6 characters long")
-    .max(50, "Password must be less than 50 characters")
-    .matches(/^[A-Za-z\d]+$/, "Password can only contain letters and numbers")
-    .required("Password is required"),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Repeat password is required"),
-});
+    email: Yup.string()
+      .email("Enter a valid email!")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters long")
+      .max(50, "Password must be less than 50 characters")
+      .matches(/^[A-Za-z\d]+$/, "Password can only contain letters and numbers")
+      .required("Password is required"),
+    repeatPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Repeat password is required"),
+  });
 
-const initialValues = {
-  email: "",
-  password: "",
-  repeatPassword: "",
-  showPassword: false,
-  showRepeatPassword: false,
-};
+  const initialValues = {
+    email: "",
+    password: "",
+    repeatPassword: "",
+    showPassword: false,
+    showRepeatPassword: false,
+  };
 
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
@@ -78,10 +76,10 @@ const initialValues = {
         }) => (
           <Form className={css.form}>
             <h2 className={css.title}>Sign Up</h2>
-<div className={css.logoWrapper}>
-  <Logo/>
-  </div>
-        
+            <div className={css.logoWrapper}>
+              <Logo />
+            </div>
+
             <label>
               <span className={css.inputLabel}>Email</span>
               <Field
@@ -153,12 +151,19 @@ const initialValues = {
                   type="button"
                   className={css.iconButton}
                   onClick={() =>
-                    setFieldValue("showRepeatPassword", !values.showRepeatPassword)
+                    setFieldValue(
+                      "showRepeatPassword",
+                      !values.showRepeatPassword
+                    )
                   }
                   aria-label="Toggle repeat password visibility"
                 >
                   <svg className={css.icon}>
-                    <use href={`${sprite}#icon-${values.showRepeatPassword ? "eye" : "eye-off"}`} />
+                    <use
+                      href={`${sprite}#icon-${
+                        values.showRepeatPassword ? "eye" : "eye-off"
+                      }`}
+                    />
                   </svg>
                 </button>
               </div>
@@ -174,7 +179,7 @@ const initialValues = {
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              {loading ? "Loading..." : "Sign up"}
+              {loading.signUp ? "Loading..." : "Sign up"}
             </button>
             <p className={css.signuptext}>
               <span>Already have an account? </span>
@@ -190,4 +195,3 @@ const initialValues = {
 };
 
 export default SignUpForm;
-
