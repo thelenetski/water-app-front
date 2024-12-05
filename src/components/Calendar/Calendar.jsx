@@ -3,8 +3,7 @@ import css from "./Calendar.module.css";
 import { useSelector } from "react-redux";
 import { selectWatersMonthly, selectActiveDay } from "../../redux/waters/selectors.js";
 import { selectUser } from "../../redux/user/selectors.js";
-const Calendar = ({ daysOfMonth, day }) => {
-  const months = useSelector(selectWatersMonthly);
+const Calendar = ({ daysOfMonth, day, months }) => {
   const userData = useSelector(selectUser);
   const currentData = useSelector(selectActiveDay)
 
