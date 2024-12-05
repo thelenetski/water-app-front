@@ -10,8 +10,13 @@ import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
 import { getUserCurrent } from "../../redux/user/operations";
+import { useTranslation } from "react-i18next";
 
-const validationParams = Yup.object().shape({
+
+
+const SignUpForm = () => {
+  const { t } = useTranslation();
+  const validationParams = Yup.object().shape({
   email: Yup.string()
     .email("Enter a valid email!")
     .required("Email is required"),
@@ -33,7 +38,6 @@ const initialValues = {
   showRepeatPassword: false,
 };
 
-const SignUpForm = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
 
