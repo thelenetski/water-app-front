@@ -10,6 +10,7 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.2px;
+  text-transform: initial;
 }
 
 @media screen and (min-width: 768px) {

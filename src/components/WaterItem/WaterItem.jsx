@@ -11,8 +11,8 @@ export function WaterItem({ item }) {
 
   const water =
     item?.amount >= 1000
-      ? Math.round((item?.amount / 1000) * 100) / 100 + t(" L")
-      : item?.amount + t(" ML");
+      ? Math.round((item?.amount / 1000) * 100) / 100 + t("WaterItem.L")
+      : item?.amount + t("WaterItem.ML");
 
   return (
     <div className={css.card}>

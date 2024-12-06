@@ -20,18 +20,18 @@ const ChooseDate = () => {
   }`;
 
   const months = [
-    t("January"),
-    t("February"),
-    t("March"),
-    t("April"),
-    t("May"),
-    t("June"),
-    t("July"),
-    t("August"),
-    t("September"),
-    t("October"),
-    t("November"),
-    t("December"),
+    t("ChooseDate.January"),
+    t("ChooseDate.February"),
+    t("ChooseDate.March"),
+    t("ChooseDate.April"),
+    t("ChooseDate.May"),
+    t("ChooseDate.June"),
+    t("ChooseDate.July"),
+    t("ChooseDate.August"),
+    t("ChooseDate.September"),
+    t("ChooseDate.October"),
+    t("ChooseDate.November"),
+    t("ChooseDate.December"),
   ];
 
   const month = currentDate !== null ? months[+currentDate?.month] : "??";
@@ -41,7 +41,7 @@ const ChooseDate = () => {
       <h2 className={css.date}>
         {currentDate !== null &&
         date.toString().padStart(10, "0") === localDate()
-          ? t("Today")
+          ? t("ChooseDate.Today")
           : `${day}, ${month}`}
       </h2>
     </>

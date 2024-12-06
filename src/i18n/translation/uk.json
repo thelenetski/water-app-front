@@ -122,5 +122,34 @@
     "waterInputLabel": "Вкажіть, скільки води ви будете пити:",
     "loading": "Завантаження...",
     "saveButton": "Зберегти"
+  },
+
+  "AddWaterBtn": {
+    "addWaterBtn": "Додати води"
+  },
+
+  "ChooseDate": {
+    "January": "Січня",
+    "February": "Лютого",
+    "March": "Березня",
+    "April": "Квітня",
+    "May": "Травня",
+    "June": "Червня",
+    "July": "Липня",
+    "August": "Серпня",
+    "September": "Вересня",
+    "October": "Жовтня",
+    "November": "Листопада",
+    "December": "Грудня",
+    "Today": "Сьогодні"
+  },
+  "WaterItem": {
+    "ML": " мл",
+    "L": " Л"
+  },
+
+  "WaterList": {
+    "Loading": "Зачекайте будь ласка...",
+    "You": "Ви ще не додали воду."
   }
 }
