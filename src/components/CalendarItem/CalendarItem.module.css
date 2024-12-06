@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38px;
-  height: 38px;
 
   padding: 0;
   border-radius: 50%;
@@ -15,11 +13,29 @@
 @media screen and (max-width:767px){
   .item{
     width: 27px;
-    height: 27px;
+    height:27px;
 
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 375px){
+  .item{
+    width: 7vw;
+    height: 7vw;
+
+    font-size: 12px;
+  }
+}
+@media screen and (min-width:768px){
+  .item{
+    width: 38px;
+    height: 38px;
+
+    font-size: 14px;
+  }
+}
+
 
 .notCompleted {
   background-color: var(--not-completed-days-background-color);
@@ -46,4 +62,10 @@
 .percentage {
   color: var(--percentage-color);
   font-size: 12px;
+}
+
+@media screen and (max-width:335px){
+  .percentage {
+    display:none;
+  }
 }
