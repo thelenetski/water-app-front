@@ -56,7 +56,7 @@ p {
   margin: 0;
   font-size: var(--mobile-font-size);
   color: var(--font-color);
-  text-transform: capitalize;
+/*   text-transform: capitalize; */
 }
 
 p:last-child {
