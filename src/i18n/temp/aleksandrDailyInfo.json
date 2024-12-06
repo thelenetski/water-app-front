@@ -28,6 +28,15 @@
   "WaterList": {
     "Loading...": "Loading...",
     "You haven’t added the water yet.": "You haven’t added the water yet."
+  },
+  
+  "DeleteModal": {
+    "success": "Water record successfuly deleted!",
+    "error": "Delete failed: ",
+    "delete": "Delete entry",
+    "Are": "Are you sure you want to delete the entry?",
+    "Deleting": "Deleting...",
+    "Delete": "Delete",
+    "Cancel": "Cancel"
   }
-
 }
