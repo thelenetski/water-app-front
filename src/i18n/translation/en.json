@@ -195,6 +195,10 @@
   "UserPanel": {
     "nameUser": "User",
     "panelHello": "Hello"
+  },
+  "MonthInfo": {
+    "statistics": "Statistic",
+    "month": "Month"
   }
 }
 
