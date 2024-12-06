@@ -12,13 +12,21 @@
 
 @media screen and (max-width:767px){
   .item{
+    width: 27px;
+    height:27px;
+
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .item{
     width: 7vw;
-    height: 2.5vh;
+    height: 7vw;
 
     font-size: 12px;
   }
 }
-
 @media screen and (min-width:768px){
   .item{
     width: 38px;

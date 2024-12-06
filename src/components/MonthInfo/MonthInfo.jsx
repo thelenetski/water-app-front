@@ -82,7 +82,7 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
   return (
    <div className={css.container}>
       <div className={css.monthInfo}>
-        {info ? <span className={css.text}>Chart</span> : <span className={css.text}>Month</span>}
+        {info ? <span className={css.text}>Statistics</span> : <span className={css.text}>Month</span>}
         <div className={css.calendarPagination}>
           <CalendarPagination
             year={currentDate.year}
