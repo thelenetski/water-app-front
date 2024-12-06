@@ -99,5 +99,30 @@
       "dailyNormMin": "Daily water intake must be a positive number!",
       "dailyNormMax": "Daily water intake cannot exceed 15 liters!"
     }
+  },
+  "userSettingsForm": {
+    "avatarAlt": "User's avatar",
+    "uploadPhoto": "Upload a photo",
+    "genderIdentity": "Your gender identity",
+    "genderFemale": "Woman",
+    "genderMale": "Man",
+    "nameLabel": "Your name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@ua.com",
+    "dailyNormTitle": "My daily water intake",
+    "dailyNormWoman": "For women",
+    "dailyNormMan": "For men",
+    "formulaWoman": "V=(M*0.03) + (T*0.4)",
+    "formulaMan": "V=(M*0.04) + (T*0.6)",
+    "formulaExplanation": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another activity (if none, set 0)",
+    "activeTimeLabel": "Active time in hours",
+    "weightLabel": "Your weight in kilograms:",
+    "sportParticipationLabel": "The time of active sports:",
+    "waterRequired": "The required amount of water in liters per day",
+    "waterInputLabel": "Write down how much water you will drink:",
+    "loading": "Loading...",
+    "saveButton": "Save"
   }
 }
+

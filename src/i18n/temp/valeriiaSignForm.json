@@ -54,15 +54,8 @@
     "deleteBtn": "Delete"
     },
      "userSettingModal": {
-    "name": "name",
-    "gender": "gender",
-    "email":"email",
-    "avatarUrl": "avatarUrl",
-    "weight":"weight",
-    "dailyNorm":"dailyNorm",
     "toastSuccess":"Saved info successfully",
     "toastFailed":"Something went wrong:",
-    "maxHeight":"maxHeight:",
     "settings":"Settings",        
     "validation": {
       "genderFemale":"female", 
