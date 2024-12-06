@@ -3,7 +3,7 @@
     "addWater": "Add water",
     "editWater": "Edit the entered amount of water"
   },
-  
+
   "waterForm": {
     "chooseValue": "Choose a value:",
     "correctData": "Correct entered data:",
@@ -11,6 +11,9 @@
     "recordingTime": "Recording time:",
     "enterValue": "Enter the value of the water used:",
     "saveButton": "Save",
+    "successAdd": "Water record added successfully!",
+    "successEdit": "Water record updated successfully!",
+    "error": "An error occurred",
     "validation": {
       "timeRequired": "Time is required",
       "invalidTimeFormat": "Invalid time format",
@@ -19,5 +22,107 @@
       "maxValue": "Maximum value is 5000ml",
       "typeError": "Value must be a number/ value in ml"
     }
+  },
+
+  "logOutModal": {
+    "logOut": "Log out",
+    "text": "Do you really want to leave?",
+    "butLoggingOut": "Logging out...",
+    "butLogOut": "Log out",
+    "butCancel": "Cancel",
+    "logoutFailed": "Logout failed: {{message}}"
+  },
+  "signInForm": {
+    "toastSuccess": "Login successful!",
+    "toastFailed": "Login failed: {{message}}",
+    "toastGoogleSuccess": "Google login successful!",
+    "toastGoogleFailed": "Google sign-in failed: {{error}}",
+    "signinTitle": "Sign In",
+    "signinEmail": "Email",
+    "signinEmailField": "Enter your email",
+    "signinPassword": "Password",
+    "signupPasswordField": "Enter your password",
+    "signinBtnLoading": "Loading...",
+    "signinBtnSignin": "Sign in",
+    "signintext": "Don’t have an account?",
+    "signinWithGoogle": "Sign In with Google",
+    "signinLink": "Sign Up",
+    "validation": {
+      "email": "Must be a valid email!",
+      "emailRequired": "Required",
+      "requiredPassword": "No password provided"
+    }
+  },
+  "signUpForm": {
+    "toastSuccess": "You have successfully registered!",
+    "toastFailed": "Registration failed: {{message}}",
+    "signupTitle": "Sign Up",
+    "signupEmail": "Email",
+    "signUpEmailField": "Enter your email",
+    "signupPassword": "Password",
+    "signupPasswordField": "Enter your password",
+    "signupRepeatPassword": "Repeat Password",
+    "signupRepeatPasswordField": "Repeat your password",
+    "signupBtnLoading": "Loading...",
+    "signupBtnSignup": "Sign up",
+    "signuptext": "Already have an account?",
+    "signupLink": "Sign In",
+    "validation": {
+      "email": "Enter a valid email!",
+      "emailRequired": "Email is required",
+      "minPassword": "Password must be at least 6 characters long",
+      "maxPassword": "Password must be less than 50 characters",
+      "matchesPassword": "Password can only contain letters and numbers",
+      "requiredPassword": "Password is required",
+      "repeatPassword": "Passwords must match",
+      "repeatRequiredPassword": "Repeat password is required"
+    }
+  },
+  "userSettingModal": {
+    "toastSuccess": "Saved info successfully",
+    "toastFailed": "Something went wrong:",
+    "settings": "Settings",
+    "validation": {
+      "genderFemale": "female",
+      "genderMale": "male",
+      "nameMin": "Name must be at least 3 characters!",
+      "nameMax": "Name must not exceed 50 characters!",
+      "email": "Please enter a valid email address!",
+      "emailRequired": "Email is required!",
+      "weight": "Weight must be a number!",
+      "weightMin": "Weight must be a positive number!",
+      "weightMax": "Please enter a valid weight!",
+      "sportParticipation": "Active time must be a number!",
+      "sportParticipationMin": "Active time must be a positive number!",
+      "sportParticipationMax": "The maximum allowed time is 24 hours!",
+      "dailyNorm": "Daily water intake must be a number!",
+      "dailyNormMin": "Daily water intake must be a positive number!",
+      "dailyNormMax": "Daily water intake cannot exceed 15 liters!"
+    }
+  },
+  "userSettingsForm": {
+    "avatarAlt": "User's avatar",
+    "uploadPhoto": "Upload a photo",
+    "genderIdentity": "Your gender identity",
+    "genderFemale": "Woman",
+    "genderMale": "Man",
+    "nameLabel": "Your name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@ua.com",
+    "dailyNormTitle": "My daily water intake",
+    "dailyNormWoman": "For women",
+    "dailyNormMan": "For men",
+    "formulaWoman": "V=(M*0.03) + (T*0.4)",
+    "formulaMan": "V=(M*0.04) + (T*0.6)",
+    "formulaExplanation": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another activity (if none, set 0)",
+    "activeTimeLabel": "Active time in hours",
+    "weightLabel": "Your weight in kilograms:",
+    "sportParticipationLabel": "The time of active sports:",
+    "waterRequired": "The required amount of water in liters per day",
+    "waterInputLabel": "Write down how much water you will drink:",
+    "loading": "Loading...",
+    "saveButton": "Save"
   }
 }
+

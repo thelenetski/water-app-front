@@ -12,31 +12,32 @@ import Logo from "../Logo/Logo";
 import { getUserCurrent } from "../../redux/user/operations";
 import { useTranslation } from "react-i18next";
 
-
-
 const SignUpForm = () => {
   const { t } = useTranslation();
   const validationParams = Yup.object().shape({
-  email: Yup.string()
-    .email("Enter a valid email!")
-    .required("Email is required"),
-  password: Yup.string()
-    .min(6, "Password must be at least 6 characters long")
-    .max(50, "Password must be less than 50 characters")
-    .matches(/^[A-Za-z\d]+$/, "Password can only contain letters and numbers")
-    .required("Password is required"),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Repeat password is required"),
-});
+    email: Yup.string()
+      .email(t("signUpForm.validation.email"))
+      .required(t("signUpForm.validation.emailRequired")),
+    password: Yup.string()
+      .min(6, t("signUpForm.validation.minPassword"))
+      .max(50, t("signUpForm.validation.maxPassword"))
+      .matches(/^[A-Za-z\d]+$/, t("signUpForm.validation.matchesPassword"))
+      .required(t("signUpForm.validation.requiredPassword")),
+    repeatPassword: Yup.string()
+      .oneOf(
+        [Yup.ref("password"), null],
+        t("signUpForm.validation.repeatPassword")
+      )
+      .required(t("signUpForm.validation.repeatRequiredPassword")),
+  });
 
-const initialValues = {
+ const initialValues = {
   email: "",
   password: "",
   repeatPassword: "",
   showPassword: false,
   showRepeatPassword: false,
-};
+ };
 
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
@@ -51,12 +52,12 @@ const initialValues = {
     )
       .unwrap()
       .then(() => {
-        toast.success("You have successfully registered!");
+        toast.success(t("signUpForm.toastSuccess"));
         dispatch(getUserCurrent());
         actions.resetForm();
       })
       .catch((error) => {
-        toast.error("Registration failed: " + error.message);
+        toast.error(t("signUpForm.toastFailed", { message: error.message }));
         actions.setSubmitting(false);
       });
   };
@@ -77,20 +78,22 @@ const initialValues = {
           touched,
         }) => (
           <Form className={css.form}>
-            <h2 className={css.title}>Sign Up</h2>
-<div className={css.logoWrapper}>
-  <Logo/>
-  </div>
-        
+            <h2 className={css.title}>{t("signUpForm.signupTitle")}</h2>
+            <div className={css.logoWrapper}>
+              <Logo />
+            </div>
+
             <label>
-              <span className={css.inputLabel}>Email</span>
+              <span className={css.inputLabel}>
+                {t("signUpForm.signupEmail")}
+              </span>
               <Field
                 className={clsx(css.field, {
                   [css.fieldError]: errors.email && touched.email,
                 })}
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder={t("signUpForm.signUpEmailField")}
                 aria-label="Email"
               />
               <ErrorMessage
@@ -101,7 +104,9 @@ const initialValues = {
             </label>
 
             <label>
-              <span className={css.inputLabel}>Password</span>
+              <span className={css.inputLabel}>
+                {t("signUpForm.signupPassword")}
+              </span>
               <div className={css.passwordWrapper}>
                 <Field
                   className={clsx(css.field, {
@@ -109,7 +114,7 @@ const initialValues = {
                   })}
                   type={values.showPassword ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder={t("signUpForm.signupPasswordField")}
                   aria-label="Password"
                 />
                 <button
@@ -137,7 +142,9 @@ const initialValues = {
             </label>
 
             <label>
-              <span className={css.inputLabel}>Repeat Password</span>
+              <span className={css.inputLabel}>
+                {t("signUpForm.signupRepeatPassword")}
+              </span>
               <div className={css.passwordWrapper}>
                 <Field
                   className={clsx(css.field, {
@@ -146,19 +153,26 @@ const initialValues = {
                   })}
                   type={values.showRepeatPassword ? "text" : "password"}
                   name="repeatPassword"
-                  placeholder="Repeat your password"
+                  placeholder={t("signUpForm.signupRepeatPasswordField")}
                   aria-label="Repeat Password"
                 />
                 <button
                   type="button"
                   className={css.iconButton}
                   onClick={() =>
-                    setFieldValue("showRepeatPassword", !values.showRepeatPassword)
+                    setFieldValue(
+                      "showRepeatPassword",
+                      !values.showRepeatPassword
+                    )
                   }
                   aria-label="Toggle repeat password visibility"
                 >
                   <svg className={css.icon}>
-                    <use href={`${sprite}#icon-${values.showRepeatPassword ? "eye" : "eye-off"}`} />
+                    <use
+                      href={`${sprite}#icon-${
+                        values.showRepeatPassword ? "eye" : "eye-off"
+                      }`}
+                    />
                   </svg>
                 </button>
               </div>
@@ -174,12 +188,14 @@ const initialValues = {
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              {loading ? "Loading..." : "Sign up"}
+              {loading.signUp
+                ? t("signUpForm.signupBtnLoading")
+                : t("signUpForm.signupBtnSignup")}
             </button>
             <p className={css.signuptext}>
-              <span>Already have an account? </span>
+              <span>{t("signUpForm.signuptext")}</span>
               <Link to="/signin" className={css.signinlink}>
-                Sign In
+                {t("signUpForm.signupLink")}
               </Link>
             </p>
           </Form>
@@ -190,4 +206,3 @@ const initialValues = {
 };
 
 export default SignUpForm;
-

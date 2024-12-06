@@ -42,6 +42,7 @@ const WaterForm = () => {
   ).toLocaleTimeString("ua-UA", {
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "UTC",
   });
 
   const handleSubmit = (values) => {

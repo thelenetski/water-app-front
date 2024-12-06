@@ -1,9 +1,14 @@
 {
+  "page": {
+    "NotFoundPage": {
+      "linkBack": "Back",
+      "oopsTitle": "Oops... page not found"
+    }
+  },
   "modal": {
     "addWater": "Add water",
     "editWater": "Edit the entered amount of water"
   },
-  
   "waterForm": {
     "chooseValue": "Choose a value:",
     "correctData": "Correct entered data:",
@@ -11,6 +16,9 @@
     "recordingTime": "Recording time:",
     "enterValue": "Enter the value of the water used:",
     "saveButton": "Save",
+    "successAdd": "Water record added successfully!",
+    "successEdit": "Water record updated successfully!",
+    "error": "An error occurred",
     "validation": {
       "timeRequired": "Time is required",
       "invalidTimeFormat": "Invalid time format",
@@ -19,5 +27,27 @@
       "maxValue": "Maximum value is 5000ml",
       "typeError": "Value must be a number/ value in ml"
     }
+  },
+  "logOutModal": {
+    "logOut": "Log out",
+    "text": "Do you really want to leave?",
+    "butLoggingOut": "Logging out...",
+    "butLogOut": "Log out",
+    "butCancel": "Cancel",
+    "logoutFailed": "Logout failed: {{message}}"
+  },
+  "WelcomeSection": {
+    "welcomeSubText": "Record daily water intake and track",
+    "welcomeTitleText": "Water consumption tracker",
+    "butTryTracker": "Try tracker",
+    "butSignIn": "Sign In"
+  },
+  "AdvantagesSection": {
+    "captionTextOne": "Our",
+    "captionTextTwo": "happy",
+    "captionTextThree": "customers"
+  },
+  "UserSettingsModal": {
+    "settingsTitle": "Settings"
   }
 }
