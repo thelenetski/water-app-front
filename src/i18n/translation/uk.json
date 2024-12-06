@@ -24,12 +24,12 @@
     }
   },
   "logOutModal": {
-  "logOut": "Вийти",
-  "text": "Ви дійсно бажаєте вийти?",
-  "butLoggingOut": "Вихід...",
-  "butLogOut": "Вийти",
-  "butCancel": "Скасувати",
-  "logoutFailed": "Помилка виходу: {{message}}"
+    "logOut": "Вийти",
+    "text": "Ви дійсно бажаєте вийти?",
+    "butLoggingOut": "Вихід...",
+    "butLogOut": "Вийти",
+    "butCancel": "Скасувати",
+    "logoutFailed": "Помилка виходу: {{message}}"
   },
   "signInForm": {
     "toastSuccess": "Успішний вхід!",
@@ -47,9 +47,9 @@
     "signinWithGoogle": "Увійти через Google",
     "signinLink": "Реєстрація",
     "validation": {
-        "email": "Пошта має бути правильною!",
-        "emailRequired": "Обов'язкове поле",
-        "requiredPassword": "Пароль не вказано"
+      "email": "Пошта має бути правильною!",
+      "emailRequired": "Обов'язкове поле",
+      "requiredPassword": "Пароль не вказано"
     }
   },
   "signUpForm": {
@@ -76,5 +76,51 @@
       "repeatPassword": "Паролі мають збігатися",
       "repeatRequiredPassword": "Повторний пароль обов’язковий"
     }
-}
+  },
+  "userSettingModal": {
+    "toastSuccess": "Інформацію успішно збережено",
+    "toastFailed": "Щось пішло не так:",
+    "settings": "Налаштування",
+    "validation": {
+      "genderFemale": "жіноча",
+      "genderMale": "чоловіча",
+      "nameMin": "Ім'я повинно містити щонайменше 3 символи!",
+      "nameMax": "Ім'я не повинно перевищувати 50 символів!",
+      "email": "Будь ласка, введіть коректну електронну адресу!",
+      "emailRequired": "Електронна адреса є обов'язковою!",
+      "weight": "Вага має бути числом!",
+      "weightMin": "Вага має бути додатним числом!",
+      "weightMax": "Будь ласка, введіть коректну вагу!",
+      "sportParticipation": "Активний час має бути числом!",
+      "sportParticipationMin": "Активний час має бути додатним числом!",
+      "sportParticipationMax": "Максимальний дозволений час — 24 години!",
+      "dailyNorm": "Добова норма води має бути числом!",
+      "dailyNormMin": "Добова норма води має бути додатним числом!",
+      "dailyNormMax": "Добова норма води не може перевищувати 15 літрів!"
+    }
+  },
+  "userSettingsForm": {
+    "avatarAlt": "Аватар користувача",
+    "uploadPhoto": "Завантажити фото",
+    "genderIdentity": "Ваша гендерна ідентичність",
+    "genderFemale": "Жінка",
+    "genderMale": "Чоловік",
+    "nameLabel": "Ваше ім'я",
+    "namePlaceholder": "Ваше ім'я",
+    "emailLabel": "Електронна пошта",
+    "emailPlaceholder": "example@ua.com",
+    "dailyNormTitle": "Моя добова норма",
+    "dailyNormWoman": "Для жінок",
+    "dailyNormMan": "Для чоловіків",
+    "formulaWoman": "V=(M*0,03) + (T*0,4)",
+    "formulaMan": "V=(M*0,04) + (T*0,6)",
+    "formulaExplanation": "V - об'єм норми води в літрах на день, M - ваша вага, T - час активних занять спортом або іншою діяльністю (якщо немає, поставте 0)",
+    "activeTimeLabel": "Активний час у годинах",
+    "weightLabel": "Ваша вага у кілограмах:",
+    "sportParticipationLabel": "Час активного спорту:",
+    "waterRequired": "Необхідна кількість води у літрах на день",
+    "waterInputLabel": "Вкажіть, скільки води ви будете пити:",
+    "loading": "Завантаження...",
+    "saveButton": "Зберегти"
+  }
 }

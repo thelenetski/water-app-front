@@ -11,35 +11,38 @@ import { selectUser } from "../../redux/user/selectors";
 
 import "simplebar-react/dist/simplebar.min.css";
 import css from "./UserSettingsModal.module.css";
+import { useTranslation } from "react-i18next";
 
-const validationParams = Yup.object().shape({
-  avatarUrl: Yup.mixed(),
-  gender: Yup.string().oneOf(["female", "male"]),
-  name: Yup.string()
-    .nullable()
-    .min(3, "Name must be at least 3 characters!")
-    .max(50, "Name must not exceed 50 characters!"),
-  email: Yup.string()
-    .email("Please enter a valid email address!")
-    .required("Email is required!"),
-  weight: Yup.number()
-    .typeError("Weight must be a number!")
-    .min(0, "Weight must be a positive number!")
-    .max(500, "Please enter a valid weight!"),
-  sportParticipation: Yup.number()
-    .typeError("Active time must be a number!")
-    .min(0, "Active time must be a positive number!")
-    .max(24, "The maximum allowed time is 24 hours!"),
-  dailyNorm: Yup.number()
-    .typeError("Daily water intake must be a number!")
-    .positive("Daily water intake must be a positive number!")
-    .max(15, "Daily water intake cannot exceed 15 liters!"),
-});
 
 const UserSettingsModal = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [img, setImg] = useState(null);
+  const { t } = useTranslation();
+  
+  const validationParams = Yup.object().shape({
+    avatarUrl: Yup.mixed(),
+    gender: Yup.string().oneOf([t("userSettingModal.validation.genderFemale"), t("userSettingModal.validation.genderMale")]),
+    name: Yup.string()
+      .nullable()
+      .min(3, t("userSettingModal.validation.nameMin"))
+      .max(50, t("userSettingModal.validation.nameMax")),
+    email: Yup.string()
+      .email(t("userSettingModal.validation.email"))
+      .required(t("userSettingModal.validation.emailRequired")),
+    weight: Yup.number()
+      .typeError(t("userSettingModal.validation.weight"))
+      .min(0, t("userSettingModal.validation.weightMin"))
+      .max(500, t("userSettingModal.validation.weightMax")),
+    sportParticipation: Yup.number()
+      .typeError(t("userSettingModal.validation.sportParticipation"))
+      .min(0, t("userSettingModal.validation.sportParticipationMin"))
+      .max(24, t("userSettingModal.validation.sportParticipationMax")),
+    dailyNorm: Yup.number()
+      .typeError(t("userSettingModal.validation.dailyNorm"))
+      .positive(t("userSettingModal.validation.dailyNormMin"))
+      .max(15, t("userSettingModal.validation.dailyNormMax")),
+  });
 
   const initialValues = {
     name: user?.data?.name || "",
@@ -62,18 +65,18 @@ const UserSettingsModal = () => {
     dispatch(patchUser(formData))
       .unwrap()
       .then(() => {
-        toast.success("Saved info successfully");
+        toast.success(t("userSettingModal.toastSuccess"));
         dispatch(getUserCurrent());
       })
       .catch((error) => {
-        toast.error("Something went wrong: " + error.message);
+        toast.error(`${t("userSettingModal.toastFailed")} ${error.message}`);
       });
   };
 
   return (
     <div className={css.container}>
       <SimpleBar style={{ maxHeight: "100%" }}>
-        <h3 className={css.title}>Settings</h3>
+        <h3 className={css.title}>{t("userSettingModal.settings")}</h3>
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
