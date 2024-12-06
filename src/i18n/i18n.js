@@ -15,7 +15,7 @@ i18n
       en: { translation: en },
       uk: { translation: uk },
     },
-    fallbackLng: "en", // Мова за замовчуванням
+    fallbackLng: "uk", // Мова за замовчуванням
     ns:[`translation`],
     defaultNS: `translation`,
   });

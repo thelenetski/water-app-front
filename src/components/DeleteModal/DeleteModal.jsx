@@ -5,8 +5,10 @@ import toast from "react-hot-toast";
 import { deleteWater } from "../../redux/waters/operations";
 import { selectLoading } from "../../redux/waters/selectors";
 import { selectContentModal } from "../../redux/modal/selectors";
+import { useTranslation } from "react-i18next";
 
 const DeleteModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const contentModal = useSelector(selectContentModal);
@@ -16,31 +18,31 @@ const DeleteModal = () => {
       .unwrap()
       .then(() => {
         dispatch(closeModal());
-        toast.success("Water record successfuly deleted!");
+        toast.success(t("DeleteModal.success"));
       })
       .catch((error) => {
-        toast.error("Delete failed: " + error.message);
+        toast.error(t("DeleteModal.error")) + error.message;
       });
   };
 
   return (
     <div className={css.deleteModal}>
-      <h2 className={css.title}>Delete entry</h2>
-      <p className={css.text}>Are you sure you want to delete the entry?</p>
+      <h2 className={css.title}>{t("DeleteModal.delete")}</h2>
+      <p className={css.text}>{t("DeleteModal.Are")}</p>
       <div className={css.buttonDelWrapper}>
           <button
             type="button"
             className={`${css.btn} ${css.deleteBtn} ${loading.main && css.btnDisabled}`}
             onClick={handleDelete}
           >
-            {loading.main ? "Deleting..." : "Delete"}
+            {loading.main ? t("DeleteModal.Deleting") : t("DeleteModal.Delete")}
           </button>
           <button
             type="button"
             className={`${css.btn} ${css.cancelBtn}`}
             onClick={() => dispatch(closeModal())}
           >
-            Cancel
+            {t("DeleteModal.Cancel")}
           </button>
       </div>
     </div>

@@ -149,10 +149,20 @@
     "ML": " ml",
     "L": " L"
   },
-  
+
   "WaterList": {
     "Loading": "Loading...",
     "You": "You haven’t added the water yet."
+  },
+  
+  "DeleteModal": {
+    "success": "Water record successfuly deleted!",
+    "error": "Delete failed: ",
+    "delete": "Delete entry",
+    "Are": "Are you sure you want to delete the entry?",
+    "Deleting": "Deleting...",
+    "Delete": "Delete",
+    "Cancel": "Cancel"
   }
 }
 
