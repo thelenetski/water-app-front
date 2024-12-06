@@ -176,15 +176,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     max-width: 343px;
     height: 780px;
 
     /* padding: 170px 16px; */
   }
   .form {
-    width: 311px;
+    width: 343px;
     height: 348px;
     gap: 16px;
+    padding: 16px;
   }
   .logoWrapper {
     position: absolute;
@@ -195,7 +197,7 @@
   .button {
     margin-top: 16px;
     padding: 16px 0;
-    width: 311px;
+    width: 100%;
     height: 50px;
     font-size: 14px;
     line-height: 1.3;
@@ -209,7 +211,7 @@
   }
   .field {
     /* margin-bottom: 16px; */
-    width: 311px;
+    width: 100%;
     height: 50px;
   }
 
@@ -232,5 +234,11 @@
   .inputLabel {
     font-size: 14px;
     line-height: 1.3;
+  }
+}
+
+@media (max-width: 375px) {
+  .form {
+    width: 100%;
   }
 }
