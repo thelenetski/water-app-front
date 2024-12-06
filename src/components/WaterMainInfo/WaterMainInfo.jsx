@@ -10,8 +10,10 @@ import { selectUser } from "../../redux/user/selectors";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import Logo from "../Logo/Logo";
 import ToggleLang from "../ToggleLang/ToggleLang";
+import { useTranslation } from "react-i18next";
 
 export default function WaterMainInfo() {
+  const { t } = useTranslation();
   const user = useSelector(selectUser);
 
   const dailyWaterArray = useSelector(selectWatersDaily);
@@ -39,18 +41,18 @@ export default function WaterMainInfo() {
   }`;
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    t("ChooseDate.January"),
+    t("ChooseDate.February"),
+    t("ChooseDate.March"),
+    t("ChooseDate.April"),
+    t("ChooseDate.May"),
+    t("ChooseDate.June"),
+    t("ChooseDate.July"),
+    t("ChooseDate.August"),
+    t("ChooseDate.September"),
+    t("ChooseDate.October"),
+    t("ChooseDate.November"),
+    t("ChooseDate.December"),
   ];
 
   const month = currentDate !== null ? months[+currentDate?.month] : "??";
@@ -113,13 +115,13 @@ export default function WaterMainInfo() {
         </picture>
         <div className={css.dailyNorma}>
           <p className={css.p1}>{dailyNormLiter}L</p>
-          <p className={css.p2}>My daily norma</p>
+          <p className={css.p2}>{t("WaterMainInfo.norm")}</p>
         </div>
         <div className={css.progressBar}>
           <p className={css.pToday}>
             {currentDate !== null &&
             date.toString().padStart(10, "0") === localDate()
-              ? "Today"
+              ? t("WaterMainInfo.today")
               : `${day}, ${month}`}
           </p>
           <div className={css.barMain}>

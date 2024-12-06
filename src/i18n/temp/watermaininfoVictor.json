@@ -1,0 +1,13 @@
+/*----------UA----------*/
+"WaterMainInfo": {
+    "norm": "Моя норма води",
+    "today": "Сьогодні"
+  }
+
+
+  /*----------en------------*/
+
+  "WaterMainInfo": {
+    "norm": "My daily norma",
+    "today": "today"
+  }
