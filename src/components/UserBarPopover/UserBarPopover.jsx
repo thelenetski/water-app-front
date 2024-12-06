@@ -4,8 +4,10 @@ import css from "./UserBarPopover.module.css";
 import { openEditUser, openConfirmLogOutUser } from "../../redux/modal/slice";
 import { selectTypeModal } from "../../redux/modal/selectors";
 import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const UserBarPopover = forwardRef(({ userBarWidth }, ref) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const type = useSelector(selectTypeModal);
 
@@ -29,12 +31,12 @@ const UserBarPopover = forwardRef(({ userBarWidth }, ref) => {
         onClick={openSettingsModal}
       >
         <IoSettingsOutline className={css.iconSettings} />
-        Settings
+        {t("UserBarPopover.btnIconSettings")}
       </button>
 
       <button type="button" className={css.logOut} onClick={openLogOutModal}>
         <IoLogOutOutline className={css.iconLogOut} />
-        Log out
+        {t("UserBarPopover.btnIconLogout")}
       </button>
     </div>
   );
