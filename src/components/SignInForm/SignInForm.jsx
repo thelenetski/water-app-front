@@ -13,6 +13,7 @@ import {
 } from "../../redux/auth/operations";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
+import ToggleLang from "../ToggleLang/ToggleLang";
 import googleAuthLogo from "../../img/google-auth.png";
 import { useTranslation } from "react-i18next";
 
@@ -21,7 +22,6 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
 
-  
   const UserValidationSchema = Yup.object().shape({
     userEmail: Yup.string()
       .email(t("signInForm.validation.email"))
@@ -95,6 +95,7 @@ const SignInForm = () => {
             <div className={css.logoWrapper}>
               <Logo />
             </div>
+            <ToggleLang />
             <h2 className={css.title}>{t("signInForm.signinTitle")}</h2>
             <label>
               <span className={css.inputLabel}>
@@ -169,7 +170,9 @@ const SignInForm = () => {
                 <picture>
                   <img src={googleAuthLogo} alt="google logo" />
                 </picture>
-                {loading.googleSignIn ? t("signInForm.signinBtnLoading") : t("signInForm.signinWithGoogle")}
+                {loading.googleSignIn
+                  ? t("signInForm.signinBtnLoading")
+                  : t("signInForm.signinWithGoogle")}
               </button>
             </div>
             <p className={css.signuptext}>

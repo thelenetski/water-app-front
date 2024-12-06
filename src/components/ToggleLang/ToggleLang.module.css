@@ -1,0 +1,41 @@
+.toggleLangWrap {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+}
+
+.toggleLangWrap button {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--font-color);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  padding: 0;
+  background: none;
+}
+
+.toggleLangWrap .active {
+  color: #1c8f25;
+}
+
+.toggleLangWrap button:first-child {
+  margin-right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .toggleLangWrap {
+    top: 32px;
+    right: 32px;
+  }
+
+  .toggleLangWrap button {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .toggleLangWrap {
+    top: 32px;
+    right: 33px;
+  }
+}

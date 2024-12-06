@@ -21,8 +21,8 @@
 
 .logoWrapper {
   position: absolute;
-  top: 32px;
-  left: 32px;
+  top: 0;
+  left: 0;
 }
 
 .signInFormBtnWrap {
@@ -218,8 +218,8 @@
   }
   .logoWrapper {
     position: absolute;
-    top: 24px;
-    left: 16px;
+    top: 0;
+    left: 0;
   }
   .button {
     width: 311px;

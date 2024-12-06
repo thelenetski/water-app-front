@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { selectUser } from "../../redux/user/selectors";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import Logo from "../Logo/Logo";
+import ToggleLang from "../ToggleLang/ToggleLang";
 
 export default function WaterMainInfo() {
   const user = useSelector(selectUser);
@@ -82,6 +83,7 @@ export default function WaterMainInfo() {
     <>
       <div className={css.main}>
         <Logo />
+        <ToggleLang />
         <picture className={css.picture}>
           <source
             media="(min-width:1440px)"

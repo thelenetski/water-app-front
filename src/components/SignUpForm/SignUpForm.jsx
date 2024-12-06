@@ -9,6 +9,7 @@ import { signUp } from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
 import Logo from "../Logo/Logo";
+import ToggleLang from "../ToggleLang/ToggleLang";
 import { getUserCurrent } from "../../redux/user/operations";
 import { useTranslation } from "react-i18next";
 
@@ -31,13 +32,13 @@ const SignUpForm = () => {
       .required(t("signUpForm.validation.repeatRequiredPassword")),
   });
 
- const initialValues = {
-  email: "",
-  password: "",
-  repeatPassword: "",
-  showPassword: false,
-  showRepeatPassword: false,
- };
+  const initialValues = {
+    email: "",
+    password: "",
+    repeatPassword: "",
+    showPassword: false,
+    showRepeatPassword: false,
+  };
 
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
@@ -82,7 +83,7 @@ const SignUpForm = () => {
             <div className={css.logoWrapper}>
               <Logo />
             </div>
-
+            <ToggleLang />
             <label>
               <span className={css.inputLabel}>
                 {t("signUpForm.signupEmail")}

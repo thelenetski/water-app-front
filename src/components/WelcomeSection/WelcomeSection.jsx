@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import ToggleLang from "../ToggleLang/ToggleLang";
 import styles from "./WelcomeSection.module.css";
 
 const WelcomeSection = () => {
@@ -8,6 +9,7 @@ const WelcomeSection = () => {
   return (
     <section className={styles.welcomeSection}>
       <Logo />
+      <ToggleLang />
       <div className={styles.welcomeSectionWrapper}>
         <p className={styles.welcomeSubtitle}>
           Record daily water intake and track
