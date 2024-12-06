@@ -29,7 +29,7 @@ const UserPanel = () => {
   return (
     <div className={css.userPanelContainer}>
       <p className={css.greetings}>
-        {t(UserPanel.panelHello)}
+        {t("UserPanel.panelHello")}
         {!loading.main && (
           <span className={css.greetingsName}>, {getDisplayName()}!</span>
         )}
