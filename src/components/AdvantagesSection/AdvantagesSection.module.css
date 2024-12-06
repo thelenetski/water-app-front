@@ -32,8 +32,7 @@
 }
 
 .advantagesCaption {
-  width: auto;
-  max-width: 160px;
+  width: 160px;
   height: auto;
   position: absolute;
   left: 0;
