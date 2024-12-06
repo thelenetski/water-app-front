@@ -2,8 +2,10 @@ import UserBar from "../UserBar/UserBar.jsx";
 import css from "../UserPanel/UserPanel.module.css";
 import { selectUser, selectUserLoading } from "../../redux/user/selectors";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const UserPanel = () => {
+  const { t } = useTranslation();
   const userInfo = useSelector(selectUser);
   const loading = useSelector(selectUserLoading);
 
@@ -20,18 +22,21 @@ const UserPanel = () => {
     } else if (userInfo?.data?.email) {
       return truncateWithEllipsis(userInfo.data.email.split("@")[0], 10);
     }
-    return "User";
+    const userText = t("UserPanel.nameUser")
+    return userText 
   };
 
   return (
     <div className={css.userPanelContainer}>
       <p className={css.greetings}>
-        Hello
+        {t(UserPanel.panelHello)}
         {!loading.main && (
           <span className={css.greetingsName}>, {getDisplayName()}!</span>
         )}
       </p>
-      <UserBar name={userInfo !== null ? userInfo.data.name : "User"} />
+      <UserBar
+        name={userInfo !== null ? userInfo.data.name : t("UserPanel.nameUser")}
+      />
     </div>
   );
 };

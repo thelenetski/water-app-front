@@ -191,7 +191,10 @@
   "UserBarPopover": {
     "btnIconSettings": "Settings",
     "btnIconLogout": "Log out"
+  },
+  "UserPanel": {
+    "nameUser": "User",
+    "panelHello": "Hello"
   }
-
 }
 
