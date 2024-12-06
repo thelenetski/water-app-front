@@ -12,7 +12,7 @@ const LanguageSwitcher = () => {
   };
 
   useEffect(() => {
-    setActive(i18n.language || "en");
+    setActive(i18n.language.slice(0, 2));
   }, [i18n.language]);
 
   return (
