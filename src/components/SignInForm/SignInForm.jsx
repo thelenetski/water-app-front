@@ -155,7 +155,7 @@ const SignInForm = () => {
               <button
                 className={css.button}
                 type="submit"
-                disabled={!isValid || isSubmitting}
+                disabled={!isValid || isSubmitting || loading.googleSignIn}
               >
                 {loading.signIn
                   ? t("signInForm.signinBtnLoading")
