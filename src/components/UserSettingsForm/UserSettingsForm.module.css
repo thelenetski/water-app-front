@@ -120,7 +120,8 @@ input::placeholder {
 }
 
 .saveButton {
-  width: 116px;
+  min-width: 116px;
+  width: fit-content;
   height: 46px;
   font-size: 14px;
   line-height: 1.28571;

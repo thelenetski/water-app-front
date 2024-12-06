@@ -194,7 +194,11 @@ const UserSettingsForm = ({ setImg }) => {
           </div>
         </div>
       </div>
-      <button type="submit" className={clsx("green", css.saveButton)}>
+      <button
+        type="submit"
+        className={clsx("green", css.saveButton)}
+        disabled={loading.main}
+      >
         {loading.main
           ? t("userSettingsForm.loading")
           : t("userSettingsForm.saveButton")}

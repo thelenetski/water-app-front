@@ -13,16 +13,15 @@ import "simplebar-react/dist/simplebar.min.css";
 import css from "./UserSettingsModal.module.css";
 import { useTranslation } from "react-i18next";
 
-
 const UserSettingsModal = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [img, setImg] = useState(null);
   const { t } = useTranslation();
-  
+
   const validationParams = Yup.object().shape({
     avatarUrl: Yup.mixed(),
-    gender: Yup.string().oneOf([t("userSettingModal.validation.genderFemale"), t("userSettingModal.validation.genderMale")]),
+    gender: Yup.string().oneOf(["female", "male"]),
     name: Yup.string()
       .nullable()
       .min(3, t("userSettingModal.validation.nameMin"))
