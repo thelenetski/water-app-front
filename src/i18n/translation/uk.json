@@ -185,5 +185,17 @@
       "linkBack": "Повернутись",
       "oopsTitle": "Так!... А-ну вийди і зайди, як треба"
     }
+  },
+  "UserBarPopover": {
+    "btnIconSettings": "Налаштування",
+    "btnIconLogout": "Вийти"
+  },
+  "UserPanel": {
+    "nameUser": "друже",
+    "panelHello": "Привіт"
+  },
+  "MonthInfo": {
+    "statistics": "Статистика",
+    "month": "Місяць"
   }
 }

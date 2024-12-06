@@ -187,6 +187,18 @@
       "linkBack": "Back",
       "oopsTitle": "Oops... page not found"
     }
+  },
+  "UserBarPopover": {
+    "btnIconSettings": "Settings",
+    "btnIconLogout": "Log out"
+  },
+  "UserPanel": {
+    "nameUser": "User",
+    "panelHello": "Hello"
+  },
+  "MonthInfo": {
+    "statistics": "Statistic",
+    "month": "Month"
   }
 }
 
