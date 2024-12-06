@@ -161,5 +161,29 @@
     "Deleting": "Видалення...",
     "Delete": "Видалити",
     "Cancel": "Скасувати"
+  },
+  "AdvantagesSection": {
+    "habitText": "Нова звичка",
+    "viewStatText": "Статистика",
+    "personalRateSetting": "Конфігурація",
+    "captionTextOne": "Наші",
+    "captionTextTwo": "щасливі",
+    "captionTextThree": "клієнти"
+  },
+  "WaterMainInfo": {
+    "norm": "Моя норма води",
+    "today": "Сьогодні"
+  },
+  "WelcomeSection": {
+    "welcomeSubText": "Відслітковуй та записуй денне споживання води",
+    "welcomeTitleText": "Трекер випитої води",
+    "btnTryTracker": "Спробувати",
+    "btnSignIn": "Увійти"
+  },
+  "page": {
+    "NotFoundPage": {
+      "linkBack": "Повернутись",
+      "oopsTitle": "Так!... А-ну вийди і зайди, як треба"
+    }
   }
 }

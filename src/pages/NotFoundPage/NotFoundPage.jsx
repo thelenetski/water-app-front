@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import css from "./NotFoundPage.module.css";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
+  const { t } = useTranslation();
   return (
     <div className={css.main}>
       <Link
@@ -12,9 +14,9 @@ const NotFound = () => {
         }}
         to={"/"}
       >
-        Back
+        {t("page.NotFoundPage.linkBack")}
       </Link>
-      <h2>Oops... page not found</h2>
+      <h2>{t("page.NotFoundPage.oopsTitle")}</h2>
     </div>
   );
 };

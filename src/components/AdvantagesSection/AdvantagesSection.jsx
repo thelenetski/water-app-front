@@ -3,17 +3,18 @@ import AdvantagesList from "../AdvantagesList/AdvantagesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllUsers } from "../../redux/user/operations";
-import { selectAllUsers, selectUserLoading } from "../../redux/user/selectors";
+import { selectAllUsers } from "../../redux/user/selectors";
+import { useTranslation } from "react-i18next";
 
 const AdvantagesSection = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const usersAll = useSelector(selectAllUsers);
-  const loading = useSelector(selectUserLoading);
 
   const advantages = [
-    "Habit drive",
-    "View statistics",
-    "Personal rate setting",
+    t("AdvantagesSection.habitText"),
+    t("AdvantagesSection.viewStatText"),
+    t("AdvantagesSection.personalRateSetting"),
   ];
 
   useEffect(() => {
@@ -62,9 +63,12 @@ const AdvantagesSection = () => {
             </div>
           )}
           <div className={styles.advantagesCaptionText}>
-            {usersAll.countOfUsers || "Our"}
-            <span className={styles.advantagesCaptionSpan}> happy</span>{" "}
-            customers
+            {usersAll.countOfUsers || t("AdvantagesSection.captionTextOne")}
+            <span className={styles.advantagesCaptionSpan}>
+              {" "}
+              {t("AdvantagesSection.captionTextTwo")}
+            </span>{" "}
+            {t("AdvantagesSection.captionTextThree")}
           </div>
         </div>
         <AdvantagesList items={advantages} />

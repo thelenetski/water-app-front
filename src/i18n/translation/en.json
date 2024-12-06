@@ -154,7 +154,7 @@
     "Loading": "Loading...",
     "You": "You haven’t added the water yet."
   },
-  
+
   "DeleteModal": {
     "success": "Water record successfuly deleted!",
     "error": "Delete failed: ",
@@ -163,6 +163,30 @@
     "Deleting": "Deleting...",
     "Delete": "Delete",
     "Cancel": "Cancel"
+  },
+  "AdvantagesSection": {
+    "habitText": "Habit drive",
+    "viewStatText": "View statistics",
+    "personalRateSetting": "Personal rate setting",
+    "captionTextOne": "Our",
+    "captionTextTwo": "happy",
+    "captionTextThree": "customers"
+  },
+  "WaterMainInfo": {
+    "norm": "My daily norma",
+    "today": "Today"
+  },
+  "WelcomeSection": {
+    "welcomeSubText": "Record daily water intake and track",
+    "welcomeTitleText": "Water consumption tracker",
+    "btnTryTracker": "Try tracker",
+    "btnSignIn": "Sign In"
+  },
+  "page": {
+    "NotFoundPage": {
+      "linkBack": "Back",
+      "oopsTitle": "Oops... page not found"
+    }
   }
 }
 
