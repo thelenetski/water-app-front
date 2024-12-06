@@ -34,7 +34,7 @@ const AddWaterBtn = ({ section }) => {
         className={classes(css.wrapper)}
       >
         <FaPlus className={classes(css.plusIcon)} />
-        <p className={classes(css.text)}>{t("Add water")}</p>
+        <p className={classes(css.text)}>{t("AddWaterBtn.addWaterBtn")}</p>
       </button>
     </>
   );

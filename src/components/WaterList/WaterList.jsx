@@ -30,9 +30,9 @@ const WaterList = () => {
   return (
     <>
       {loading.daily ? (
-        <div className={css.noWater}>{t("Loading...")}</div>
+        <div className={css.noWater}>{t("WaterList.Loading")}</div>
       ) : !waterItems?.length ? (
-        <div className={css.noWater}>{t("You haven’t added the water yet.")}</div>
+        <div className={css.noWater}>{t("WaterList.You")}</div>
       ) : (
         !loading.daily && (
           <ul className={css.wrapper}>

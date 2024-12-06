@@ -27,6 +27,7 @@
   line-height: 1;
   color: #323f47;
   white-space: nowrap;
+  text-transform: initial;
 }
 
 .time {
