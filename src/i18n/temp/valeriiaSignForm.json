@@ -76,4 +76,9 @@
      
     }
   }
+  ,
+     "userBarPopover": {
+    "btnSettings":"Settings",
+    "btnLogOut":"Log out",       
+  }
   }
