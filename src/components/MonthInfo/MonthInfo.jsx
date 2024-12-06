@@ -4,15 +4,19 @@ import css from "./MonthInfo.module.css";
 import {
   selectActiveDay,
   selectWatersDaily,
-  selectWatersMonthly
+  selectWatersMonthly,
 } from "../../redux/waters/selectors.js";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addActiveDay } from "../../redux/waters/slice.js";
 import { useEffect, useState } from "react";
 import { getWaterMonthly } from "../../redux/waters/operations.js";
-import  MonthInfoChart  from '../MonthInfoChart/MonthInfoChart.jsx'
+import MonthInfoChart from "../MonthInfoChart/MonthInfoChart.jsx";
+import { useTranslation } from "react-i18next";
+
 const MonthInfo = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const currentDate = useSelector(selectActiveDay);
   const watersDaily = useSelector(selectWatersDaily);
@@ -22,7 +26,7 @@ const MonthInfo = () => {
     currentDate.year,
     currentDate.month,
     currentDate.day
-  ).toLocaleString("en-EN", { month: "long" });
+  ).toLocaleString(i18n.language, { month: "long" });
 
   const daysOfMonth = new Date(
     currentDate.year,
@@ -30,26 +34,29 @@ const MonthInfo = () => {
     0
   ).getDate();
 
-  const getDateOnly = (dateTime) => dateTime.split('T')[0];
+  const getDateOnly = (dateTime) => dateTime.split("T")[0];
 
   const datesForChart = months.reduce((acc, item, index) => {
     const dateOnly = getDateOnly(item.date);
-if (!acc[dateOnly]) {
-  acc[dateOnly] = { ...item, date: dateOnly }; 
-} else {
-  acc[dateOnly].amount += item.amount;
-}
-return acc;
-}, {})
+    if (!acc[dateOnly]) {
+      acc[dateOnly] = { ...item, date: dateOnly };
+    } else {
+      acc[dateOnly].amount += item.amount;
+    }
+    return acc;
+  }, {});
 
-const sortedDatesForChart = Object.values(datesForChart).sort((a,b) => {
-  const dateA = new Date(a.date)
-  const dateB = new Date(b.date)
+  const sortedDatesForChart = Object.values(datesForChart).sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
 
-  return dateA - dateB
-})
+    return dateA - dateB;
+  });
 
-const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amount, name: index + 1}))
+  const dataForChart = sortedDatesForChart.map((item, index) => ({
+    amount: item.amount,
+    name: index + 1,
+  }));
 
   const nextMonth = () => {
     const date = new Date(currentDate.year, currentDate.month + 1);
@@ -80,9 +87,13 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
   }, [dispatch, currentDate, watersDaily]);
 
   return (
-   <div className={css.container}>
+    <div className={css.container}>
       <div className={css.monthInfo}>
-        {info ? <span className={css.text}>Statistics</span> : <span className={css.text}>Month</span>}
+        {info ? (
+          <span className={css.text}>{t("MonthInfo.statistics")}</span>
+        ) : (
+          <span className={css.text}>{t("MonthInfo.month")}</span>
+        )}
         <div className={css.calendarPagination}>
           <CalendarPagination
             year={currentDate.year}
@@ -93,7 +104,15 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
             prevMonth={prevMonth}
           />
           <span>
-            <button type="button" className={css.button} onClick={() => setInfo(prevInfo => dataForChart.length > 0 ? !prevInfo : false)}>
+            <button
+              type="button"
+              className={css.button}
+              onClick={() =>
+                setInfo((prevInfo) =>
+                  dataForChart.length > 0 ? !prevInfo : false
+                )
+              }
+            >
               <svg className={css.icon}>
                 <use href="/sprite.svg#icon-pie-chart"></use>
               </svg>
@@ -101,8 +120,14 @@ const dataForChart = sortedDatesForChart.map((item,index) => ({amount: item.amou
           </span>
         </div>
       </div>
-     {!info && <Calendar daysOfMonth={daysOfMonth} day={currentDate.day} months={months}/> }
-     {info && <MonthInfoChart data={dataForChart}/>}
+      {!info && (
+        <Calendar
+          daysOfMonth={daysOfMonth}
+          day={currentDate.day}
+          months={months}
+        />
+      )}
+      {info && <MonthInfoChart data={dataForChart} />}
     </div>
   );
 };
