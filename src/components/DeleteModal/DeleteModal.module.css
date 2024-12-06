@@ -15,7 +15,7 @@
 
 .text {
   color: #323f47;
-  margin: 16px 0 28px ;
+  margin: 16px 0 28px;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -23,10 +23,10 @@
 }
 
 .buttonDelWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
 }
 
 .btn {
@@ -39,6 +39,10 @@
   text-transform: initial;
 }
 
+.btn:hover {
+  background: #87d28d;
+}
+
 .deleteBtn {
   background-color: #9be1a0;
 }
@@ -49,8 +53,8 @@
 } */
 
 .cancelBtn {
-  opacity: 30%;
   background-color: #f0eff4;
+  color: #323f4730;
 }
 
 .cancelBtn:hover,
@@ -101,6 +105,7 @@
     font-weight: bold;
     color: #323f47;
     height: 60px;
+    transition: 0.3s;
   }
 
   .deleteBtn {
@@ -108,8 +113,8 @@
   }
 
   .cancelBtn {
-    opacity: 30%;
     background-color: #f0eff4;
+    color: #323f4730;
   }
 }
 @media screen and (max-width: 374px) {
@@ -134,14 +139,14 @@
 
   .cancelBtn:hover,
   .cancelBtn:focus {
-  opacity: 100%;
-  background-color: #f0eff4;
-  color: #323f47;
+    opacity: 100%;
+    background-color: #f0eff4;
+    color: #323f47;
   }
 
   .btnDisabled {
-  pointer-events: none;
-  cursor: not-allowed;
-  background: #e6e6e6;
- }
+    pointer-events: none;
+    cursor: not-allowed;
+    background: #e6e6e6;
+  }
 }

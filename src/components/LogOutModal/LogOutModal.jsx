@@ -26,23 +26,25 @@ const LogOutModal = () => {
     <div className={css.logoutModal}>
       <h2 className={css.title}>{t("logOutModal.logOut")}</h2>
       <p className={css.text}>{t("logOutModal.text")}</p>
-      <button
-        className={`${css.btn} ${css.logoutBtn} ${
-          loading.logOut && css.btnDisabled
-        }`}
-        onClick={handleLogout}
-      >
-        {loading.logOut
-          ? t("logOutModal.butLoggingOut")
-          : t("logOutModal.butLogOut")}
-      </button>
-      <button
-        type="button"
-        className={`${css.btn} ${css.cancelBtn}`}
-        onClick={() => dispatch(closeModal())}
-      >
-        {t("logOutModal.butCancel")}
-      </button>
+      <div className={css.buttonLogOutWrapper}>
+        <button
+          className={`${css.btn} ${css.logoutBtn} ${
+            loading.logOut && css.btnDisabled
+          }`}
+          onClick={handleLogout}
+        >
+          {loading.logOut
+            ? t("logOutModal.butLoggingOut")
+            : t("logOutModal.butLogOut")}
+        </button>
+        <button
+          type="button"
+          className={`${css.btn} ${css.cancelBtn}`}
+          onClick={() => dispatch(closeModal())}
+        >
+          {t("logOutModal.butCancel")}
+        </button>
+      </div>
     </div>
   );
 };

@@ -23,6 +23,13 @@
   text-transform: initial;
 }
 
+.buttonLogOutWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+}
+
 .btn {
   width: 304px;
   padding: 14px;
@@ -31,16 +38,27 @@
   font-weight: bold;
   color: #323f47;
   text-transform: initial;
+  transition: 0.3s;
 }
 
 .logoutBtn {
   background-color: #9be1a0;
 }
 
+.logoutBtn:hover {
+  background: #87d28d;
+}
+
 .cancelBtn {
-  opacity: 30%;
   background-color: #f0eff4;
-  margin-top: 9px;
+  color: #323f4730;
+}
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+  opacity: 100%;
+  background-color: #f0eff4;
+  color: #323f47;
 }
 
 .btnDisabled {
@@ -70,6 +88,10 @@
     font-size: 28px;
     line-height: 32px;
   }
+  .buttonLogOutWrapper {
+    flex-direction: row;
+    gap: 10px;
+  }
   .btn {
     height: 60px;
     width: 176px;
@@ -80,7 +102,7 @@
     line-height: 24px;
     font-weight: 400;
   }
-  
+
   .logoutModal {
     max-width: 516px;
     margin-right: 42px;
