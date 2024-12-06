@@ -5,7 +5,7 @@ export const getAllUsers = createAsyncThunk(
   "users/getAllUsers",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/users");
+      const response = await axios.get("api/users/allUsers");
       return response.data;
     } catch (error) {
       if (error.response) {
