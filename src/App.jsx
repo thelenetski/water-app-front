@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
-import { refreshUser } from "./redux/auth/operations.js";
+import { refreshToken, refreshUser } from "./redux/auth/operations.js";
 import Loader from "./components/Loader/Loader.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
@@ -20,6 +20,7 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
+    dispatch(refreshToken());
     dispatch(refreshUser());
   }, [dispatch]);
 

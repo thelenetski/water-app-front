@@ -2,10 +2,10 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://water-app-back-1n3p.onrender.com";
+axios.defaults.baseURL = "http://localhost:3000";
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
-  // console.log(token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -36,7 +36,7 @@ export const signUp = createAsyncThunk(
 );
 
 export const signIn = createAsyncThunk(
-  "auth/login",
+  "auth/signIn",
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("api/auth/signin", credentials);
@@ -105,6 +105,34 @@ export const refreshUser = createAsyncThunk(
 
       return false;
     },
+  }
+);
+
+export const refreshToken = createAsyncThunk(
+  "auth/refreshToken",
+  async (_, thunkAPI) => {
+    console.log("refresh start");
+    try {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+
+      if (!token) {
+        return thunkAPI.rejectWithValue("No token available");
+      }
+      setAuthHeader(token);
+      const response = await axios.post("api/auth/refresh");
+
+      console.log("refresh", response);
+      const { accessToken } = response.data.data;
+
+      setAuthHeader(accessToken);
+      return { accessToken };
+    } catch (error) {
+      clearAuthHeader();
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || "Failed to refresh token"
+      );
+    }
   }
 );
 

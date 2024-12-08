@@ -6,6 +6,7 @@ import {
   refreshUser,
   googleSignIn,
   confirmGoogleOAuth,
+  refreshToken,
 } from "./operations";
 
 const handleRejected = (state) => {
@@ -22,7 +23,6 @@ const authSlice = createSlice({
     token: null,
     url: null,
     isSignedIn: false,
-    isRefreshing: false,
     loading: {
       signUp: false,
       signIn: false,
@@ -80,6 +80,21 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      .addCase(refreshToken.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshToken.fulfilled, (state, action) => {
+        state.token = action.payload.data.accessToken;
+        state.isSignedIn = true;
+        state.isRefreshing = false;
+        state.error = null;
+      })
+      .addCase(refreshToken.rejected, (state, action) => {
+        state.token = null;
+        state.isSignedIn = false;
+        state.isRefreshing = false;
+        state.error = action.payload;
       });
   },
 });
