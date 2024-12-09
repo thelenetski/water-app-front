@@ -20,7 +20,11 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+     dispatch(refreshToken())
+      .unwrap()
+      .finally(() => {
+        dispatch(refreshUser());
+      });
   }, [dispatch]);
 
   return isRefreshing ? (
