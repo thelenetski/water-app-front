@@ -20,8 +20,16 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    /*dispatch(refreshToken());*/
-    dispatch(refreshUser());
+    const init = async () => {
+      try {
+        await dispatch(refreshToken());
+        await dispatch(refreshUser());
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    init();
   }, [dispatch]);
 
   return isRefreshing ? (
