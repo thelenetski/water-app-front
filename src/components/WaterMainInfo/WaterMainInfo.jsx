@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import css from "./WaterMainInfo.module.css";
 import {
   selectActiveDay,
+  selectLoading,
   selectWatersDaily,
 } from "../../redux/waters/selectors";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ export default function WaterMainInfo() {
   const user = useSelector(selectUser);
 
   const dailyWaterArray = useSelector(selectWatersDaily);
+  const loading = useSelector(selectLoading);
 
   const [percentValue, setPercentValue] = useState(0);
 
@@ -114,7 +116,10 @@ export default function WaterMainInfo() {
           />
         </picture>
         <div className={css.dailyNorma}>
-          <p className={css.p1}>{dailyNormLiter}L</p>
+          <p className={css.p1}>
+            {dailyNormLiter}
+            {t("WaterItem.L")}
+          </p>
           <p className={css.p2}>{t("WaterMainInfo.norm")}</p>
         </div>
         <div className={css.progressBar}>
@@ -124,34 +129,50 @@ export default function WaterMainInfo() {
               ? t("WaterMainInfo.today")
               : `${day}, ${month}`}
           </p>
-          <div className={css.barMain}>
-            <div className={css.barBg}>
-              <div
-                className={css.barProgress}
-                style={{ left: `-${100 - percentValue}%` }}
-              ></div>
-            </div>
-            <div
-              className={clsx(css.barCircle)}
-              style={{ left: `${percentValue}%` }}
-            ></div>
-            <div
-              className={clsx(
-                css.barPercent,
-                isVisiblePercent && css.hiddenCircle
-              )}
+          {loading.daily ? (
+            <p
               style={{
-                left: `${percentValue}%`,
+                color: "rgba(47, 47, 47, 0.6)",
+                fontSize: "14px",
               }}
             >
-              {percentValue}%
+              {t("WaterList.Loading")}
+            </p>
+          ) : (
+            <div className={css.barMain}>
+              <div className={css.barBg}>
+                <div
+                  className={css.barProgress}
+                  style={{ left: `-${100 - percentValue}%` }}
+                ></div>
+              </div>
+              <div
+                className={clsx(css.barCircle)}
+                style={{ left: `${percentValue}%` }}
+              ></div>
+              <div
+                className={clsx(
+                  css.barPercent,
+                  isVisiblePercent && css.hiddenCircle
+                )}
+                style={{
+                  left: `${percentValue}%`,
+                  textTransform: "lowercase",
+                }}
+              >
+                {Math.round((dailyNorm / 100) * percentValue) < 999
+                  ? amountDrankWater + t("WaterItem.ML")
+                  : Math.round(dailyNormLiter * (percentValue / 100) * 100) /
+                      100 +
+                    t("WaterItem.L")}
+              </div>
+              <div className={css.staticPercent}>
+                <p className={css.percent_0}>0%</p>
+                <p className={css.percent_50}>50%</p>
+                <p className={css.percent_100}>100%</p>
+              </div>
             </div>
-            <div className={css.staticPercent}>
-              <p className={css.percent_0}>0%</p>
-              <p className={css.percent_50}>50%</p>
-              <p className={css.percent_100}>100%</p>
-            </div>
-          </div>
+          )}
         </div>
         <div className={css.buttonWaterMain}>
           <AddWaterBtn section="waterMain" />

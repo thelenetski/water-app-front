@@ -26,6 +26,7 @@ const WaterForm = () => {
     amount: yup
       .number()
       .required(t("waterForm.validation.valueRequired"))
+      .positive(t("waterForm.validation.isPositive"))
       .min(10, t("waterForm.validation.minValue"))
       .max(5000, t("waterForm.validation.maxValue"))
       .typeError(t("waterForm.validation.typeError")),

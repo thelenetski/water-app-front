@@ -16,6 +16,7 @@
     "error": "An error occurred",
     "validation": {
       "timeRequired": "Time is required",
+      "isPositive": "Value must be positive",
       "invalidTimeFormat": "Invalid time format",
       "valueRequired": "Value is required",
       "minValue": "Minimum value is 50ml",
@@ -201,4 +202,3 @@
     "month": "Month"
   }
 }
-
