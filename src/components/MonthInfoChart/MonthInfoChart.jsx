@@ -23,10 +23,10 @@ const MonthInfoChart = ({ data }) => {
       <AreaChart
         data={data}
         margin={{
-          top: 10,
+          top: 50,
           right: 30,
           left: 0,
-          bottom: 0,
+          bottom: 10,
         }}
       >
         <defs>
@@ -43,7 +43,7 @@ const MonthInfoChart = ({ data }) => {
           dataKey="name"
           axisLine={false}
           tickLine={false}
-          //   tickMargin={20}
+          tickMargin={20}
         />
         <YAxis
           axisLine={false}
