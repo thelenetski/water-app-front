@@ -17,14 +17,22 @@ const AddWaterBtn = ({ section }) => {
     return date.toLocaleDateString().replace(/\//g, ".");
   };
 
-  const date = `${currentDate?.day}.${currentDate?.month}.${currentDate?.year}`;
+  const date = `${currentDate?.day}.${(currentDate?.month + 1)
+    .toString()
+    .padStart(2, "0")}.${currentDate?.year}`;
 
   const classes = (mainClass) =>
     clsx(mainClass, {
       [css.waterMain]: section === "waterMain",
       [css.daily]: section === "daily",
-      [css.btnDisabled]: date.toString().padStart(10, "0") > localDate(),
+      [css.btnDisabled]:
+        parseDate(date.toString().padStart(10, "0")) > parseDate(localDate()),
     });
+
+  function parseDate(dateStr) {
+    const [day, month, year] = dateStr.split(".").map(Number);
+    return new Date(year, month - 1, day); // month - 1, так как месяцы в JS идут от 0 до 11
+  }
 
   return (
     <>

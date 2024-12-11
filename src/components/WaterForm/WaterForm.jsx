@@ -124,7 +124,9 @@ const WaterForm = () => {
                     <use href="/sprite.svg#icon-minus"></use>
                   </svg>
                 </button>
-                <span className={css.counterValue}>{values.amount} ml</span>
+                <span className={css.counterValue}>
+                  {values.amount} {t("WaterItem.ML")}
+                </span>
                 <button
                   type="button"
                   onClick={() =>
