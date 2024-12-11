@@ -8,34 +8,42 @@
   color: var(--font-color);
 
   font-weight: 700;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media screen and (max-width:767px){
-  .item{
+.item:hover {
+  transform: scale(1.1);
+}
+
+.Disabled {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 767px) {
+  .item {
     width: 27px;
-    height:27px;
+    height: 27px;
 
     font-size: 14px;
   }
 }
 
-@media screen and (max-width: 375px){
-  .item{
+@media screen and (max-width: 375px) {
+  .item {
     width: 7vw;
     height: 7vw;
 
     font-size: 12px;
   }
 }
-@media screen and (min-width:768px){
-  .item{
+@media screen and (min-width: 768px) {
+  .item {
     width: 38px;
     height: 38px;
 
     font-size: 14px;
   }
 }
-
 
 .notCompleted {
   background-color: var(--not-completed-days-background-color);
@@ -64,8 +72,8 @@
   font-size: 12px;
 }
 
-@media screen and (max-width:335px){
+@media screen and (max-width: 335px) {
   .percentage {
-    display:none;
+    display: none;
   }
 }
