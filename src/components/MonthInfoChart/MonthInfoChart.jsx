@@ -61,6 +61,9 @@ const MonthInfoChart = ({ data }) => {
           }}
         />
         <Tooltip
+          contentStyle={{
+            borderRadius: "15px",
+          }}
           formatter={(value) => {
             // const customName = name === "amount" ? "Drunk" : name;
             return [`${value} ml`];
