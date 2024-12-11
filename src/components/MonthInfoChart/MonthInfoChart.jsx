@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  Brush,
 } from "recharts";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +27,7 @@ const MonthInfoChart = ({ data }) => {
           top: 50,
           right: 12,
           left: 0,
-          bottom: 10,
+          bottom: -30,
         }}
       >
         <defs>
@@ -77,7 +78,7 @@ const MonthInfoChart = ({ data }) => {
           strokeWidth={2}
           fill="url(#gradient1)"
           dot={{
-            r: 10,
+            r: 7,
             stroke: "var(--hover-green-color)",
             strokeWidth: 3,
             fill: "#ffffff",
@@ -85,6 +86,13 @@ const MonthInfoChart = ({ data }) => {
           }}
           activeDot={false}
           tickMargin={20}
+        />
+        <Brush
+          dataKey="name"
+          height={0}
+          stroke="#8884d8"
+          startIndex={data.length - 7} // Начальный индекс
+          endIndex={data.length - 1}
         />
       </AreaChart>
     </ResponsiveContainer>
