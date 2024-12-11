@@ -199,6 +199,7 @@
   },
   "MonthInfo": {
     "statistics": "Statistics",
-    "month": "Month"
+    "month": "Month",
+    "day": "Day"
   }
 }

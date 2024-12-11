@@ -24,7 +24,7 @@ const MonthInfoChart = ({ data }) => {
         data={data}
         margin={{
           top: 50,
-          right: 30,
+          right: 12,
           left: 0,
           bottom: 10,
         }}
@@ -49,7 +49,9 @@ const MonthInfoChart = ({ data }) => {
           axisLine={false}
           tickLine={false}
           domain={[0, userData.data.dailyNorm]}
-          tickMargin={20}
+          width={80}
+          tick={{ textAnchor: "start", dx: -30 }}
+          tickMargin={35}
           tickFormatter={(value) => {
             if (value === 0) {
               return 0 + "%";
@@ -59,11 +61,11 @@ const MonthInfoChart = ({ data }) => {
           }}
         />
         <Tooltip
-          formatter={(value, name) => {
-            const customName = name === "amount" ? "Drunk" : name;
-            return [`${value} ml`, customName];
+          formatter={(value) => {
+            // const customName = name === "amount" ? "Drunk" : name;
+            return [`${value} ml`];
           }}
-          labelFormatter={(label) => `Day : ${label}`}
+          labelFormatter={(label) => `${t("MonthInfo.day")}: ${label}`}
         />
         <Area
           type="linear"
@@ -79,6 +81,7 @@ const MonthInfoChart = ({ data }) => {
             fillOpacity: 1,
           }}
           activeDot={false}
+          tickMargin={20}
         />
       </AreaChart>
     </ResponsiveContainer>
