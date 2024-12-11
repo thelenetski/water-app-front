@@ -14,6 +14,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
   width: 436px;
   height: 506px;

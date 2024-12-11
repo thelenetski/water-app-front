@@ -7,6 +7,9 @@
 }
 
 .formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
@@ -15,6 +18,12 @@
   display: flex;
   justify-content: center;
   display: none;
+}
+
+@media (max-width: 375px) {
+  .signInPage {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1439px) {

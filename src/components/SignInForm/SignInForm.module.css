@@ -1,22 +1,30 @@
 .formWrapper {
-  width: 343px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 780px;
 }
 
 .formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 30px;
   background: #f0eff4;
-  padding: 169px 118px;
   position: relative;
 }
 
 .form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 436px;
-  height: 398px;
   margin: 0 auto;
+  padding: 16px;
 }
 
 .logoWrapper {
@@ -120,12 +128,16 @@
 }
 
 .iconButton {
+  width: 20px;
+  height: 20px;
   position: absolute;
-  right: 8px;
-  margin-bottom: 18px;
+  top: 26px;
+  right: 16px;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  transform: translateY(-10px);
 }
 .icon {
   width: 20px;
@@ -163,34 +175,25 @@
   text-align: left;
 }
 
-@media screen and (min-width: 1440px) {
+@media (min-width: 375px) {
   .formWrapper {
-    width: 672px;
-    height: 736px;
+    width: 100%;
   }
 
-  .signInFormBtnWrap button:first-child {
-    width: calc(45% - 20px);
-  }
-
-  .signInFormBtnWrap button {
-    width: calc(55% - 20px);
+  .formContainer {
+    width: 343px;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .formWrapper {
+@media (min-width: 768px) {
+  .formContainer {
     width: 704px;
     height: 960px;
   }
 
-  .formContainer {
-    padding: 227px 134px;
-  }
-
   .form {
     width: 436px;
-    height: 348px;
+    padding: 0;
   }
   .button {
     padding: 18px 0;
@@ -207,13 +210,10 @@
 }
 @media (max-width: 767px) {
   .formContainer {
-    width: 343px;
     height: 780px;
-    padding: 216px 16px;
   }
   .form {
-    width: 311px;
-    height: 348px;
+    width: 100%;
     gap: 16px;
   }
   .logoWrapper {
@@ -244,4 +244,23 @@
   /*   .icon {
     display: none;
   } */
+}
+
+@media screen and (min-width: 1440px) {
+  .formContainer {
+    width: 672px;
+    height: 736px;
+  }
+  .formWrapper {
+    width: 672px;
+    height: 736px;
+  }
+
+  .signInFormBtnWrap button:first-child {
+    width: calc(45% - 20px);
+  }
+
+  .signInFormBtnWrap button {
+    width: calc(55% - 20px);
+  }
 }
