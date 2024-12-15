@@ -47,6 +47,7 @@
     "signinBtnSignin": "Sign in",
     "signintext": "Don’t have an account?",
     "signinWithGoogle": "Sign In with Google",
+    "signUpWithGoogle": "Sign Up with Google",
     "signinLink": "Sign Up",
     "validation": {
       "email": "Must be a valid email!",

@@ -46,6 +46,7 @@
     "signinBtnSignin": "Увійти",
     "signintext": "Не маєте акаунта?",
     "signinWithGoogle": "Увійти через Google",
+    "signUpWithGoogle": "Реєстрація з Google",
     "signinLink": "Реєстрація",
     "validation": {
       "email": "Пошта має бути правильною!",

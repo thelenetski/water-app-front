@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 import { clsx } from "clsx";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../../redux/auth/operations";
+import {
+  confirmGoogleOAuth,
+  googleSignIn,
+  signUp,
+} from "../../redux/auth/operations";
 import sprite from "../../../public/sprite.svg";
 import { selectAuthLoading } from "../../redux/auth/selectors";
+import googleAuthLogo from "../../img/google-auth.png";
 import Logo from "../Logo/Logo";
 import ToggleLang from "../ToggleLang/ToggleLang";
 import { getUserCurrent } from "../../redux/user/operations";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const SignUpForm = () => {
   const { t } = useTranslation();
@@ -62,6 +68,35 @@ const SignUpForm = () => {
         actions.setSubmitting(false);
       });
   };
+
+  const googleHandleSubmit = () => {
+    dispatch(googleSignIn())
+      .unwrap()
+      .then((url) => (window.location.href = url))
+      .catch((err) => console.log(err.message));
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params || params.toString() === "") {
+      return;
+    }
+    const code = params.get("code");
+    if (code) {
+      dispatch(confirmGoogleOAuth(code))
+        .unwrap()
+        .then(() => {
+          toast.success(t("signInForm.toastGoogleSuccess"));
+        })
+        .catch((error) => {
+          toast.error(
+            t("signInForm.toastGoogleFailed", { error: error.message })
+          );
+        });
+    } else {
+      console.error("Authorization code not found in URL");
+    }
+  }, [dispatch]);
 
   return (
     <div className={css.formContainer}>
@@ -183,16 +218,29 @@ const SignUpForm = () => {
                 component="span"
               />
             </label>
-
-            <button
-              className={css.button}
-              type="submit"
-              disabled={!isValid || isSubmitting}
-            >
-              {loading.signUp
-                ? t("signUpForm.signupBtnLoading")
-                : t("signUpForm.signupBtnSignup")}
-            </button>
+            <div className={css.signInFormBtnWrap}>
+              <button
+                className={css.button}
+                type="submit"
+                disabled={!isValid || isSubmitting}
+              >
+                {loading.signUp
+                  ? t("signUpForm.signupBtnLoading")
+                  : t("signUpForm.signupBtnSignup")}
+              </button>
+              <button
+                className={css.button}
+                type="button"
+                onClick={googleHandleSubmit}
+              >
+                <picture>
+                  <img src={googleAuthLogo} alt="google logo" />
+                </picture>
+                {loading.googleSignIn
+                  ? t("signInForm.signinBtnLoading")
+                  : t("signInForm.signUpWithGoogle")}
+              </button>
+            </div>
             <p className={css.signuptext}>
               <span>{t("signUpForm.signuptext")}</span>
               <Link to="/signin" className={css.signinlink}>
