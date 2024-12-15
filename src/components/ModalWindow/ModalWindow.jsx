@@ -4,6 +4,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { selectIsOpenModal } from "../../redux/modal/selectors";
 import styles from "./ModalWindow.module.css";
 import { createPortal } from "react-dom";
+import { useEffect } from "react";
 
 const ModalWindow = ({ children }) => {
   const dispatch = useDispatch();
@@ -13,19 +14,11 @@ const ModalWindow = ({ children }) => {
     dispatch(closeModal());
   };
 
-  // const customStyles = {
-  //   content: {
-  //     top: "50%",
-  //     left: "50%",
-  //     transform: "translate(-50%, -50%)",
-  //     padding: "40px",
-  //     borderRadius: "15px",
-  //     backgroundColor: "#ffffff",
-  //     boxShadow: "0 4px 50px rgba(0, 0, 0, 0.1)",
-  //     width: "fit-content",
-  //     height: "fit-content",
-  //   },
-  // };
+  useEffect(() => {
+    isOpen
+      ? document.body.classList.add("no-scroll")
+      : document.body.classList.remove("no-scroll");
+  }, [isOpen]);
 
   return createPortal(
     <>
