@@ -42,8 +42,10 @@ const CalendarItem = ({ day, currentDay, data, dailyNorm, currentData }) => {
         } ${isCurrentDate && css.currentDay} ${
           currentDay === day && css.pickedDay
         } ${
-          parseDate((day + date.slice(2, 10)).toString().padStart(10, "0")) >
-          parseDate(localDate())
+          parseDate(
+            day.toString().padStart(2, "0") +
+              date.toString().padStart(10, "0").slice(2, 10)
+          ) > parseDate(localDate())
             ? css.Disabled
             : ""
         }`}
