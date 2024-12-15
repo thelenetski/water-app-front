@@ -25,6 +25,10 @@ body {
   margin: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 :root {
   font-family: Poppins, sans-serif;
   font-size: 14px;
@@ -56,7 +60,7 @@ p {
   margin: 0;
   font-size: var(--mobile-font-size);
   color: var(--font-color);
-/*   text-transform: capitalize; */
+  /*   text-transform: capitalize; */
 }
 
 p:last-child {
